@@ -1,0 +1,32 @@
+body {
+	max-width: 80ch;
+	margin: auto;
+}
+img {
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+.icon {
+	position: relative;
+	top: 2px;
+}
+li {
+/*	font-size: 1.1em; */
+}
+.copy {
+	font-weight: bold;
+}
+li li {
+	font-weight: normal;
+	font-size: 0.9em;
+}
+@media (prefers-color-scheme: dark) {
+	body {
+		background: black;
+	}
+	.invert {
+		color: black;
+		background: white;
+		filter: invert();
+	}
+}
