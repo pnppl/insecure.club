@@ -35,6 +35,8 @@ def write_head(page, out):
 		<a id="skip-nav" href="#main">Skip to content</a>
 		<center>
 			<h1>Insecure Website Club</h1>
+			<p>Under construction. Maybe you'd like to <b><a href="{path}random">visit a random site</a></b> or <b><a href="{path}submit">submit a new one</a></b>?</p>
+			<br>
 			<h2>{page}</h2>
 		</center>""",
 		file=out)
@@ -133,6 +135,7 @@ def write_list(sites, page, out):
 
 def write_close(out):
 	print("""\
+		<center><br><p><a href="https://git.gay/pnppl/insecure.club">source</a></p></center>
 	</body>
 </html>""",
 		file=out)
