@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$body .= "ssl: $ssl\n";
 	$body .= "cat: $cat\n";
 	if (!empty($desc)) {
-		if (mb_strlen($desc, 'UTF-8') > 80 {
+		if (mb_strlen($desc, 'UTF-8') > 80) {
 			$desc = mb_substr($desc, 0, 77, 'UTF-8') . "...";
 		}
 		$body .= "desc: $desc\n";
