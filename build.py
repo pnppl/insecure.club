@@ -183,7 +183,7 @@ with open("buttons/index.html", "a") as out:
 		file=out)
 	for site in sites_button:
 		print(f"""\
-		<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="16" height="16"></a>""",
+		<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="88" height="31"></a>""",
 			file=out)
 	print('\
 		</center>',
