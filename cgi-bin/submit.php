@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (!$url) {
 		die('Missing URL field');
 	}
-	$ssl = $_POST['ssl'] ?? 'no';
+	$ssl = isset($_POST['ssl']) ? 'yes' : 'no';
 	$cat = $_POST['cat'] ?? '';
 	if (!$cat) {
 		die('Missing category selection');
@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$gopher_url = htmlspecialchars($_POST['gopher-url'] ?? '');
 	$gemini_url = htmlspecialchars($_POST['gemini-url'] ?? '');
 	$feed_url = htmlspecialchars($_POST['feed-url'] ?? '');
-	$css_opt = $_POST['css-opt'] ?? 'no';
-	$libre = $_POST['libre'] ?? 'no';
+	$css_opt = isset($_POST['css-opt']) ? 'yes' : 'no';
+	$libre = isset($_POST['libre']) ? 'yes' : 'no';
 	$button = htmlspecialchars($_POST['button'] ?? '');
 	$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
 	$message = htmlspecialchars($_POST['message'] ?? '');
@@ -44,7 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$body .= "button: $button\n";
 	}
 	$body .= "added: " . date("Y-m-d") . "\n";
-	$body .= "\nuser included the message: $message";
+	if (!empty($message)) {
+		$body .= "\nuser included the message: $message";
+	}
 
 	$headers = "From: <$to>\n";
 	if ($email) {
