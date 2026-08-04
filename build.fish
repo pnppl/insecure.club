@@ -5,4 +5,5 @@ echo -n '' > has-feed/index.html &&
 echo -n '' > css-opt/index.html &&
 echo -n '' > libre/index.html &&
 echo -n '' > buttons/index.html &&
+echo -n '' > sites.txt &&
 python3 build.py

@@ -1,12 +1,12 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$url = htmlspecialchars($_POST['url'] ?? '');
-	if (!$url) {
+	if (empty($url)) {
 		die('Missing URL field');
 	}
 	$ssl = isset($_POST['ssl']) ? 'yes' : 'no';
 	$cat = $_POST['cat'] ?? '';
-	if (!$cat) {
+	if (empty($cat)) {
 		die('Missing category selection');
 	}
 	$desc = htmlspecialchars($_POST['desc'] ?? '');
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 	$body .= "added: " . date("Y-m-d") . "\n";
 	if (!empty($message)) {
-		$body .= "\nuser included the message: $message";
+		$body .= "\nuser included the message:\n> $message";
 	}
 
 	$headers = "From: <$to>\n";

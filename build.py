@@ -193,5 +193,8 @@ with open("buttons/index.html", "a") as out:
 		</center>',
 		file=out)
 	write_close(out)
+with open("sites.txt", "a") as out:
+	for site in sites:
+		print(f"http://{site['url']}", file=out)
 
 sites_yaml.close()
