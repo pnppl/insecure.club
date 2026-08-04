@@ -6,7 +6,7 @@ instead of cat'ing a bunch of files together, let's just maintain the one big fi
 
 for buttons we can just add an entry to the yaml with the filename
 
-should add some kinda feed for new entries
+should add some kinda feed for new entries 
 
 
 categories. right now we are mixing up different sorts of categorization which might be confusing. what if a plural site is mostly a/v? do certain categories win or do we separate these and clutter the UI? pretty reasonable if we order them something like this: personal|plural (default) -> social|useful (type) -> historical (type) -> technical|av (content) -> sexual (content)
