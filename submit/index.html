@@ -1,117 +1,149 @@
-<style><!--
-	form {
-		max-width: 80ch;
-	}
-	button {
-		display: block;
-		margin-left: auto;
-		padding: 0.5em 1em;
-	}
-	textarea {
-		width: 100%;
-	}
-	details,
-	summary {
-		display: inline;
-	}
-	summary {
-		font-style: italic;
-		text-decoration: wavy underline;
-		cursor: help;
-	}
-	fieldset > ul {
-		list-style: none;
-		padding: 0;
-		margin: 0.25em;
-	}
-	fieldset > ul > li {
-		padding-left: 1em;
-	}
-	#category {
-		list-style: none;
-	}
---></style>
-<form method="post" action="../cgi-bin/submit.php">
-	<fieldset>
-			<legend><p>Submit new site (or update existing)</p></legend>
-		<fieldset>
-			<legend>Basics</legend>
-			<ul>
-					<li><label>URL: <input type="text" name="url" placeholder="insecure.club" required></label></li>
-					<li>Category (when in doubt, pick the one further down the list):
-						<ul id="category">
-							<li style="list-style-image:url('../img/cat/misc.gif')"><label><input type="radio" name="cat" value="misc"> <b>Misc:</b> the categorization system has failed</label></li>
-							<li style="list-style-image:url('../img/cat/personal.gif')"><label><input type="radio" name="cat" value="personal" checked> <b>Personal:</b> a homepage, blog, digital garden, or other multi-topic site run by a single person</label></li>
-							<li style="list-style-image:url('../img/cat/creative.gif')"><label><input type="radio" name="cat" value="creative"> <b>Creative:</b> a novel, zine, multi-user blog, or other predominantly textual creative work (not necessarily fictional)</label></li>
-							<li style="list-style-image:url('../img/cat/informative.gif')"><label><input type="radio" name="cat" value="informative"> <b>Informative:</b> a wiki or other site collecting news or information about a nonfiction subject</label></li>
-							<li style="list-style-image:url('../img/cat/technical.gif')"><label><input type="radio" name="cat" value="technical"> <b>Technical:</b> a site predominantly about programming, engineering, hacking, science, etc.</label></li>
-							<li style="list-style-image:url('../img/cat/useful.gif')"><label><input type="radio" name="cat" value="useful"> <b>Useful:</b> a service like checking the weather, the homepage of an application, a directory of sites, or another helpful resource</label></li>
-							<li style="list-style-image:url('../img/cat/audiovisual.gif')"><label><input type="radio" name="cat" value="audiovisual"> <b>Audiovisual:</b> a site predominantly consisting of photos, videos, or audio</label></li>
-							<li style="list-style-image:url('../img/cat/interactive.gif')"><label><input type="radio" name="cat" value="interactive"> <b>Interactive:</b> a site predominantly consisting of games, toys, or experimental art projects that require the user to do something</label></li>
-							<li style="list-style-image:url('../img/cat/social.gif')"><label><input type="radio" name="cat" value="social"> <b>Social:</b> a forum, pubnix, imageboard, or other digital community</label></li>
-							<li style="list-style-image:url('../img/cat/sexual.gif')"><label><input type="radio" name="cat" value="sexual"> <b>Sexual:</b> a site predominantly consisting of pornography, erotica, or smut</label></li>
-							<li style="list-style-image:url('../img/cat/historical.gif')"><label><input type="radio" name="cat" value="historical"> <b>Historical:</b> a site that has been abandoned for a long time</label></li>
-						</ul>
-					</li>
-				<li><label>Description (optional): <input type="text" name="desc" maxlength="80" placeholder="A directory of sites that support HTTP sans S"></label></li>
-				<li><label>Your email address (optional; for follow-up): <input type="email" name="email" placeholder="info@insecure.club"></label></li>
-			</ul>
-		</fieldset>
-		<br>
-		<fieldset>
-			<legend>Features</legend>
-			<ul>
-				<li><label><input type="checkbox" name="https" checked> Also supports HTTP<b><u>S</u></b></label></li>
-				<li><label><input type="checkbox" name="css-opt"> Works well without CSS</label></li>
-				<li><label><input type="checkbox" name="libre"> Content is predominantly 
-					<details>
-						<summary title="click to expand">free culture</summary>
-						<ul>
-							<li>Public domain: <a href="https://en.wikipedia.org/wiki/Public-domain-equivalent_license">CC0, WTFPL, Unlicense,</a> "dedicated to the public domain", "anti-copyright", etc.</li>
-							<li>Creative Commons licenses <b>without</b> NonCommercial or NoDerivatives clauses:
-								<ul>
-									<li>Yes: CC0, CC BY, CC BY-SA</li>
-									<li><b><i>No:</i></b> CC BY-NC, BY-NC-SA, BY-ND, BY-NC-ND</li>
+<!DOCTYPE html>
+<html>
+	<head>
+		<style><!--
+			body {
+				max-width: 80ch;
+			}
+			h3 {
+				font-weight: normal;
+			}
+			button {
+				display: block;
+				margin-left: auto;
+				padding: 0.5em 1em;
+			}
+			textarea {
+				width: 100%;
+			}
+			details,
+			summary {
+				display: inline;
+			}
+			summary {
+				font-style: italic;
+				text-decoration: wavy underline;
+				cursor: help;
+			}
+			fieldset > ul {
+				list-style: none;
+				padding: 0;
+				margin: 0.25em;
+			}
+			fieldset > ul > li {
+				padding-left: 1em;
+			}
+			#category {
+				list-style: none;
+			}
+			#friendly {
+				font-size: 0.9em;
+			}
+		--></style>
+	</head>
+	<body>
+		<h3><i>Member sites <b>must:</b></i></h3>
+		<ul>
+			<li>support plain old unsecured, unencrypted HTTP.
+				<ul><li>This excludes most popular free webhosts (<i>eg</i> Neocities, Nekoweb). <a href="http://pnppl.cc/2026-05-01_http/">There are other options.</a></li></ul>
+			</li>
+			<li>be <tt>curl</tt>-able (without any flags).</li>
+		</ul>
+		<h3><i>Member sites <b>must <u>not:</u></b></i></h3>
+		<ul>
+			<li>require JavaScript for basic functionality, including forcing the visitor to complete a JS-based CAPTCHA or PoW (<i>eg</i> Anubis, Cloudflare).</li>
+			<li>discriminate against old user agents, which defeats the purpose.
+				<ul>
+					<li>This excludes many popular hosts that support HTTP (<i>eg</i> AlwaysData, Bear Blog).</li>
+				</ul>
+			</li>
+			<li>espouse fascism, racism, sexism, homophobia, transphobia, or any other form of bigotry or right-wing ideology.</li>
+		</ul>
+		<p id="friendly"><i>If you don't understand some of the terms used on this page, that's okay! As long as you can access your site at <tt><b>http</b>://yoursite.com</tt> without being redirected to <tt><b>https</b>://yoursite.com</tt>, just submit it and I'll let you know if it qualifies.</i></p>
+
+		<form method="post" action="../cgi-bin/submit.php">
+			<fieldset>
+				<legend><p>Submit new site (or update existing)</p></legend>
+				<fieldset>
+					<legend>Basics</legend>
+					<ul>
+							<li><label>URL: <input type="text" name="url" placeholder="insecure.club" required></label></li>
+							<li>Category (when in doubt, pick the one further down the list):
+								<ul id="category">
+									<li style="list-style-image:url('../img/cat/misc.gif')"><label><input type="radio" name="cat" value="misc"> <b>Misc:</b> the categorization system has failed</label></li>
+									<li style="list-style-image:url('../img/cat/personal.gif')"><label><input type="radio" name="cat" value="personal" checked> <b>Personal:</b> a homepage, blog, digital garden, or other multi-topic site run by a single person</label></li>
+									<li style="list-style-image:url('../img/cat/creative.gif')"><label><input type="radio" name="cat" value="creative"> <b>Creative:</b> a novel, zine, multi-user blog, or other predominantly textual creative work (not necessarily fictional)</label></li>
+									<li style="list-style-image:url('../img/cat/informative.gif')"><label><input type="radio" name="cat" value="informative"> <b>Informative:</b> a wiki or other site collecting news or information about a nonfiction subject</label></li>
+									<li style="list-style-image:url('../img/cat/technical.gif')"><label><input type="radio" name="cat" value="technical"> <b>Technical:</b> a site predominantly about programming, engineering, hacking, science, etc.</label></li>
+									<li style="list-style-image:url('../img/cat/useful.gif')"><label><input type="radio" name="cat" value="useful"> <b>Useful:</b> a service like checking the weather, the homepage of an application, a directory of sites, or another helpful resource</label></li>
+									<li style="list-style-image:url('../img/cat/audiovisual.gif')"><label><input type="radio" name="cat" value="audiovisual"> <b>Audiovisual:</b> a site predominantly consisting of photos, videos, or audio</label></li>
+									<li style="list-style-image:url('../img/cat/interactive.gif')"><label><input type="radio" name="cat" value="interactive"> <b>Interactive:</b> a site predominantly consisting of games, toys, or experimental art projects that require the user to do something</label></li>
+									<li style="list-style-image:url('../img/cat/social.gif')"><label><input type="radio" name="cat" value="social"> <b>Social:</b> a forum, pubnix, imageboard, or other digital community</label></li>
+									<li style="list-style-image:url('../img/cat/sexual.gif')"><label><input type="radio" name="cat" value="sexual"> <b>Sexual:</b> a site predominantly consisting of pornography, erotica, or smut</label></li>
+									<li style="list-style-image:url('../img/cat/historical.gif')"><label><input type="radio" name="cat" value="historical"> <b>Historical:</b> a site that has been abandoned for a long time</label></li>
 								</ul>
 							</li>
-							<li>Anything the FSF considers <a href="http://www.gnu.org/licenses/license-list.html">free</a>:
+						<li><label>Description (optional): <input type="text" name="desc" maxlength="80" placeholder="A directory of sites that support HTTP sans S"></label></li>
+						<li><label>Your email address (optional; for follow-up): <input type="email" name="email" placeholder="info@insecure.club"></label></li>
+					</ul>
+				</fieldset>
+				<br>
+				<fieldset>
+					<legend>Features</legend>
+					<ul>
+						<li><label><input type="checkbox" name="https" checked> Also supports HTTP<b><u>S</u></b></label></li>
+						<li><label><input type="checkbox" name="css-opt"> Works well without CSS</label></li>
+						<li><label><input type="checkbox" name="libre"> Content is predominantly 
+							<details>
+								<summary title="click to expand">free culture</summary>
 								<ul>
-									<li>GNU FDL, FreeBSD DL, and other <a href="http://www.gnu.org/licenses/license-list.html#FreeDocumentationLicenses">free documentation licenses</a></li>
-									<li>GPL, AGPL, MIT, and other <a href="http://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses">free software licenses</a> (GPL compatibility <a href="http://www.gnu.org/licenses/license-list.html#GPLIncompatibleLicenses">not required</a>)</li>
-									<li>Anything else with a purple, green, or orange border</li>
+									<li>Public domain: <a href="https://en.wikipedia.org/wiki/Public-domain-equivalent_license">CC0, WTFPL, Unlicense,</a> "dedicated to the public domain", "anti-copyright", etc.</li>
+									<li>Creative Commons licenses <b>without</b> NonCommercial or NoDerivatives clauses:
+										<ul>
+											<li>Yes: CC0, CC BY, CC BY-SA</li>
+											<li><b>No:</b> CC BY-NC, BY-NC-SA, BY-ND, BY-NC-ND</li>
+										</ul>
+									</li>
+									<li>Anything the FSF considers <a href="http://www.gnu.org/licenses/license-list.html">free</a>:
+										<ul>
+											<li>GNU FDL and other <a href="http://www.gnu.org/licenses/license-list.html#FreeDocumentationLicenses">free documentation licenses</a></li>
+											<li>GPL, AGPL, MIT, and other <a href="http://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses">free software licenses</a> (GPL compatibility <a href="http://www.gnu.org/licenses/license-list.html#GPLIncompatibleLicenses">not required</a>)</li>
+											<li>Anything else with a purple, green, or orange border</li>
+										</ul>
+									</li>
 								</ul>
-							</li>
-						</ul>
-					</details>
-				</label></li>
-			</ul>
-		</fieldset>
-		<br>
-		<fieldset>
-			<legend>Bonus URLs (optional)</legend>
-			<ul>
-				<li><label>Feed URL: <input type="text" name="feed-url" placeholder="insecure.club/feed.rss"></label></li>
-				<li><label>Gopher URL: <input type="text" name="gopher-url" placeholder="goph.insecure.club"></label></li>
-				<li><label>Gemini URL: <input type="text" name="gemini-url" placeholder="gem.insecure.club"></label></li>
-				<li>
-					<label><a href="../buttons/">Button</a> image URL: <input type="url" name="button" placeholder="http://insecure.club/buttons/insecure.club.gif"></label>
-					<ul><li><details>
-						<summary title="click to expand">requirements</summary>
-						<ul>
-							<li>Format: GIF</li>
-							<li>Width: &lt;= 88px</li>
-							<li>Height: &lt;= 31px</li>
-							<li>Filesize: &lt;= 5KiB</li>
-						</ul>
-					</li></ul></details>
-				</li>
-			</ul>
-		</fieldset>
-	<br>
-	<label for="note">Anything else I should know about your submission? Protocols I'm missing? Feedback?</label>
-	<br>
-	<textarea name="note" id="note" placeholder="i couldn't select the right option cuz ur shits all fuct up. also my site is on telnet"></textarea>
-	<br><br>
-		<button type="submit">Submit site</button>
-	</fieldset>
-</form>
+							</details>
+						</label></li>
+					</ul>
+				</fieldset>
+				<br>
+				<fieldset>
+					<legend>Bonus URLs (optional)</legend>
+					<ul>
+						<li><label><img src="../img/prot/feed.gif"> Feed URL: <input type="text" name="feed-url" placeholder="insecure.club/feed.rss"></label></li>
+						<li><label><img src="../img/prot/gopher.gif"> Gopher URL: <input type="text" name="gopher-url" placeholder="goph.insecure.club"></label></li>
+						<li><label><img src="../img/prot/gemini.gif"> Gemini URL: <input type="text" name="gemini-url" placeholder="gem.insecure.club"></label></li>
+						<li>
+							<label><a href="../buttons/">Button</a> image URL: <input type="url" name="button" placeholder="http://insecure.club/buttons/insecure.club.gif"></label>
+							<ul><li><details>
+								<summary title="click to expand">requirements</summary>
+								<ul>
+									<li>Format: GIF</li>
+									<li>Width: &lt;= 88px</li>
+									<li>Height: &lt;= 31px</li>
+									<li>Filesize: &lt;= 5KiB</li>
+								</ul>
+							</details></li></ul>
+						</li>
+					</ul>
+				</fieldset>
+			<br>
+			<label for="note">Anything else I should know about your submission? Protocols I'm missing? Feedback?</label>
+			<br>
+			<textarea name="note" id="note" placeholder="i couldn't select the right option cuz ur shits all fuct up. also my site is on telnet"></textarea>
+			<br><br>
+				<button type="submit">Submit site</button>
+			</fieldset>
+		</form>
+	</body>
+</html>
