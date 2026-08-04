@@ -1,0 +1,40 @@
+---
+url: handthing.party
+ssl: yes
+cat: audiovisual
+css-opt: yes
+---
+url: insecure.club
+ssl: yes
+cat: useful
+css-opt: yes
+libre: yes
+---
+url: pnppl.cc
+desc: Notes, essays, fiction, art, code, and whatever else I feel like posting.
+ssl: yes
+cat: personal
+css-opt: yes
+libre: yes
+---
+url: smolweb.org
+desc: Promoting a simple unbloated web!
+ssl: yes
+cat: technical
+css-opt: yes
+libre: yes
+---
+url: web1.0hosting.net
+desc: advanced static web hosting
+ssl: yes
+cat: useful
+css-opt: yes
+button: web10
+---
+url: wiby.me
+desc: Search Engine for the Classic Web
+ssl: yes
+cat: useful
+css-opt: yes
+libre: yes
+button: wiby

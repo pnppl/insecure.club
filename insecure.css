@@ -16,8 +16,7 @@ li {
 .copy {
 	font-weight: bold;
 }
-li li {
-	font-weight: normal;
+.additional {
 	font-size: 0.9em;
 }
 @media (prefers-color-scheme: dark) {
