@@ -8,4 +8,5 @@ fclose($sites_file);
 $sites = explode("\n", $sites_str);
 $site = $sites[array_rand($sites)];
 header('Location: ' . $site);
+exit();
 ?>
