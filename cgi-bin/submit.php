@@ -4,8 +4,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (!$url) {
 		die('Missing URL field');
 	}
-	$ssl = $_POST['ssl'];
-	$cat = $_POST['cat'];
+	$ssl = $_POST['ssl'] ?? 'no';
+	$cat = $_POST['cat'] ?? '';
 	if (!$cat) {
 		die('Missing category selection');
 	}
@@ -13,8 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$gopher_url = htmlspecialchars($_POST['gopher-url'] ?? '');
 	$gemini_url = htmlspecialchars($_POST['gemini-url'] ?? '');
 	$feed_url = htmlspecialchars($_POST['feed-url'] ?? '');
-	$css_opt = $_POST['css-opt'];
-	$libre = $_POST['libre'];
+	$css_opt = $_POST['css-opt'] ?? 'no';
+	$libre = $_POST['libre'] ?? 'no';
+	$button = htmlspecialchars($_POST['button'] ?? '');
 	$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
 	$message = htmlspecialchars($_POST['message'] ?? '');
 
@@ -25,19 +26,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$body .= "url: $url\n";
 	$body .= "ssl: $ssl\n";
 	$body .= "cat: $cat\n";
-	$body .= "desc: $desc\n";
-	$body .= "gopher-url: $gopher_url\n";
-	$body .= "gemini-url: $gemini_url\n";
-	$body .= "feed-url: $feed_url\n";
+	if (!empty($desc)) {
+		$body .= "desc: $desc\n";
+	}
+	if (!empty($gopher_url)) {
+		$body .= "gopher-url: $gopher_url\n";
+	}
+	if (!empty($gemini_url)) {
+		$body .= "gemini-url: $gemini_url\n";
+	}
+	if (!empty($feed_url)) {
+		$body .= "feed-url: $feed_url\n";
+	}
 	$body .= "css-opt: $css_opt\n";
 	$body .= "libre: $libre\n";
-	$body .= "added: ";
-	$body .= date("Y-m-d");
-	$body .= "\n\n$message";
+	if (!empty($button)) {
+		$body .= "button: $button\n";
+	}
+	$body .= "added: " . date("Y-m-d") . "\n";
+	$body .= "\nuser included the message: $message";
 
 	$headers = "From: <$to>\n";
 	if ($email) {
-		$headers .= "Reply-To: $email\n";
+		$headers .= "Reply-To: <$email>\n";
 	}
 	$headers .= "Content-Type: text/plain; charset=UTF-8\n";
 
