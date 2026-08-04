@@ -73,14 +73,17 @@ def write_list(sites, page, out):
 	if page != 'index':
 		path = '../'
 	print("""\
-		<ul id="main">""",
+		<div id="main">
+			<ul>""",
 		file=out)
 	old_cat = ''
 	for site in sites:
 		cat = site['cat']
 		if old_cat != cat and page == 'cat':
 			print(f"""\
-		<h3 id="{cat}">{cat.capitalize()}</h3>""",
+			</ul>
+			<h3 id="{cat}">{cat.capitalize()}</h3>
+			<ul>""",
 			file=out)
 		old_cat = cat
 
@@ -99,8 +102,8 @@ def write_list(sites, page, out):
 			protocols += f""" <a href="http://{site['feed-url']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]" width="16" height="16"></a>"""
 
 		print(f"""\
-			<li>
-				<img alt="{cat}:" class="icon invert" src="{path}img/cat/{cat}.gif" title="Category: {cat}" width="16" height="16"> {link}{protocols}""",
+				<li>
+					<img alt="{cat}:" class="icon invert" src="{path}img/cat/{cat}.gif" title="Category: {cat}" width="16" height="16"> {link}{protocols}""",
 			file=out)
 
 		additional = ''
@@ -110,19 +113,20 @@ def write_list(sites, page, out):
 			additional += f"""<i class="desc">{site['desc']}</i>"""
 		if len(additional) > 0:
 			print(f"""\
-				<ul><li class="additional">{additional}</li></ul>""",
+					<ul><li class="additional">{additional}</li></ul>""",
 				file=out)
 
 		print("""\
-			</li>""",
+				</li>""",
 			file=out)
 	# /for
 	print("""\
-		</ul>""",
+			</ul>""",
 		file=out)
 	if page != 'css-opt':
 		print("""\
-		<p><i><b>Bold</b> entries work well without CSS.</i></p>""",
+			<p><i><b>Bold</b> entries work well without CSS.</i></p>
+		</div>""",
 		file=out)
 
 # /def
