@@ -11,22 +11,49 @@ def write_head(page, out):
 		<meta name="color-scheme" content="light dark">
 		<link rel="stylesheet" href="{path}insecure.css">
 		<title>{title}</title>
-	</head>""",
+	</head>
+	<body>""",
 		file=out)
 
+def write_nav(page, out):
+	path = ''
+	if len(page) > 0:
+		path = '../'
+	pages = [
+		('', 'alpha'),
+		('cat', 'categories'),
+		('new', 'new'),
+		('buttons', 'buttons'),
+		('css-opt', 'CSS-optional'),
+		('libre', 'free culture'),
+		('has-feed', 'has feed')
+	]
+	out.write('\
+		<center id="nav"><nav>[&nbsp;')
+	for entry in pages:
+		if entry[0] == page:
+			out.write(f"""<span>{entry[1]}</span>""")
+		else:
+			out.write(f"""<a href="{path}{entry[0]}">{entry[1]}</a>""")
+		if entry[0] == 'new':
+			out.write(' | ')
+		elif entry[0] == 'buttons':
+			out.write(' | ')
+		elif entry[0] != 'has-feed':
+			out.write(' · ')
+	print('&nbsp;]</nav></center>', file=out)
 
 def write_list(sites, page, out):
 	path = ''
 	if page != 'index':
 		path = '../'
 	print("""\
-	<body>
 		<ul>""",
 		file=out)
 	old_cat = ''
 	for site in sites:
 		cat = site['cat']
-		if old_cat != cat and page == 'by-cat':
+		if old_cat != cat and page == 'cat':
 			print(f"""\
 		<h3 id="{cat}">{cat}</h3>""",
 			file=out)
@@ -90,36 +117,47 @@ sites_button = filter(lambda s: 'button' in s and s['button'], sites)
 
 with open("index.html", "a") as out:
 	write_head('index', out)
+	write_nav('', out)
 	write_list(sites, 'index', out)
 	write_close(out)
-with open("by-cat/index.html", "a") as out:
+with open("cat/index.html", "a") as out:
 	write_head('Categories', out)
-	write_list(sites_by_cat, 'by-cat', out)
+	write_nav('cat', out)
+	write_list(sites_by_cat, 'cat', out)
 	write_close(out)
 with open("new/index.html", "a") as out:
 	write_head('Recently Added', out)
+	write_nav('new', out)
 	write_list(sites_new, 'new', out)
 	write_close(out)
 with open("has-feed/index.html", "a") as out:
 	write_head('HTTP Feeds', out)
+	write_nav('has-feed', out)
 	write_list(sites_has_feed, 'feed', out)
 	write_close(out)
 with open("css-opt/index.html", "a") as out:
 	write_head('CSS-Optional', out)
+	write_nav('css-opt', out)
 	write_list(sites_css_opt, 'css-opt', out)
 	write_close(out)
 with open("libre/index.html", "a") as out:
 	write_head('Free Culture', out)
+	write_nav('libre', out)
 	write_list(sites_libre, 'libre', out)
 	write_close(out)
 with open("buttons/index.html", "a") as out:
 	write_head('Button Wall', out)
-	print("""\
-	<body>""", file=out)
+	write_nav('buttons', out)
+	print('\
+		<br><center>',
+		file=out)
 	for site in sites_button:
 		print(f"""\
 		<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}"></a>""",
 			file=out)
+	print('\
+		</center>',
+		file=out)
 	write_close(out)
 
 sites_yaml.close()

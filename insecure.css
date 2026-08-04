@@ -6,15 +6,16 @@ img {
 	image-rendering: crisp-edges;
 	image-rendering: pixelated;
 }
+#nav {
+	font-weight: bold;
+}
+#nav a,
+#nav span {
+	font-weight: normal;
+}
 .icon {
 	position: relative;
 	top: 2px;
-}
-li {
-/*	font-size: 1.1em; */
-}
-.copy {
-	font-weight: bold;
 }
 .additional {
 	font-size: 0.9em;
