@@ -39,10 +39,12 @@ def write_list(sites, page, out):
 		protocols = ''
 		if 'ssl' in site and site['ssl']:
 			protocols += f""" <a href="https://{site['url']}"><img class="icon invert" src="{path}img/prot/https.gif" alt="[HTTPS]"></a>"""
-		if 'gopher_url' in site and site['gopher_url']:
-			protocols += f""" <a href="gopher://{site['gopher_url']}"><img class="icon" src="{path}img/prot/gopher.gif" alt="[Gopher]"></a>"""
-		if 'gemini_url' in site and site['gemini_url']:
-			protocols += f""" <a href="gemini://{site['gemini_url']}"><img class="icon invert" src="{path}img/prot/gemini.gif" alt="[Gemini]"></a>"""
+		if 'gopher-url' in site and site['gopher-url']:
+			protocols += f""" <a href="gopher://{site['gopher-url']}"><img class="icon" src="{path}img/prot/gopher.gif" alt="[Gopher]"></a>"""
+		if 'gemini-url' in site and site['gemini-url']:
+			protocols += f""" <a href="gemini://{site['gemini-url']}"><img class="icon invert" src="{path}img/prot/gemini.gif" alt="[Gemini]"></a>"""
+		if 'feed-url' in site and site['feed-url']:
+			protocols += f""" <a href="http://{site['feed-url']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]"></a>"""
 
 		print(f"""\
 			<li>
@@ -78,8 +80,10 @@ import yaml
 
 sites_yaml = open("sites.yaml", "r")
 sites = list(yaml.load_all(sites_yaml, Loader=yaml.SafeLoader))
-sites.sort(key=lambda s: s['url'])
+sites.sort(key=lambda s: s['url'].removeprefix('www.'))
 sites_by_cat = sorted(sites, key=lambda s: s['cat'])
+sites_new = sorted(sites, key=lambda s: s['added'], reverse=True)
+sites_has_feed = filter(lambda s: 'feed-url' in s and s['feed-url'], sites)
 sites_css_opt = filter(lambda s: 'css-opt' in s and s['css-opt'], sites)
 sites_libre = filter(lambda s: 'libre' in s and s['libre'], sites)
 sites_button = filter(lambda s: 'button' in s and s['button'], sites)
@@ -91,6 +95,14 @@ with open("index.html", "a") as out:
 with open("by-cat/index.html", "a") as out:
 	write_head('Categories', out)
 	write_list(sites_by_cat, 'by-cat', out)
+	write_close(out)
+with open("new/index.html", "a") as out:
+	write_head('Recently Added', out)
+	write_list(sites_new, 'new', out)
+	write_close(out)
+with open("has-feed/index.html", "a") as out:
+	write_head('HTTP Feeds', out)
+	write_list(sites_has_feed, 'feed', out)
 	write_close(out)
 with open("css-opt/index.html", "a") as out:
 	write_head('CSS-Optional', out)

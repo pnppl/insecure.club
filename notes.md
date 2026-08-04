@@ -6,6 +6,8 @@ instead of cat'ing a bunch of files together, let's just maintain the one big fi
 
 for buttons we can just add an entry to the yaml with the filename
 
+should add some kinda feed for new entries
+
 
 categories. right now we are mixing up different sorts of categorization which might be confusing. what if a plural site is mostly a/v? do certain categories win or do we separate these and clutter the UI? pretty reasonable if we order them something like this: personal|plural (default) -> social|useful (type) -> historical (type) -> technical|av (content) -> sexual (content)
 
@@ -49,7 +51,7 @@ what about: personal, plural, technical, useful, social, playful; historical, se
 much better when i ditch the "-al" affectation and give some examples
 - misc: the categorization system has failed
 - personal: a homepage, blog, digital garden, or other multi-topic site run by a single person
-- creative: a novel, zine, multi-user blog, or other predominantly textual creative work
+- creative: a novel, zine, multi-user blog, or other predominantly textual creative work (not necessarily fictional)
 - informative: a wiki or other site collecting news or information about a nonfiction subject
 - technical: a site predominantly about programming, engineering, hacking, science, etc.
 - useful: a service like checking the weather, the homepage of an application, a directory of sites, or another helpful resource
@@ -63,3 +65,4 @@ much better when i ditch the "-al" affectation and give some examples
 when in doubt, choose the item lower on the list
 
 so okay not perfect by any means but this way no fucking with tags, more succinct, hopefully works ok
+

@@ -1,40 +1,198 @@
 ---
+url: baccyflap.com
+ssl: yes
+cat: personal
+feed-url: baccyflap.com/prs/blog/feed.php
+css-opt: yes
+added: 2026-08-03
+---
+url: crimethinc.com
+ssl: yes
+cat: creative
+feed-url: crimethinc.com/feed
+css-opt: no
+libre: yes
+added: 2026-08-03
+---
+url: echoesofbluemars.org
+ssl: no
+cat: audiovisual
+css-opt: no
+added: 2026-08-03
+---
+url: fileformats.archiveteam.org
+ssl: no
+cat: technical
+feed-url: fileformats.archiveteam.org/index.php?title=Special:RecentChanges&feed=rss
+css-opt: no
+libre: yes
+added: 2026-08-03
+---
+url: www.floodgap.com
+ssl: yes
+cat: personal
+css-opt: yes
+added: 2026-08-03
+---
+url: friendo.monster
+ssl: yes
+cat: technical
+gopher-url: friendo.monster
+gemini-url: friendo.monster
+feed-url: friendo.monster/rss.xml
+css-opt: yes
+added: 2026-08-03
+---
 url: handthing.party
 ssl: yes
 cat: audiovisual
+desc: You still doing that hand thing?
 css-opt: yes
+added: 2026-08-03
+---
+url: highlysuspect.agency
+ssl: yes
+cat: personal
+css-opt: yes
+added: 2026-08-03
+---
+url: houseofselfindulgence.blogspot.com
+ssl: yes
+cat: audiovisual
+feed-url: houseofselfindulgence.blogspot.com/feeds/posts/default?alt=rss
+css-opt: no
+added: 2026-08-03
+---
+url: humaniterations.net
+ssl: yes
+cat: creative
+feed-url: humaniterations.net/feed.xml
+css-opt: yes
+libre: yes
+added: 2026-08-03
 ---
 url: insecure.club
 ssl: yes
 cat: useful
 css-opt: yes
 libre: yes
+added: 2026-08-03
 ---
-url: pnppl.cc
-desc: Notes, essays, fiction, art, code, and whatever else I feel like posting.
-ssl: yes
-cat: personal
-css-opt: yes
-libre: yes
----
-url: smolweb.org
-desc: Promoting a simple unbloated web!
+url: maurycyz.com
 ssl: yes
 cat: technical
 css-opt: yes
+libre: no
+added: 2026-08-03
+---
+url: mycophobia.org
+ssl: yes
+cat: personal
+feed-url: mycophobia.org/atom.xml
+css-opt: yes
+added: 2026-08-03
+---
+url: petermolnar.net
+ssl: yes
+cat: personal
+gopher-url: petermolnar.net
+feed-url: petermolnar.net/feed/index.xml
+libre: no
+added: 2026-08-03
+---
+url: pnppl.cc
+ssl: yes
+cat: personal
+desc: Notes, essays, fiction, art, code, and whatever else I feel like posting.
+feed-url: pnppl.cc/+/feed.rss
+css-opt: yes
 libre: yes
+added: 2026-08-03
+---
+url: www.prole.info
+ssl: yes
+cat: creative
+css-opt: yes
+added: 2026-08-03
+---
+url: www.quoteunquoterecords.com
+ssl: yes
+cat: audiovisual
+desc: The first ever donation based record label
+css-opt: yes
+libre: no
+added: 2026-08-03
+---
+url: smokepowered.com
+ssl: yes
+cat: audiovisual
+css-opt: yes
+libre: no
+added: 2026-08-03
+---
+url: smolweb.org
+ssl: yes
+cat: technical
+desc: Promoting a simple unbloated web!
+feed-url: smolweb.org/atom.xml
+css-opt: yes
+libre: yes
+added: 2026-08-03
+---
+url: temblast.com
+ssl: yes
+cat: technical
+css-opt: yes
+added: 2026-08-03
+---
+url: toastytech.com
+ssl: no
+cat: technical
+css-opt: yes
+added: 2026-08-03
+---
+url: trekkiefeminist.com
+ssl: yes
+cat: creative
+desc: Boldly going where no feminist has gone before
+feed-url: trekkiefeminist.com/feed/
+css-opt: no
+added: 2026-08-03
+---
+url: vivivi.leprd.space
+ssl: yes
+cat: personal
+feed-url: vivivi.leprd.space/feed.rss
+button: vivivi
+added: 2026-08-03
 ---
 url: web1.0hosting.net
-desc: advanced static web hosting
 ssl: yes
 cat: useful
+desc: advanced static web hosting
 css-opt: yes
 button: web10
+added: 2026-08-03
 ---
 url: wiby.me
-desc: Search Engine for the Classic Web
 ssl: yes
 cat: useful
+desc: Search Engine for the Classic Web
 css-opt: yes
 libre: yes
 button: wiby
+added: 2026-08-03
+---
+url: wol.fm
+ssl: yes
+cat: personal
+feed-url: wol.fm/feed.xml
+css-opt: yes
+added: 2026-08-03
+---
+url: xn--gckvb8fzb.com
+ssl: yes
+cat: personal
+feed-url: xn--gckvb8fzb.com/index.xml
+libre: no
+added: 2026-08-03
