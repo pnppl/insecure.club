@@ -40,8 +40,9 @@ def write_nav(page, out):
 		elif entry[0] == 'buttons':
 			out.write(' | ')
 		elif entry[0] != 'has-feed':
-			out.write(' · ')
-	print('&nbsp;]</nav></center>', file=out)
+			out.write(' &#183; ')
+	print("""&nbsp;]</nav></center>
+		<br>""", file=out)
 
 def write_list(sites, page, out):
 	path = ''
@@ -95,6 +96,11 @@ def write_list(sites, page, out):
 	print("""\
 		</ul>""",
 		file=out)
+	if page != 'css-opt':
+		print("""\
+		<i><b>Bold</b> entries work well without CSS.</i>""",
+		file=out)
+
 # /def
 
 def write_close(out):
@@ -149,7 +155,7 @@ with open("buttons/index.html", "a") as out:
 	write_head('Button Wall', out)
 	write_nav('buttons', out)
 	print('\
-		<br><center>',
+		<center>',
 		file=out)
 	for site in sites_button:
 		print(f"""\
