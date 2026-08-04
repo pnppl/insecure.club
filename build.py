@@ -24,7 +24,7 @@ def write_head(page, out):
 		<meta property="og:site_name" content="Insecure Website Club">
 		<meta property="og:title" content="{title}">
 		<meta property="og:description" content="Directory of sites that support HTTP sans S">
-		<meta property="og:image" content="">
+		<!-- <meta property="og:image" content=""> -->
 		<meta property="og:url" content="https://insecure.club/{page}">
 		<meta property="og:type" content="website">
 		<meta name="description" content="Directory of sites that support HTTP sans S">
