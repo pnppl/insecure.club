@@ -30,13 +30,13 @@ added: 2026-08-03
 ---
 url: www.floodgap.com
 ssl: yes
-cat: personal
+cat: technical
 css-opt: yes
 added: 2026-08-03
 ---
 url: friendo.monster
 ssl: yes
-cat: technical
+cat: personal
 gopher-url: friendo.monster
 gemini-url: friendo.monster
 feed-url: friendo.monster/rss.xml
