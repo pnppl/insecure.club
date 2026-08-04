@@ -47,6 +47,8 @@ img {
 #main {
 	margin-top: 0;
 	padding-bottom: 1em;
+	margin: auto;
+	width: fit-content;
 }
 #main a {
 	word-break: break-all;

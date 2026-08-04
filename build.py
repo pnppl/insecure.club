@@ -35,8 +35,8 @@ def write_head(page, out):
 		<a id="skip-nav" href="#main">Skip to content</a>
 		<center>
 			<h1>Insecure Website Club</h1>
+			<p>A directory of websites that support HTTP sans S. It's okay to a little insecure!</p>
 			<p>Under construction. Maybe you'd like to <b><a href="{path}random">visit a random site</a></b> or <b><a href="{path}submit">submit a new one</a></b>?</p>
-			<br>
 			<h2>{page}</h2>
 		</center>""",
 		file=out)
@@ -133,9 +133,12 @@ def write_list(sites, page, out):
 
 # /def
 
-def write_close(out):
-	print("""\
-		<center><br><p><a href="https://git.gay/pnppl/insecure.club">source</a></p></center>
+def write_close(page, out):
+	path = ''
+	if page != 'index':
+		path = '../'
+	print(f"""\
+		<center><br><p><a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a></p></center>
 	</body>
 </html>""",
 		file=out)
@@ -156,32 +159,32 @@ with open("index.html", "a") as out:
 	write_head('index', out)
 	write_nav('', out)
 	write_list(sites, 'index', out)
-	write_close(out)
+	write_close('index', out)
 with open("cat/index.html", "a") as out:
 	write_head('Categories', out)
 	write_nav('cat', out)
 	write_list(sites_by_cat, 'cat', out)
-	write_close(out)
+	write_close('', out)
 with open("new/index.html", "a") as out:
 	write_head('Recently Added', out)
 	write_nav('new', out)
 	write_list(sites_new, 'new', out)
-	write_close(out)
+	write_close('', out)
 with open("has-feed/index.html", "a") as out:
 	write_head('Sites with Feeds', out)
 	write_nav('has-feed', out)
 	write_list(sites_has_feed, 'feed', out)
-	write_close(out)
+	write_close('', out)
 with open("css-opt/index.html", "a") as out:
 	write_head('CSS-Optional', out)
 	write_nav('css-opt', out)
 	write_list(sites_css_opt, 'css-opt', out)
-	write_close(out)
+	write_close('', out)
 with open("libre/index.html", "a") as out:
 	write_head('Free Culture', out)
 	write_nav('libre', out)
 	write_list(sites_libre, 'libre', out)
-	write_close(out)
+	write_close('', out)
 with open("buttons/index.html", "a") as out:
 	write_head('Button Wall', out)
 	write_nav('buttons', out)
@@ -195,7 +198,7 @@ with open("buttons/index.html", "a") as out:
 	print('\
 		</center>',
 		file=out)
-	write_close(out)
+	write_close('', out)
 with open("sites.txt", "a") as out:
 	for site in sites:
 		print(f"http://{site['url']}", file=out)
