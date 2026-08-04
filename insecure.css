@@ -1,17 +1,52 @@
 body {
 	max-width: 80ch;
 	margin: auto;
+	padding: 1em 0.5em;
+}
+h1,
+h2 {
+	padding: 0;
+	margin: 0;
+}
+h3 {
+	padding-top: 1em;
+}
+ul {
+	padding-left: 1em;
+}
+ul ul {
+	padding-left: 2em;
 }
 img {
 	image-rendering: crisp-edges;
 	image-rendering: pixelated;
 }
+#skip-nav {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+	z-index: 100;
+}
+#skip-nav:focus {
+	left: 0.25em;
+	top: 0.25em;
+	z-index: 0;
+}
 #nav {
+	margin-top: 1em;
 	font-weight: bold;
 }
 #nav a,
 #nav span {
 	font-weight: normal;
+	text-wrap: nowrap;
+}
+#main {
+	margin-top: 0;
+	padding-bottom: 1em;
+}
+#main a {
+	word-break: break-all;
 }
 .icon {
 	position: relative;

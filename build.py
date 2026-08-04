@@ -4,15 +4,39 @@ def write_head(page, out):
 	if page != 'index':
 		path = '../'
 		title = f"""{page} | {title}"""
+	else:
+		page = ''
 	print(f"""\
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="referrer" content="no-referrer">
 		<meta name="color-scheme" content="light dark">
+		<!--
+		<meta name="theme-color" content="">
+		<link rel="icon" href="">
+		<link rel="license" href="">
+		<link rel="alternate" href="" title="" type="application/rss+xml">
+		-->
+		<link rel="alternate" href="{path}sites.yaml" title="YAML source" type="application/yaml">
+		<meta property="og:site_name" content="Insecure Website Club">
+		<meta property="og:title" content="{title}">
+		<meta property="og:description" content="Directory of sites that support HTTP sans S">
+		<meta property="og:image" content="">
+		<meta property="og:url" content="https://insecure.club/{page}">
+		<meta property="og:type" content="website">
+		<meta name="description" content="Directory of sites that support HTTP sans S">
 		<link rel="stylesheet" href="{path}insecure.css">
 		<title>{title}</title>
 	</head>
-	<body>""",
+	<body>
+		<a id="skip-nav" href="#main">Skip to content</a>
+		<center>
+			<h1>Insecure Website Club</h1>
+			<h2>{page}</h2>
+		</center>""",
 		file=out)
 
 def write_nav(page, out):
@@ -49,14 +73,14 @@ def write_list(sites, page, out):
 	if page != 'index':
 		path = '../'
 	print("""\
-		<ul>""",
+		<ul id="main">""",
 		file=out)
 	old_cat = ''
 	for site in sites:
 		cat = site['cat']
 		if old_cat != cat and page == 'cat':
 			print(f"""\
-		<h3 id="{cat}">{cat}</h3>""",
+		<h3 id="{cat}">{cat.capitalize()}</h3>""",
 			file=out)
 		old_cat = cat
 
@@ -66,17 +90,17 @@ def write_list(sites, page, out):
 
 		protocols = ''
 		if 'ssl' in site and site['ssl']:
-			protocols += f""" <a href="https://{site['url']}"><img class="icon invert" src="{path}img/prot/https.gif" alt="[HTTPS]"></a>"""
+			protocols += f""" <a href="https://{site['url']}"><img class="icon invert" src="{path}img/prot/https.gif" alt="[HTTPS]" width="16" height="16"></a>"""
 		if 'gopher-url' in site and site['gopher-url']:
-			protocols += f""" <a href="gopher://{site['gopher-url']}"><img class="icon" src="{path}img/prot/gopher.gif" alt="[Gopher]"></a>"""
+			protocols += f""" <a href="gopher://{site['gopher-url']}"><img class="icon" src="{path}img/prot/gopher.gif" alt="[Gopher]" width="16" height="16"></a>"""
 		if 'gemini-url' in site and site['gemini-url']:
-			protocols += f""" <a href="gemini://{site['gemini-url']}"><img class="icon invert" src="{path}img/prot/gemini.gif" alt="[Gemini]"></a>"""
+			protocols += f""" <a href="gemini://{site['gemini-url']}"><img class="icon invert" src="{path}img/prot/gemini.gif" alt="[Gemini]" width="16" height="16"></a>"""
 		if 'feed-url' in site and site['feed-url']:
-			protocols += f""" <a href="http://{site['feed-url']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]"></a>"""
+			protocols += f""" <a href="http://{site['feed-url']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]" width="16" height="16"></a>"""
 
 		print(f"""\
 			<li>
-				<img alt="{cat}:" class="icon invert" src="{path}img/cat/{cat}.gif" title="Category: {cat}"> {link}{protocols}""",
+				<img alt="{cat}:" class="icon invert" src="{path}img/cat/{cat}.gif" title="Category: {cat}" width="16" height="16"> {link}{protocols}""",
 			file=out)
 
 		additional = ''
@@ -98,7 +122,7 @@ def write_list(sites, page, out):
 		file=out)
 	if page != 'css-opt':
 		print("""\
-		<i><b>Bold</b> entries work well without CSS.</i>""",
+		<p><i><b>Bold</b> entries work well without CSS.</i></p>""",
 		file=out)
 
 # /def
@@ -137,7 +161,7 @@ with open("new/index.html", "a") as out:
 	write_list(sites_new, 'new', out)
 	write_close(out)
 with open("has-feed/index.html", "a") as out:
-	write_head('HTTP Feeds', out)
+	write_head('Sites with Feeds', out)
 	write_nav('has-feed', out)
 	write_list(sites_has_feed, 'feed', out)
 	write_close(out)
@@ -159,7 +183,7 @@ with open("buttons/index.html", "a") as out:
 		file=out)
 	for site in sites_button:
 		print(f"""\
-		<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}"></a>""",
+		<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="16" height="16"></a>""",
 			file=out)
 	print('\
 		</center>',
