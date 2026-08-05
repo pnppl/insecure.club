@@ -70,3 +70,8 @@ img {
 		filter: invert();
 	}
 }
+@media screen and (max-width: 500px) {
+	#main {
+		width: 95%;
+	}
+}
