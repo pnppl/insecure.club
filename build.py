@@ -17,9 +17,9 @@ def write_head(page, out):
 		<!--
 		<meta name="theme-color" content="">
 		<link rel="icon" href="">
-		<link rel="license" href="">
-		<link rel="alternate" href="" title="" type="application/rss+xml">
 		-->
+		<link rel="license" href="{path}LICENSE.md">
+		<link rel="alternate" href="{path}feed/feed.atom" title="Insecure Website Club URL feed" type="application/atom+xml">
 		<link rel="alternate" href="{path}sites.yaml" title="YAML source" type="application/yaml">
 		<meta property="og:site_name" content="Insecure Website Club">
 		<meta property="og:title" content="{title}">
@@ -138,7 +138,7 @@ def write_close(page, out):
 		path = '../'
 	print(f"""\
 		<center>
-			<p><a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a></p>
+			<p><a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a> &#183; <a href="{path}feed/feed.atom">feed</a></p>
 			<br>
 			<p><i>It's okay to be a little insecure!</i></p>
 		</center>
@@ -146,7 +146,7 @@ def write_close(page, out):
 </html>""",
 		file=out)
 
-import yaml
+import yaml, datetime
 
 sites_yaml = open("sites.yaml", "r")
 sites = list(yaml.load_all(sites_yaml, Loader=yaml.SafeLoader))
@@ -206,5 +206,36 @@ with open("buttons/index.html", "a") as out:
 with open("sites.txt", "a") as out:
 	for site in sites:
 		print(f"http://{site['url']}", file=out)
+with open("feed/feed.atom", "a") as out:
+	print(f"""\
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Insecure Website Club</title>
+	<id>http://insecure.club/</id>
+	<link rel="alternate" href="http://insecure.club/"/>
+	<link rel="self" href="http://insecure.club/feed/atom.xml"/>
+	<updated>{datetime.datetime.now(datetime.timezone.utc).isoformat()}</updated>
+	<author>
+		<name>pnppl</name>
+	</author>""",
+	file=out)
+	for site in sites_new:
+		out.write(f"""\
+	<entry>
+		<title>{site['url']}</title>
+		<link rel="alternate" type="text/html" href="http://{site['url']}/"/>
+		<id>http://{site['url']}/</id>
+		<published>{site['added']}T00:00:00Z</published>
+		<updated>{site['added']}T00:00:00Z</updated>
+		<summary>{site['cat']}""")
+		if 'css-opt' in site and site['css-opt']:
+			out.write("; CSS optional")
+		if 'libre' in site and site['libre']:
+			out.write("; free culture")
+		print("""</summary>
+	</entry>""",
+		file=out)
+	out.write("""\
+</feed>""")
 
 sites_yaml.close()

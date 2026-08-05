@@ -1,4 +1,3 @@
-- should add some kinda feed for new entries. should be pretty easy since 'added' never changes
 - do i fix up the python or switch to something less absurd? don't really want to write more php, but there are better ways to do static builds
 	- i really like the python fstrings for templating. maybe i should just think about the structure and refactor it
 		- either use SSI or improve things so i can put headings etc on the submit page and other handcrafted html
@@ -14,7 +13,7 @@
 	- splash some color around other places
 - do a security pass on submit.php so i don't crash the server with giant emails or something
 - fish script to check sites with curl (already did this for nagi, just adjust and tidy)
-
+- need to add something to the rules about how sites that are just a resume, list of ways to contact them, or blog with 1 post are not allowed
 
 
 categories. right now we are mixing up different sorts of categorization which might be confusing. what if a plural site is mostly a/v? do certain categories win or do we separate these and clutter the UI? pretty reasonable if we order them something like this: personal|plural (default) -> social|useful (type) -> historical (type) -> technical|av (content) -> sexual (content)
