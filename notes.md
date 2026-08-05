@@ -1,12 +1,20 @@
-accept button submissions, but display on separate page
+- should add some kinda feed for new entries. should be pretty easy since 'added' never changes
+- do i fix up the python or switch to something less absurd? don't really want to write more php, but there are better ways to do static builds
+	- i really like the python fstrings for templating. maybe i should just think about the structure and refactor it
+		- either use SSI or improve things so i can put headings etc on the submit page and other handcrafted html
+		- reduce verbosity/repetition, merge redundant functions
+		- get rid of the fish script, i'm sure it's not hard to blank a file in python
+- about page/FAQ/why
+- better intro/landing page
+	- improve nav - need nice submit/random/about not inline links
+- 88x31 button and general cutening
+	- button must be v cute to lean into the dual meaning of 'insecure' and encourage subs from people who don't use 20 year old browsers like weirdos
+	- matching favicon
+	- color the category icons so they're easier to tell apart. probably easy with CSS but maybe better to abandon the invert() thing for compatibility reasons. could just be darkmode only for simplicity
+	- splash some color around other places
+- do a security pass on submit.php so i don't crash the server with giant emails or something
+- fish script to check sites with curl (already did this for nagi, just adjust and tidy)
 
-JS must be optional, no agent filtering
-
-instead of cat'ing a bunch of files together, let's just maintain the one big file, less stupid
-
-for buttons we can just add an entry to the yaml with the filename
-
-should add some kinda feed for new entries 
 
 
 categories. right now we are mixing up different sorts of categorization which might be confusing. what if a plural site is mostly a/v? do certain categories win or do we separate these and clutter the UI? pretty reasonable if we order them something like this: personal|plural (default) -> social|useful (type) -> historical (type) -> technical|av (content) -> sexual (content)

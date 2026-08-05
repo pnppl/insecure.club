@@ -35,7 +35,7 @@ def write_head(page, out):
 		<a id="skip-nav" href="#main">Skip to content</a>
 		<center>
 			<h1>Insecure Website Club</h1>
-			<p>A directory of websites that support HTTP sans S. It's okay to be a little insecure!</p>
+			<p>A directory of websites that support HTTP <i>sans</i> S.</p>
 			<p>Under construction. Maybe you'd like to <b><a href="{path}random">visit a random site</a></b> or <b><a href="{path}submit">submit a new one</a></b>?</p>
 			<h2>{page}</h2>
 		</center>""",
@@ -67,8 +67,7 @@ def write_nav(page, out):
 			out.write(' | ')
 		elif entry[0] != 'has-feed':
 			out.write(' &#183; ')
-	print("""&nbsp;]</nav></center>
-		<br>""", file=out)
+	print("""&nbsp;]</nav></center>""", file=out)
 
 def write_list(sites, page, out):
 	path = ''
@@ -127,7 +126,7 @@ def write_list(sites, page, out):
 		file=out)
 	if page != 'css-opt':
 		print("""\
-			<p><i><b>Bold</b> entries work well without CSS.</i></p>
+			<p><b>Bold</b> entries work well without CSS.</p>
 		</div>""",
 		file=out)
 
@@ -138,7 +137,11 @@ def write_close(page, out):
 	if page != 'index':
 		path = '../'
 	print(f"""\
-		<center><br><p><a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a></p></center>
+		<center>
+			<p><a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#105;&#110;&#102;&#111;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a></p>
+			<br>
+			<p><i>It's okay to be a little insecure!</i></p>
+		</center>
 	</body>
 </html>""",
 		file=out)
