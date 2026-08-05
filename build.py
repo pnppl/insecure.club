@@ -191,15 +191,16 @@ with open("libre/index.html", "a") as out:
 with open("buttons/index.html", "a") as out:
 	write_head('Button Wall', out)
 	write_nav('buttons', out)
-	print('\
-		<center>',
+	print("""\
+		<br>
+		<center>""",
 		file=out)
 	for site in sites_button:
 		print(f"""\
 		<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="88" height="31"></a>""",
 			file=out)
-	print('\
-		</center>',
+	print("""\
+		</center>""",
 		file=out)
 	write_close('', out)
 with open("sites.txt", "a") as out:
