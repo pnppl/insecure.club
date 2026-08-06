@@ -146,7 +146,9 @@ def write_close(page, out):
 </html>""",
 		file=out)
 
-import yaml, datetime
+
+# main
+import yaml, datetime, html
 
 sites_yaml = open("sites.yaml", "r")
 sites = list(yaml.load_all(sites_yaml, Loader=yaml.SafeLoader))
@@ -232,6 +234,8 @@ with open("feed/feed.atom", "a") as out:
 			out.write("; CSS optional")
 		if 'libre' in site and site['libre']:
 			out.write("; free culture")
+		if 'desc' in site:
+			out.write(f""": {html.escape(f"<i>{site['desc']}</i>", True)}""")
 		print("""</summary>
 	</entry>""",
 		file=out)

@@ -4,7 +4,7 @@
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/atom.xml"/>
-	<updated>2026-08-05T04:28:44.122340+00:00</updated>
+	<updated>2026-08-06T08:57:28.885619+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>
@@ -62,7 +62,7 @@
 		<id>http://handthing.party/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>audiovisual; CSS optional</summary>
+		<summary>audiovisual; CSS optional: &lt;i&gt;You still doing that hand thing?&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>highlysuspect.agency</title>
@@ -126,7 +126,7 @@
 		<id>http://pnppl.cc/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal; CSS optional; free culture</summary>
+		<summary>personal; CSS optional; free culture: &lt;i&gt;Notes, essays, fiction, art, code, and whatever else I feel like posting.&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>www.prole.info</title>
@@ -142,7 +142,7 @@
 		<id>http://www.quoteunquoterecords.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>audiovisual; CSS optional</summary>
+		<summary>audiovisual; CSS optional: &lt;i&gt;The first ever donation based record label&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>smokepowered.com</title>
@@ -158,7 +158,7 @@
 		<id>http://smolweb.org/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>technical; CSS optional; free culture</summary>
+		<summary>technical; CSS optional; free culture: &lt;i&gt;Promoting a simple unbloated web!&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>temblast.com</title>
@@ -182,7 +182,7 @@
 		<id>http://trekkiefeminist.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>creative</summary>
+		<summary>creative: &lt;i&gt;Boldly going where no feminist has gone before&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>vivivi.leprd.space</title>
@@ -198,7 +198,7 @@
 		<id>http://web1.0hosting.net/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>useful; CSS optional</summary>
+		<summary>useful; CSS optional: &lt;i&gt;advanced static web hosting&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>wiby.me</title>
@@ -206,7 +206,7 @@
 		<id>http://wiby.me/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>useful; CSS optional; free culture</summary>
+		<summary>useful; CSS optional; free culture: &lt;i&gt;Search Engine for the Classic Web&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>wol.fm</title>
