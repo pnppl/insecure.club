@@ -1,6 +1,6 @@
 def write_head(page, out):
 	path = ''
-	title = "Insecure Website Club"
+	title = "Insecure Club"
 	if page != 'index':
 		path = '../'
 		title = f"""{page} | {title}"""
@@ -19,9 +19,9 @@ def write_head(page, out):
 		<link rel="icon" href="">
 		-->
 		<link rel="license" href="{path}LICENSE.md">
-		<link rel="alternate" href="{path}feed/feed.atom" title="Insecure Website Club URL feed" type="application/atom+xml">
+		<link rel="alternate" href="{path}feed/feed.atom" title="Insecure Club URL feed" type="application/atom+xml">
 		<link rel="alternate" href="{path}sites.yaml" title="YAML source" type="application/yaml">
-		<meta property="og:site_name" content="Insecure Website Club">
+		<meta property="og:site_name" content="Insecure Club">
 		<meta property="og:title" content="{title}">
 		<meta property="og:description" content="Directory of sites that support HTTP sans S">
 		<!-- <meta property="og:image" content=""> -->
@@ -34,7 +34,7 @@ def write_head(page, out):
 	<body>
 		<a id="skip-nav" href="#main">Skip to content</a>
 		<center>
-			<h1>Insecure Website Club</h1>
+			<h1>The Insecure [HTTP] Club</h1>
 			<p>A directory of websites that support HTTP <i>sans</i> S.</p>
 			<p>Under construction. Maybe you'd like to <b><a href="{path}random">visit a random site</a></b> or <b><a href="{path}submit">submit a new one</a></b>?</p>
 			<h2>{page}</h2>
@@ -195,14 +195,23 @@ with open("buttons/index.html", "a") as out:
 	write_nav('buttons', out)
 	print("""\
 		<br>
-		<center>""",
+		<center>
+			<p>""",
 		file=out)
 	for site in sites_button:
 		print(f"""\
-		<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="88" height="31"></a>""",
+				<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="88" height="31"></a>""",
 			file=out)
 	print("""\
-		</center>""",
+			</p>
+			<br>
+			<h3>Clubmember Buttons</h3>
+			<p>
+				<img alt="animated CRT with nervous face: this site is a little insecure" src="../img/buttons/crt.gif">
+				<img alt="static CRT with nervous face: this site is a little insecure" src="../img/buttons/crt-static.gif">
+			</p>
+		</center>
+		<br>""",
 		file=out)
 	write_close('', out)
 with open("sites.txt", "a") as out:
@@ -212,7 +221,7 @@ with open("feed/feed.atom", "a") as out:
 	print(f"""\
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>Insecure Website Club</title>
+	<title>Insecure Club</title>
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/atom.xml"/>
