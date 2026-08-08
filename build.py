@@ -210,6 +210,7 @@ with open("buttons/index.html", "a") as out:
 				<img alt="animated CRT with nervous face: this site is a little insecure" src="../img/buttons/crt.gif">
 				<img alt="static CRT with nervous face: this site is a little insecure" src="../img/buttons/crt-static.gif">
 				<img alt="! Insecure.Club" src="../img/buttons/warning.gif">
+				<img alt="open lock with club name in edgy techno font" src="../img/buttons/unlocked.gif">
 			</p>
 		</center>
 		<br>""",
