@@ -209,6 +209,7 @@ with open("buttons/index.html", "a") as out:
 			<p>
 				<img alt="animated CRT with nervous face: this site is a little insecure" src="../img/buttons/crt.gif">
 				<img alt="static CRT with nervous face: this site is a little insecure" src="../img/buttons/crt-static.gif">
+				<img alt="! Insecure.Club" src="../img/buttons/warning.gif">
 			</p>
 		</center>
 		<br>""",
