@@ -10,34 +10,39 @@
 		<link rel="icon" href="">
 		-->
 		<link rel="license" href="../LICENSE.md">
-		<link rel="alternate" href="../feed/feed.atom" title="Insecure Club URL feed" type="application/atom+xml">
-		<meta property="og:site_name" content="Insecure Club">
-		<meta property="og:title" content="Insecure Club: Submit a Site">
-		<meta property="og:description" content="Submit a site to The Insecure Club">
-<!--		<meta property="og:image" content="">-->
-		<meta property="og:url" content="https://insecure.club/submit/">
+		<link rel="alternate" href="../feed/feed.atom" title="insecure.club URL feed" type="application/atom+xml">
+		<link rel="alternate" href="../sites.yaml" title="YAML source" type="application/yaml">
+		<meta property="og:site_name" content="insecure.club">
+		<meta property="og:title" content="Submit a Site | insecure.club">
+		<meta property="og:description" content="Directory of sites that support HTTP sans S">
+		<!-- <meta property="og:image" content=""> -->
+		<meta property="og:url" content="https://insecure.club/Submit a Site">
 		<meta property="og:type" content="website">
-		<meta name="description" content="Submit a site to The Insecure Club">
+		<meta name="description" content="Directory of sites that support HTTP sans S">
 		<link rel="stylesheet" href="../insecure.css">
-		<title>Submit a Site | Insecure Club</title>
+		<title>Submit a Site | insecure.club</title>
+	</head>
+	<body>
+		<a id="skip-nav" href="#main">Skip to content</a>
+		<center>
+			<h1>insecure.club</h1>
+			<p>A directory of websites that support HTTP <i>sans</i> S.</p>
+		</center>
+		<center><nav>
+			<h2>[&nbsp;<a href="../">Sites</a> &#183; <a href="../buttons">Buttons</a> &#183; <a href="../fuq">FUQ</a> &#183; <b>Submit</b> &#183; <a href="../random">Random</a>&nbsp;]</h2>
+		</nav></center>
 		<style><!--
 			fieldset {
 				border: 1px dashed hotpink;
 			}
-			#top-legend {
-				margin: 0 auto;
-			}
 			legend {
-				margin-bottom: 1em;
+				margin: 1em;
+				margin-left: 0;
 				font-family: sans-serif;
-			}
-			legend h3,
-			legend span {
-				padding: 1em;
-				border: 1px solid purple;
-			}
-			legend span {
 				padding: 0.5em;
+				color: white;
+				background: purple;
+				border: 1px solid purple;
 			}
 			h3 {
 				font-weight: normal;
@@ -121,8 +126,9 @@
 				fieldset {
 					border-color: purple;
 				}
-				legend h3,
-				legend span {
+				legend {
+					color: black;
+					background: hotpink;
 					border-color: hotpink;
 				}
 			}
@@ -154,133 +160,123 @@
 				}
 			}
 		--></style>
-	</head>
-	<body>
-		<a href="..">&lt;-- back to index</a>
-		<form method="post" action="submit.php">
+		<br>
+		<form method="post" action="submit.php" id="main">
 			<fieldset>
-				<legend id="top-legend"><h3>Submit new site (or update existing)</h3></legend>
-				<fieldset>
-					<legend><span>Rules</span></legend>
-					<div id="rules">
-						<h3><i>Member sites <b>must:</b></i></h3>
-						<ul>
-							<li>support plain old unsecured, unencrypted HTTP.
-								<ul><li>This excludes most popular free webhosts (<i>eg</i> Neocities, Nekoweb). <a href="http://pnppl.cc/2026-05-01_http/">There are other options.</a></li></ul>
-							</li>
-							<li>contain stuff made by a human, at least partially in English, that is
-								<details>
-									<summary title="click to expand">substantive.</summary>
-									<ul>
-										<li>Sites that consist solely of a r&#233;sum&#233; or list of ways to contact the owner are not eligible.</li>
-										<li>As a rule of thumb, blog-style sites should contain at least three entries. Unless one of them is like, a novel, or something.</li>
-										<li><a href="https://singleservingsites.cool/">Single-serving sites</a> are generally eligible.</li>
-									</ul>
-								</details>
-							</li>
-							<li>be <tt>curl</tt>-able (without any flags).</li>
-						</ul>
-						<h3><i>Member sites <b>must <u>not:</u></b></i></h3>
-						<ul>
-							<li>require JavaScript for basic functionality, including forcing the visitor to complete a JS-based CAPTCHA or PoW (<i>eg</i> Anubis, Cloudflare).</li>
-							<li>discriminate against old user agents, which defeats the purpose.
-								<ul>
-									<li>This excludes many popular hosts that support HTTP (<i>eg</i> Bear Blog, InfinityFree).</li>
-								</ul>
-							</li>
-							<li>espouse fascism, racism, sexism, homophobia, transphobia, or any other form of bigotry or right-wing ideology.</li>
-						</ul>
-						<p id="friendly"><i>If you don't understand some of the terms used on this page, that's okay! As long as you can access your site at <tt><b>http</b>://yoursite.com</tt> without being redirected to <tt><b>https</b>://yoursite.com</tt>, just submit it and I'll let you know if it qualifies.</i></p>
-					</div>
-				</fieldset>
-				<br>
-				<fieldset>
-					<legend><span>Basics</span></legend>
-					<ul id="basics">
-						<li><label>URL: &nbsp; <input type="text" name="url" placeholder="insecure.club" required></label></li>
-						<li><label>Description (optional): &nbsp; <input type="text" name="desc" maxlength="80" placeholder="A directory of sites that support HTTP sans S"></label></li>
-						<li>Category (when in doubt, pick the one further down the list):
-							<ul id="category">
-								<li style="list-style-image:url('../img/cat/misc.gif')"><label><input type="radio" name="cat" value="misc"> <b>Misc:</b> the categorization system has failed</label></li>
-								<li style="list-style-image:url('../img/cat/personal.gif')"><label><input type="radio" name="cat" value="personal" checked> <b>Personal:</b> a homepage, blog, digital garden, or other multi-topic site run by a single person</label></li>
-								<li style="list-style-image:url('../img/cat/creative.gif')"><label><input type="radio" name="cat" value="creative"> <b>Creative:</b> a novel, zine, multi-user blog, or other predominantly textual creative work (not necessarily fictional)</label></li>
-								<li style="list-style-image:url('../img/cat/informative.gif')"><label><input type="radio" name="cat" value="informative"> <b>Informative:</b> a wiki or other site collecting news or information about a nonfiction subject</label></li>
-								<li style="list-style-image:url('../img/cat/technical.gif')"><label><input type="radio" name="cat" value="technical"> <b>Technical:</b> a site predominantly about programming, engineering, hacking, science, etc.</label></li>
-								<li style="list-style-image:url('../img/cat/useful.gif')"><label><input type="radio" name="cat" value="useful"> <b>Useful:</b> a service like checking the weather, the homepage of an application, a directory of sites, or another helpful resource</label></li>
-								<li style="list-style-image:url('../img/cat/audiovisual.gif')"><label><input type="radio" name="cat" value="audiovisual"> <b>Audiovisual:</b> a site predominantly consisting of photos, videos, or audio</label></li>
-								<li style="list-style-image:url('../img/cat/interactive.gif')"><label><input type="radio" name="cat" value="interactive"> <b>Interactive:</b> a site predominantly consisting of games, toys, or experimental art projects that require the user to do something</label></li>
-								<li style="list-style-image:url('../img/cat/social.gif')"><label><input type="radio" name="cat" value="social"> <b>Social:</b> a forum, pubnix, imageboard, or other digital community</label></li>
-								<li style="list-style-image:url('../img/cat/sexual.gif')"><label><input type="radio" name="cat" value="sexual"> <b>Sexual:</b> a site predominantly consisting of pornography, erotica, or smut</label></li>
-								<li style="list-style-image:url('../img/cat/historical.gif')"><label><input type="radio" name="cat" value="historical"> <b>Historical:</b> a site that has been abandoned for a long time</label></li>
-							</ul>
-						</li>
-					</ul>
-				</fieldset>
-				<br>
-				<fieldset>
-					<legend><span>Features</span></legend>
+				<legend><span>Rules</span></legend>
+				<div id="rules">
+					<h3><i>Member sites <b>must:</b></i></h3>
 					<ul>
-						<li><label><input type="checkbox" name="https" checked> Also supports HTTP<b><u>S</u></b></label></li>
-						<li><label><input type="checkbox" name="css-opt"> Works well without CSS</label></li>
-						<li><label><input type="checkbox" name="libre"> Content is predominantly 
+						<li>support plain old unsecured, unencrypted HTTP.</li>
+						<li>contain stuff made by a human, at least partially in English, that is
 							<details>
-								<summary title="click to expand">free culture</summary>
+								<summary title="click to expand">substantive.</summary>
 								<ul>
-									<li>Public domain: <a href="https://en.wikipedia.org/wiki/Public-domain-equivalent_license">CC0, WTFPL, Unlicense,</a> "dedicated to the public domain", "anti-copyright", etc.</li>
-									<li>Creative Commons licenses <b>without</b> NonCommercial or NoDerivatives clauses:
-										<ul>
-											<li>Yes: CC0, CC BY, CC BY-SA</li>
-											<li><b>No:</b> CC BY-NC, BY-NC-SA, BY-ND, BY-NC-ND</li>
-										</ul>
-									</li>
-									<li>Anything the FSF considers <a href="http://www.gnu.org/licenses/license-list.html">free</a>:
-										<ul>
-											<li>GNU FDL and other <a href="http://www.gnu.org/licenses/license-list.html#FreeDocumentationLicenses">free documentation licenses</a></li>
-											<li>GPL, AGPL, MIT, and other <a href="http://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses">free software licenses</a> (GPL compatibility <a href="http://www.gnu.org/licenses/license-list.html#GPLIncompatibleLicenses">not required</a>)</li>
-											<li>Anything else with a purple, green, or orange border</li>
-										</ul>
-									</li>
+									<li>A site can be silly and small, but it needs to be a real thing that a real person put real time into.</li>
+									<li>As a rule of thumb, blog-style sites should contain at least three entries.</li>
+									<li>Sites that consist solely of a r&#233;sum&#233; or list of ways to contact the owner are not eligible.</li>
+									<li><a href="https://singleservingsites.cool/">Single-serving sites</a> are generally eligible.</li>
 								</ul>
 							</details>
-						</label></li>
-					</ul>
-				</fieldset>
-				<br>
-				<fieldset>
-					<legend><span>Bonus URLs (optional)</span></legend>
-					<ul id="bonus">
-						<li><label><span><img src="../img/prot/feed.gif" class="icon invert"> Feed URL: &nbsp; </span><input type="text" name="feed-url" placeholder="insecure.club/feed.rss"></label></li>
-						<li><label><span><img src="../img/prot/gopher.gif" class="icon"> Gopher URL: &nbsp; </span><input type="text" name="gopher-url" placeholder="goph.insecure.club"></label></li>
-						<li><label><span><img src="../img/prot/gemini.gif" class="icon invert"> Gemini URL: &nbsp; </span><input type="text" name="gemini-url" placeholder="gem.insecure.club"></label></li>
-						<li>
-							<label><span><a href="../buttons/">Button</a> image URL: &nbsp; </span><input type="url" name="button" placeholder="http://insecure.club/buttons/insecure.club.gif"></label>
-							<ul><li><details>
-								<summary title="click to expand">requirements</summary>
-								<ul>
-									<li>Format: GIF</li>
-									<li>Width: &lt;= 88px</li>
-									<li>Height: &lt;= 31px</li>
-									<li>Filesize: &lt;= 5KiB</li>
-								</ul>
-							</details></li></ul>
 						</li>
+						<li>be <tt>curl</tt>-able.</li>
 					</ul>
-				</fieldset>
-				<br>
-				<fieldset>
-					<legend><span>Finish</span></legend>
+					<h3><i>Member sites <b>must <u>not:</u></b></i></h3>
 					<ul>
-						<li><label>Your email address (optional; for follow-up): &nbsp; <input type="email" name="email" placeholder="submit@insecure.club"></label></li>
-						<li>
-							<label for="message">Anything else I should know about your submission? Protocols I'm missing? Feedback? (optional)</label>
-							<br>
-							<textarea name="message" id="message" placeholder="i couldn't select the right option cuz ur shits all fuct up. also my site is on telnet"></textarea>
-						</li>
+						<li>require JavaScript for basic functionality (<i>eg</i> displaying text), including forcing the visitor to complete a JS-based CAPTCHA or PoW (<i>eg</i> Anubis, Cloudflare).</li>
+						<li>discriminate against old user agents.</li>
+						<li>espouse fascism, racism, sexism, homophobia, transphobia, or any other form of bigotry or right-wing ideology.</li>
 					</ul>
-					<br>
-					<input type="submit" value="Submit Site">
-				</fieldset>
+					<p id="friendly"><i>If you aren't sure if your site is eligible, that's okay! As long as you can access it at <tt><b>http</b>://yoursite.com</tt>, just submit it.</i></p>
+				</div>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend><span>Basics</span></legend>
+				<ul id="basics">
+					<li><label>URL: &nbsp; <input type="text" name="url" placeholder="insecure.club" required></label></li>
+					<li><label>Description (optional): &nbsp; <input type="text" name="desc" maxlength="80" placeholder="A directory of sites that support HTTP sans S"></label></li>
+					<li>Category (when in doubt, pick the one further down the list):
+						<ul id="category">
+							<li style="list-style-image:url('../img/cat/misc.gif')"><label><input type="radio" name="cat" value="misc"> <b>Misc:</b> the categorization system has failed</label></li>
+							<li style="list-style-image:url('../img/cat/personal.gif')"><label><input type="radio" name="cat" value="personal" checked> <b>Personal:</b> a homepage, blog, digital garden, or other multi-topic site run by a single person</label></li>
+							<li style="list-style-image:url('../img/cat/creative.gif')"><label><input type="radio" name="cat" value="creative"> <b>Creative:</b> a novel, zine, multi-user blog, or other predominantly textual creative work (not necessarily fictional)</label></li>
+							<li style="list-style-image:url('../img/cat/informative.gif')"><label><input type="radio" name="cat" value="informative"> <b>Informative:</b> a wiki or other site collecting news or information about a nonfiction subject</label></li>
+							<li style="list-style-image:url('../img/cat/technical.gif')"><label><input type="radio" name="cat" value="technical"> <b>Technical:</b> a site predominantly about programming, engineering, hacking, science, etc.</label></li>
+							<li style="list-style-image:url('../img/cat/useful.gif')"><label><input type="radio" name="cat" value="useful"> <b>Useful:</b> a service like checking the weather, the homepage of an application, a directory of sites, or another helpful resource</label></li>
+							<li style="list-style-image:url('../img/cat/audiovisual.gif')"><label><input type="radio" name="cat" value="audiovisual"> <b>Audiovisual:</b> a site predominantly consisting of photos, videos, or audio</label></li>
+							<li style="list-style-image:url('../img/cat/interactive.gif')"><label><input type="radio" name="cat" value="interactive"> <b>Interactive:</b> a site predominantly consisting of games, toys, or experimental art projects that require the user to do something</label></li>
+							<li style="list-style-image:url('../img/cat/social.gif')"><label><input type="radio" name="cat" value="social"> <b>Social:</b> a forum, pubnix, imageboard, or other digital community</label></li>
+							<li style="list-style-image:url('../img/cat/sexual.gif')"><label><input type="radio" name="cat" value="sexual"> <b>Sexual:</b> a site predominantly consisting of pornography, erotica, or smut</label></li>
+							<li style="list-style-image:url('../img/cat/historical.gif')"><label><input type="radio" name="cat" value="historical"> <b>Historical:</b> a site that has been abandoned for a long time</label></li>
+						</ul>
+					</li>
+				</ul>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend><span>Features</span></legend>
+				<ul>
+					<li><label><input type="checkbox" name="https" checked> Also supports HTTP<b><u>S</u></b></label></li>
+					<li><label><input type="checkbox" name="css-opt"> Works well without CSS</label></li>
+					<li><label><input type="checkbox" name="libre"> Content is predominantly 
+						<details>
+							<summary title="click to expand">free culture</summary>
+							<ul>
+								<li>Public domain: <a href="https://en.wikipedia.org/wiki/Public-domain-equivalent_license">CC0, WTFPL, Unlicense,</a> "dedicated to the public domain", "anti-copyright", etc.</li>
+								<li>Creative Commons licenses <b>without</b> NonCommercial (NC) or NoDerivatives (ND) clauses: CC0, CC BY, CC BY-SA</li>
+								<li>Anything the FSF considers <a href="http://www.gnu.org/licenses/license-list.html">free</a>:
+									<ul>
+										<li>GNU FDL and other <a href="http://www.gnu.org/licenses/license-list.html#FreeDocumentationLicenses">free documentation licenses</a></li>
+										<li>GPL, AGPL, MIT, and other <a href="http://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses">free software licenses</a> (GPL compatibility <a href="http://www.gnu.org/licenses/license-list.html#GPLIncompatibleLicenses">not required</a>)</li>
+									</ul>
+								</li>
+							</ul>
+						</details>
+					</label></li>
+				</ul>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend><span>Bonus URLs (optional)</span></legend>
+				<ul id="bonus">
+					<li><label><span><img src="../img/prot/feed.gif" class="icon invert"> Feed URL: &nbsp; </span><input type="text" name="feed-url" placeholder="insecure.club/feed"></label></li>
+					<li><label><span><img src="../img/prot/gopher.gif" class="icon"> Gopher URL: &nbsp; </span><input type="text" name="gopher-url" placeholder="goph.insecure.club"></label></li>
+					<li><label><span><img src="../img/prot/gemini.gif" class="icon invert"> Gemini URL: &nbsp; </span><input type="text" name="gemini-url" placeholder="gem.insecure.club"></label></li>
+					<li>
+						<label><span><a href="../buttons/">Button</a> image URL: &nbsp; </span><input type="url" name="button" placeholder="http://insecure.club/buttons/insecure.club.gif"></label>
+						<ul><li><details>
+							<summary title="click to expand">requirements</summary>
+							<ul>
+								<li>Format: GIF</li>
+								<li>Width: &lt;= 88px</li>
+								<li>Height: &lt;= 31px</li>
+							</ul>
+						</details></li></ul>
+					</li>
+				</ul>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend><span>Finish</span></legend>
+				<ul>
+					<li><label>Your email address (optional; for follow-up): &nbsp; <input type="email" name="email" placeholder="submit@insecure.club"></label></li>
+					<li>
+						<label for="message">Anything else I should know about your submission? Protocols I'm missing? Feedback? (optional)</label>
+						<br>
+						<textarea name="message" id="message" placeholder="i couldn't select the right option cuz your web design is hot garbage. also my site is on telnet. luv u, bye"></textarea>
+					</li>
+				</ul>
+				<br>
+				<input type="submit" value="Submit Site">
 			</fieldset>
 		</form>
+			<br>
+		<center>
+			<footer>
+				<a href="../LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a> &#183; <a href="../feed/feed.atom">feed</a>
+				<p><a href="../buttons"><img id="footer-button" alt="animated CRT with nervous face: this site is a little insecure" src="../img/buttons/crt.gif"></a></p>
+			</footer>
+		</center>
 	</body>
 </html>

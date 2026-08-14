@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>Insecure Club</title>
+	<title>insecure.club</title>
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/atom.xml"/>
-	<updated>2026-08-08T11:41:36.179533+00:00</updated>
+	<updated>2026-08-14T07:35:14.129596+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>

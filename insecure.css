@@ -2,14 +2,41 @@ body {
 	max-width: 80ch;
 	margin: auto;
 	padding: 1em 0.5em;
+	background: #f9f9f9;
+}
+h1 {
+	background: teal;
+	width: fit-content;
+	padding: 0 0.5em;
+	color: white;
+	border: 2px dotted #f9f9f9;
 }
 h1,
 h2 {
-	padding: 0;
 	margin: 0;
 }
-h4 {
-	padding-top: 1em;
+h2 {
+	padding: 0;
+	font-weight: normal;
+}
+h2 a,
+h2 b {
+	text-wrap: nowrap;
+}
+h3 {
+	display: inline-block;
+}
+img {
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+nav p {
+	margin-top: 0.25em;
+	margin-bottom: 1em;
+	padding: 0.5em;
+}
+nav b {
+	color: deeppink;
 }
 ul {
 	padding-left: 1em;
@@ -19,10 +46,6 @@ ul > li:nth-child(2n) {
 }
 ul ul {
 	padding-left: 2em;
-}
-img {
-	image-rendering: crisp-edges;
-	image-rendering: pixelated;
 }
 #skip-nav {
 	position: absolute;
@@ -35,39 +58,43 @@ img {
 	top: 0.25em;
 	z-index: 0;
 }
-#nav {
-	margin-top: 1em;
-	font-weight: bold;
-}
-#nav a,
-#nav span {
-	font-weight: normal;
-	text-wrap: nowrap;
-}
 #main {
 	margin-top: 0;
-	padding-bottom: 1em;
 	margin: auto;
-	width: 80%;
+	max-width: 80%;
+	padding: 0 1em 1em 1em;
 }
-#main a {
-	word-break: break-all;
+.additional {
+	font-size: 0.9em;
 }
 .icon {
 	position: relative;
 	top: 2px;
 }
-.additional {
-	font-size: 0.9em;
+#main.list {
+	padding-top: 0;
+}
+.list a {
+	word-break: break-all;
 }
 @media (prefers-color-scheme: dark) {
 	body {
 		background: black;
+		color: #eee;
+	}
+	h1 {
+		color: black;
+		border-color: black;
 	}
 	.invert {
 		color: black;
 		background: white;
 		filter: invert();
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	#footer-button[src$="crt.gif"] {
+		content: url("/img/buttons/crt-static.gif");
 	}
 }
 @media screen and (max-width: 500px) {
