@@ -4,7 +4,7 @@
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/atom.xml"/>
-	<updated>2026-08-14T07:35:14.129596+00:00</updated>
+	<updated>2026-08-14T07:47:14.904381+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>
@@ -14,7 +14,7 @@
 		<id>http://baccyflap.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal; CSS optional</summary>
+		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>crimethinc.com</title>
@@ -22,7 +22,7 @@
 		<id>http://crimethinc.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>creative; free culture</summary>
+		<summary type="html">creative; free culture</summary>
 	</entry>
 	<entry>
 		<title>echoesofbluemars.org</title>
@@ -30,7 +30,7 @@
 		<id>http://echoesofbluemars.org/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>audiovisual</summary>
+		<summary type="html">audiovisual</summary>
 	</entry>
 	<entry>
 		<title>fileformats.archiveteam.org</title>
@@ -38,7 +38,7 @@
 		<id>http://fileformats.archiveteam.org/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>technical; free culture</summary>
+		<summary type="html">technical; free culture</summary>
 	</entry>
 	<entry>
 		<title>www.floodgap.com</title>
@@ -46,7 +46,7 @@
 		<id>http://www.floodgap.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>technical; CSS optional</summary>
+		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>friendo.monster</title>
@@ -54,7 +54,7 @@
 		<id>http://friendo.monster/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal; CSS optional</summary>
+		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>handthing.party</title>
@@ -62,7 +62,7 @@
 		<id>http://handthing.party/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>audiovisual; CSS optional: &lt;i&gt;You still doing that hand thing?&lt;/i&gt;</summary>
+		<summary type="html">audiovisual; CSS optional: &lt;i&gt;You still doing that hand thing?&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>highlysuspect.agency</title>
@@ -70,7 +70,7 @@
 		<id>http://highlysuspect.agency/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal; CSS optional</summary>
+		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>houseofselfindulgence.blogspot.com</title>
@@ -78,7 +78,7 @@
 		<id>http://houseofselfindulgence.blogspot.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>audiovisual</summary>
+		<summary type="html">audiovisual</summary>
 	</entry>
 	<entry>
 		<title>humaniterations.net</title>
@@ -86,7 +86,7 @@
 		<id>http://humaniterations.net/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>creative; CSS optional; free culture</summary>
+		<summary type="html">creative; CSS optional; free culture</summary>
 	</entry>
 	<entry>
 		<title>insecure.club</title>
@@ -94,7 +94,7 @@
 		<id>http://insecure.club/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>useful; CSS optional; free culture</summary>
+		<summary type="html">useful; CSS optional; free culture</summary>
 	</entry>
 	<entry>
 		<title>maurycyz.com</title>
@@ -102,7 +102,7 @@
 		<id>http://maurycyz.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>technical; CSS optional</summary>
+		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>mycophobia.org</title>
@@ -110,7 +110,7 @@
 		<id>http://mycophobia.org/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal; CSS optional</summary>
+		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>petermolnar.net</title>
@@ -118,7 +118,7 @@
 		<id>http://petermolnar.net/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal</summary>
+		<summary type="html">personal</summary>
 	</entry>
 	<entry>
 		<title>pnppl.cc</title>
@@ -126,7 +126,7 @@
 		<id>http://pnppl.cc/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal; CSS optional; free culture: &lt;i&gt;Notes, essays, fiction, art, code, and whatever else I feel like posting.&lt;/i&gt;</summary>
+		<summary type="html">personal; CSS optional; free culture: &lt;i&gt;Notes, essays, fiction, art, code, and whatever else I feel like posting.&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>www.prole.info</title>
@@ -134,7 +134,7 @@
 		<id>http://www.prole.info/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>creative; CSS optional</summary>
+		<summary type="html">creative; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>www.quoteunquoterecords.com</title>
@@ -142,7 +142,7 @@
 		<id>http://www.quoteunquoterecords.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>audiovisual; CSS optional: &lt;i&gt;The first ever donation based record label&lt;/i&gt;</summary>
+		<summary type="html">audiovisual; CSS optional: &lt;i&gt;The first ever donation based record label&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>smokepowered.com</title>
@@ -150,7 +150,7 @@
 		<id>http://smokepowered.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>audiovisual; CSS optional</summary>
+		<summary type="html">audiovisual; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>smolweb.org</title>
@@ -158,7 +158,7 @@
 		<id>http://smolweb.org/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>technical; CSS optional; free culture: &lt;i&gt;Promoting a simple unbloated web!&lt;/i&gt;</summary>
+		<summary type="html">technical; CSS optional; free culture: &lt;i&gt;Promoting a simple unbloated web!&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>temblast.com</title>
@@ -166,7 +166,7 @@
 		<id>http://temblast.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>technical; CSS optional</summary>
+		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>toastytech.com</title>
@@ -174,7 +174,7 @@
 		<id>http://toastytech.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>technical; CSS optional</summary>
+		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>trekkiefeminist.com</title>
@@ -182,7 +182,7 @@
 		<id>http://trekkiefeminist.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>creative: &lt;i&gt;Boldly going where no feminist has gone before&lt;/i&gt;</summary>
+		<summary type="html">creative: &lt;i&gt;Boldly going where no feminist has gone before&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>vivivi.leprd.space</title>
@@ -190,7 +190,7 @@
 		<id>http://vivivi.leprd.space/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal</summary>
+		<summary type="html">personal</summary>
 	</entry>
 	<entry>
 		<title>web1.0hosting.net</title>
@@ -198,7 +198,7 @@
 		<id>http://web1.0hosting.net/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>useful; CSS optional: &lt;i&gt;advanced static web hosting&lt;/i&gt;</summary>
+		<summary type="html">useful; CSS optional: &lt;i&gt;advanced static web hosting&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>wiby.me</title>
@@ -206,7 +206,7 @@
 		<id>http://wiby.me/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>useful; CSS optional; free culture: &lt;i&gt;Search Engine for the Classic Web&lt;/i&gt;</summary>
+		<summary type="html">useful; CSS optional; free culture: &lt;i&gt;Search Engine for the Classic Web&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>wol.fm</title>
@@ -214,7 +214,7 @@
 		<id>http://wol.fm/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal; CSS optional</summary>
+		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>xn--gckvb8fzb.com</title>
@@ -222,6 +222,6 @@
 		<id>http://xn--gckvb8fzb.com/</id>
 		<published>2026-08-03T00:00:00Z</published>
 		<updated>2026-08-03T00:00:00Z</updated>
-		<summary>personal</summary>
+		<summary type="html">personal</summary>
 	</entry>
 </feed>

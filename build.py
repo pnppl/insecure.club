@@ -29,14 +29,7 @@ def write_head(page, out):
 		<meta property="og:type" content="website">
 		<meta name="description" content="Directory of sites that support HTTP sans S">
 		<link rel="stylesheet" href="{path}insecure.css">
-		<title>{title}</title>
-	</head>
-	<body>
-		<a id="skip-nav" href="#main">Skip to content</a>
-		<center>
-			<h1>insecure.club</h1>
-			<p>A directory of websites that support HTTP <i>sans</i> S.</p>
-		</center>""",
+		<title>{title}</title>""",
 		file=out)
 
 def write_nav(page, out):
@@ -56,6 +49,13 @@ def write_nav(page, out):
 		top_page = page
 
 	out.write("""\
+	</head>
+	<body>
+		<a id="skip-nav" href="#main">Skip to content</a>
+		<center>
+			<h1>insecure.club</h1>
+			<p>A directory of websites that support HTTP <i>sans</i> S.</p>
+		</center>
 		<center><nav>
 			<h2>[&nbsp;""")
 	for entry in pages:
@@ -245,7 +245,6 @@ with open("buttons/index.html", "w") as out:
 	write_close('', out)
 with open("fuq/index.html", "w") as out:
 	write_head('Fully Unasked Questions', out)
-	write_nav('fuq', out)
 	out.write("""\
 		<style><!--
 		h3 {
@@ -256,6 +255,9 @@ with open("fuq/index.html", "w") as out:
 			margin-left: 1em;
 		}
 		--></style>
+""")
+	write_nav('fuq', out)
+	out.write("""\
 		<br>
 		<div id="main">
 			<h3>Why does this exist?</h3>
@@ -284,11 +286,10 @@ with open("fuq/index.html", "w") as out:
 			<p>You are encouraged to submit websites that lack self-confidence (and also support HTTP).</p>
 
 		</div>
-	""")
+""")
 	write_close('', out)
 with open("submit/index.html", "w") as out:
 	write_head('Submit a Site', out)
-	write_nav('submit', out)
 	out.write("""\
 		<style><!--
 			fieldset {
@@ -419,6 +420,9 @@ with open("submit/index.html", "w") as out:
 				}
 			}
 		--></style>
+""")
+	write_nav('submit', out)
+	out.write("""\
 		<br>
 		<form method="post" action="submit.php" id="main">
 			<fieldset>
@@ -499,9 +503,9 @@ with open("submit/index.html", "w") as out:
 			<fieldset>
 				<legend><span>Bonus URLs (optional)</span></legend>
 				<ul id="bonus">
-					<li><label><span><img src="../img/prot/feed.gif" class="icon invert"> Feed URL: &nbsp; </span><input type="text" name="feed-url" placeholder="insecure.club/feed"></label></li>
-					<li><label><span><img src="../img/prot/gopher.gif" class="icon"> Gopher URL: &nbsp; </span><input type="text" name="gopher-url" placeholder="goph.insecure.club"></label></li>
-					<li><label><span><img src="../img/prot/gemini.gif" class="icon invert"> Gemini URL: &nbsp; </span><input type="text" name="gemini-url" placeholder="gem.insecure.club"></label></li>
+					<li><label><span><img alt="Feed URL" src="../img/prot/feed.gif" class="icon invert"> Feed URL: &nbsp; </span><input type="text" name="feed-url" placeholder="insecure.club/feed"></label></li>
+					<li><label><span><img alt="Gopher URL" src="../img/prot/gopher.gif" class="icon"> Gopher URL: &nbsp; </span><input type="text" name="gopher-url" placeholder="goph.insecure.club"></label></li>
+					<li><label><span><img alt="Gemini URL" src="../img/prot/gemini.gif" class="icon invert"> Gemini URL: &nbsp; </span><input type="text" name="gemini-url" placeholder="gem.insecure.club"></label></li>
 					<li>
 						<label><span><a href="../buttons/">Button</a> image URL: &nbsp; </span><input type="url" name="button" placeholder="http://insecure.club/buttons/insecure.club.gif"></label>
 						<ul><li><details>
@@ -556,7 +560,7 @@ with open("feed/feed.atom", "w") as out:
 		<id>http://{site['url']}/</id>
 		<published>{site['added']}T00:00:00Z</published>
 		<updated>{site['added']}T00:00:00Z</updated>
-		<summary>{site['cat']}""")
+		<summary type="html">{site['cat']}""")
 		if 'css-opt' in site and site['css-opt']:
 			out.write("; CSS optional")
 		if 'libre' in site and site['libre']:
