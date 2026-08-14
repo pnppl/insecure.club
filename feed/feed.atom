@@ -3,8 +3,8 @@
 	<title>insecure.club</title>
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
-	<link rel="self" href="http://insecure.club/feed/atom.xml"/>
-	<updated>2026-08-14T07:47:14.904381+00:00</updated>
+	<link rel="self" href="http://insecure.club/feed/feed.atom"/>
+	<updated>2026-08-14T07:50:18.156980+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>

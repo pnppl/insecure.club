@@ -546,7 +546,7 @@ with open("feed/feed.atom", "w") as out:
 	<title>insecure.club</title>
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
-	<link rel="self" href="http://insecure.club/feed/atom.xml"/>
+	<link rel="self" href="http://insecure.club/feed/feed.atom"/>
 	<updated>{datetime.datetime.now(datetime.timezone.utc).isoformat()}</updated>
 	<author>
 		<name>pnppl</name>
