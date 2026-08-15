@@ -2,12 +2,6 @@
 	- i really like the python fstrings for templating tho. maybe i should just think about the structure and refactor it
 		- either use SSI or improve things so i can put headings etc on the submit page and other handcrafted html
 		- reduce verbosity/repetition, merge redundant functions
-- better intro/landing page
-	- improve nav - need nice submit/random/about not inline links
-- 88x31 button and general cutening
-	- matching favicon
-	- color the category icons so they're easier to tell apart. probably easy with CSS but maybe better to abandon the invert() thing for compatibility reasons. could just be darkmode only for simplicity
-	- splash some color around other places
-- do a security pass on submit.php so i don't crash the server with giant emails or something
+- color the category icons so they're easier to tell apart. probably easy with CSS but maybe better to abandon the invert() thing for compatibility reasons. could just be darkmode only for simplicity
 - fish script to check sites with curl (already did this for nagi, just adjust and tidy)
-- TOC for categories page, maybe CSS category filtering on all pages
+- TOC for categories page? CSS category filtering on all pages?
