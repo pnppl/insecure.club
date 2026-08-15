@@ -64,6 +64,10 @@ ul ul {
 	max-width: 80%;
 	padding: 0 1em 1em 1em;
 }
+#main > ul {
+	list-style: none;
+	padding-left: 0.5em;
+}
 .additional {
 	font-size: 0.9em;
 }
