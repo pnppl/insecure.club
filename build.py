@@ -377,7 +377,7 @@ with open("submit/index.html", "w") as out:
 			textarea {
 				width: 100%;
 			}
-			input[type=submit] {
+			#main input[type=submit] {
 				display: block;
 				margin-left: auto;
 				padding: 0.5em 1em;
@@ -416,7 +416,7 @@ with open("submit/index.html", "w") as out:
 				}
 				#main ul,
 				#main li,
-				#main input {
+				input {
 					padding: 0;
 				}
 				#main li {
