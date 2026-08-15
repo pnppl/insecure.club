@@ -24,15 +24,27 @@
 			margin-top: 1em;
 			margin-bottom: 0;
 		}
-		#main p {
+		#main p,
+		#main summary {
 			margin-left: 1em;
 		}
+		#main p,
+		#main details {
+			margin-bottom: 1em;
+		}
+		#main details ul {
+			margin-left: 2em;
+		}
 		@media screen and (max-width: 500px) {
-			#main p {
+			#main p,
+			#main summary {
 				margin-left: 0;
 			}
 			#main ol {
 				padding-left: 1em;
+			}
+			#main details ul {
+				margin-left: 1em;
 			}
 		}
 		--></style>
@@ -62,13 +74,52 @@
 			<p>Mandatory HTTP<b><i>S</i></b> is a form of forced obsolescence. Devices that are still perfectly functional are made artificially incompatible with the web, thus adding to ever-growing mountains of e-waste and discriminating against people who can't afford the latest computer/fondleslab.</p>
 			<p>Plus, using old computers is <i>fun</i>.</p>
 
-			<h3>What about user privacy?</h3>
+			<h3>What about privacy?</h3>
 			<p>Which is worse: the risk of being spied on when you visit a website, or <i>not being able to visit it at all?</i></p>
 			<p>Users should be allowed to decide for themselves if they accept that risk --- particularly since browsers make it very difficult to access insecure websites. Anyone who uses HTTP has probably either jumped through several hoops to voluntarily circumvent their browser safeguards or is entirely unable to use HTTP<b><i>S</i></b>.</p>
 			<p>Sites often support broken HTTP<b><i>S</i></b> cipher suites for compatibility. Instead, they should drop the old ciphers and add HTTP --- that way compatibility is maximized and users are informed when their connection isn't truly secure.</p>
 
 			<h3>I want to renounce industry best practices, but I don't want to self-host, and also I'm a cheapskate. What do?</h3>
 			<p>I've started a <a href="http://pnppl.cc/2026-05-01_http/">list of free webhosts that support HTTP.</a></p>
+
+			<h3>Got any other hot tips for serving HTTP?</h3>
+			<p>For maximum insecurity, you should steer clear of top-level domains on the <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security#Solutions_with_preload_list">HSTS preload list.</a> These are hardcoded in browsers to <i>only</i> support HTTP<b><i>S</i></b>. You might think that's fine because browsers old enough to need HTTP won't have the preload list, but that's not entirely true.</p>
+			<p>Browsers with the preload list can still be incompatible due to outdated cipher suites. Many browsers support HTTP<b><i>S</i></b> but not <i>modern</i> HTTP<b><i>S</i></b> --- an ever-moving target. Plus, it's more difficult to tell during development if insecure HTTP is working (if you mostly use a modern browser, which you probably should).</p>
+			<details>
+				<summary>TLDs to avoid</summary>
+				<ul>
+					<li>.app</li>
+					<li>.bank</li>
+					<li>.boo</li>
+					<li>.channel</li>
+					<li>.dad</li>
+					<li>.day</li>
+					<li>.dev</li>
+					<li>.eat</li>
+					<li>.esq</li>
+					<li>.fire</li>
+					<li>.fly</li>
+					<li>.foo</li>
+					<li>.hangout</li>
+					<li>.ing</li>
+					<li>.insurance</li>
+					<li>.meme</li>
+					<li>.mov</li>
+					<li>.new</li>
+					<li>.nexus</li>
+					<li>.office</li>
+					<li>.page</li>
+					<li>.phd</li>
+					<li>.play</li>
+					<li>.prof</li>
+					<li>.rsvp</li>
+					<li>.search</li>
+					<li>.zip</li>
+					<li>.xn--cckwcxetd (.アマゾン)</li>
+					<li>.xn--jlq480n2rg (.亚马逊)</li>
+				</ul>
+				<p><i>Note that some of these may be reserved for evil corporations or otherwise unavailable for registration. <a href="https://serverfault.com/a/1067232">The preload list is controlled by Google and changes over time.</a></i></p>
+			</details>
 
 			<h3>You're using the word "insecure" wrong.</h3>
 			<p>You are encouraged to submit websites that lack self-confidence (and also support HTTP).</p>

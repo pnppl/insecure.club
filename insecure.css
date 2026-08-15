@@ -45,6 +45,11 @@ nav p {
 nav b {
 	color: deeppink;
 }
+summary {
+	font-style: italic;
+	text-decoration: wavy LinkText underline;
+	cursor: help;
+}
 ul {
 	padding-left: 1em;
 }
