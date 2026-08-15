@@ -48,7 +48,6 @@ nav b {
 summary {
 	font-style: italic;
 	text-decoration: wavy LinkText underline;
-	cursor: help;
 }
 ul {
 	padding-left: 1em;
@@ -83,6 +82,17 @@ ul ul {
 .additional {
 	font-size: 0.9em;
 }
+#filters {
+	border: 1px dashed deeppink;
+	padding: 0.25em;
+	width: fit-content;
+	margin: 0 auto 1.5em;
+}
+#filters label,
+#filters .label {
+	text-wrap: nowrap;
+	margin-right: 0.5em;
+}
 .icon {
 	position: relative;
 	top: 2px;
@@ -95,6 +105,78 @@ ul ul {
 }
 .list a {
 	word-break: break-all;
+}
+body:not(:has(#misc-filter:checked)) {
+	#misc,
+	.misc {
+		display: none;
+	}
+}
+body:not(:has(#personal-filter:checked)) {
+	#personal,
+	.personal {
+		display: none;
+	}
+}
+body:not(:has(#creative-filter:checked)) {
+	#creative,
+	.creative {
+		display: none;
+	}
+}
+body:not(:has(#informative-filter:checked)) {
+	#informative,
+	.informative {
+		display: none;
+	}
+}
+body:not(:has(#technical-filter:checked)) {
+	#technical,
+	.technical {
+		display: none;
+	}
+}
+body:not(:has(#useful-filter:checked)) {
+	#useful,
+	.useful {
+		display: none;
+	}
+}
+body:not(:has(#audiovisual-filter:checked)) {
+	#audiovisual,
+	.audiovisual {
+		display: none;
+	}
+}
+body:not(:has(#interactive-filter:checked)) {
+	#interactive,
+	.interactive {
+		display: none;
+	}
+}
+body:not(:has(#social-filter:checked)) {
+	#social,
+	.social {
+		display: none;
+	}
+}
+body:not(:has(#sexual-filter:checked)) {
+	#sexual,
+	.sexual {
+		display: none;
+	}
+}
+body:not(:has(#historical-filter:checked)) {
+	#historical,
+	.historical {
+		display: none;
+	}
+}
+body:not(:has(#audiovisual-filter:checked)) {
+	#audiovisual,
+	.audiovisual {
+		display: none;
+	}
 }
 @media (prefers-color-scheme: dark) {
 	body {

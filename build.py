@@ -71,8 +71,8 @@ def write_nav(page, out):
 		('cat', 'categories'),
 		('new', 'new'),
 		('css-opt', 'CSS-optional'),
-		('libre', 'free culture'),
-		('has-feed', 'has feed')
+		('libre', 'free&nbspculture'),
+		('has-feed', 'has&nbspfeed')
 	]
 	if any(page in tup for tup in lists_pages):
 		out.write("""\
@@ -93,6 +93,17 @@ def write_nav(page, out):
 		</nav></center>
 """)
 
+def write_filter(out, link=False):
+	out.write("""\
+		<center id="filters"><span class="hide">(Filters require CSS)</span>""")
+	if link == False:
+		for cat in all_categories:
+			out.write(f""" <label><input type="checkbox" id="{cat}-filter" checked>&nbsp;{cat.capitalize()}</label> """)
+	else:
+		for cat in all_categories:
+			out.write(f""" <span class="label"><input type="checkbox" id="{cat}-filter" checked>&nbsp;<a href="#{cat}">{cat.capitalize()}</a></span> """)
+	out.write("""\
+		</center>""")
 
 def write_list(sites, page, out):
 	path = ''
@@ -128,7 +139,7 @@ def write_list(sites, page, out):
 			protocols += f""" <a href="http://{site['feed-url']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]" width="16" height="16"></a>"""
 
 		out.write(f"""\
-				<li>
+				<li class="{cat}">
 					<img alt="{cat}:" class="icon invert" src="{path}img/cat/{cat}.gif" title="Category: {cat}" width="16" height="16"> {link}{protocols}
 """)
 
@@ -180,7 +191,8 @@ import yaml, datetime, html
 with open("sites.yaml", "r") as sites_yaml:
 	sites = list(yaml.load_all(sites_yaml, Loader=yaml.SafeLoader))
 sites.sort(key=lambda s: s['url'].removeprefix('www.'))
-sites_by_cat = sorted(sites, key=lambda s: s['cat'])
+sites_by_cat = list(sorted(sites, key=lambda s: s['cat']))
+all_categories = list(dict.fromkeys(site['cat'] for site in sites_by_cat))
 sites_new = sorted(sites, key=lambda s: s['added'], reverse=True)
 sites_has_feed = filter(lambda s: 'feed-url' in s and s['feed-url'], sites)
 sites_css_opt = filter(lambda s: 'css-opt' in s and s['css-opt'], sites)
@@ -190,31 +202,37 @@ sites_button = list(filter(lambda s: 'button' in s and s['button'], sites))
 with open("index.html", "w") as out:
 	write_head('index', out)
 	write_nav('', out)
+	write_filter(out)
 	write_list(sites, 'index', out)
 	write_close('index', out)
 with open("cat/index.html", "w") as out:
 	write_head('Categories', out)
 	write_nav('cat', out)
+	write_filter(out, True)
 	write_list(sites_by_cat, 'cat', out)
 	write_close('', out)
 with open("new/index.html", "w") as out:
 	write_head('Recently Added', out)
 	write_nav('new', out)
+	write_filter(out)
 	write_list(sites_new, 'new', out)
 	write_close('', out)
 with open("has-feed/index.html", "w") as out:
 	write_head('Sites with Feeds', out)
 	write_nav('has-feed', out)
+	write_filter(out)
 	write_list(sites_has_feed, 'feed', out)
 	write_close('', out)
 with open("css-opt/index.html", "w") as out:
 	write_head('CSS-Optional', out)
 	write_nav('css-opt', out)
+	write_filter(out)
 	write_list(sites_css_opt, 'css-opt', out)
 	write_close('', out)
 with open("libre/index.html", "w") as out:
 	write_head('Free Culture', out)
 	write_nav('libre', out)
+	write_filter(out)
 	write_list(sites_libre, 'libre', out)
 	write_close('', out)
 with open("buttons/index.html", "w") as out:
@@ -276,7 +294,10 @@ with open("buttons/index.html", "w") as out:
 """)
 	write_nav('buttons', out)
 	out.write("""\
-		<br>
+			<br>
+""")
+	write_filter(out)
+	out.write("""\
 		<center id="main">
 			<h3>Button Wall</h3>
 			<br>
@@ -285,7 +306,7 @@ with open("buttons/index.html", "w") as out:
 """)
 	for site in sites_button:
 		out.write(f"""\
-				<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="88" height="31"></a>
+				<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" class="{site['cat']}" title="{site['url']}" width="88" height="31"></a>
 """)
 	out.write("""\
 			</p>
