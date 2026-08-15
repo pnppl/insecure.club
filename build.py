@@ -254,6 +254,14 @@ with open("fuq/index.html", "w") as out:
 		#main p {
 			margin-left: 1em;
 		}
+		@media screen and (max-width: 500px) {
+			#main p {
+				margin-left: 0;
+			}
+			#main ol {
+				padding-left: 1em;
+			}
+		}
 		--></style>
 """)
 	write_nav('fuq', out)
@@ -392,9 +400,12 @@ with open("submit/index.html", "w") as out:
 					border-color: hotpink;
 				}
 			}
-			@media (max-width: 400px) {
+			@media (max-width: 500px) {
 				#bonus label {
 					display: inline;
+				}
+				#main {
+					max-width: 100%;
 				}
 				fieldset {
 					padding-left: 0.1em;
@@ -410,13 +421,11 @@ with open("submit/index.html", "w") as out:
 				input {
 					padding: 0 !important;
 				}
-				li,
-				li li {
-					margin-left: 0.25em !important;
-					margin-right: 0.25em !important;
+				li {
+					margin-left: 1em !important;
 				}
-				li li {
-					margin-left: 1.25em !important;
+				legend {
+					margin-left: 0.5em;
 				}
 			}
 		--></style>
@@ -459,6 +468,7 @@ with open("submit/index.html", "w") as out:
 				<ul id="basics">
 					<li><label>URL: &nbsp; <input type="text" name="url" placeholder="insecure.club" required></label></li>
 					<li><label>Description (optional): &nbsp; <input type="text" name="desc" maxlength="80" placeholder="A directory of sites that support HTTP sans S"></label></li>
+					<br>
 					<li>Category (when in doubt, pick the one further down the list):
 						<ul id="category">
 							<li style="list-style-image:url('../img/cat/misc.gif')"><label><input type="radio" name="cat" value="misc"> <b>Misc:</b> the categorization system has failed</label></li>

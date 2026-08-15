@@ -99,6 +99,7 @@ ul ul {
 }
 @media screen and (max-width: 500px) {
 	#main {
-		width: 95%;
+		max-width: 95%;
+		padding: 0;
 	}
 }
