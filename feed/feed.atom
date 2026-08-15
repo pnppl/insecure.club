@@ -4,10 +4,34 @@
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/feed.atom"/>
-	<updated>2026-08-14T07:50:18.156980+00:00</updated>
+	<updated>2026-08-15T12:21:16.396832+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>
+	<entry>
+		<title>1mb.club</title>
+		<link rel="alternate" type="text/html" href="http://1mb.club/"/>
+		<id>http://1mb.club/</id>
+		<published>2026-08-15T00:00:00Z</published>
+		<updated>2026-08-15T00:00:00Z</updated>
+		<summary type="html">useful; free culture: &lt;i&gt;A growing collection of performance-focused web pages weighing less than 1 MB.&lt;/i&gt;</summary>
+	</entry>
+	<entry>
+		<title>512kb.club</title>
+		<link rel="alternate" type="text/html" href="http://512kb.club/"/>
+		<id>http://512kb.club/</id>
+		<published>2026-08-15T00:00:00Z</published>
+		<updated>2026-08-15T00:00:00Z</updated>
+		<summary type="html">useful; CSS optional; free culture: &lt;i&gt;A showcase of lightweight websites.&lt;/i&gt;</summary>
+	</entry>
+	<entry>
+		<title>68k.news</title>
+		<link rel="alternate" type="text/html" href="http://68k.news/"/>
+		<id>http://68k.news/</id>
+		<published>2026-08-15T00:00:00Z</published>
+		<updated>2026-08-15T00:00:00Z</updated>
+		<summary type="html">useful; CSS optional: &lt;i&gt;Basic HTML Google News for vintage computers.&lt;/i&gt;</summary>
+	</entry>
 	<entry>
 		<title>baccyflap.com</title>
 		<link rel="alternate" type="text/html" href="http://baccyflap.com/"/>

@@ -1,4 +1,30 @@
 ---
+url: 1mb.club
+ssl: yes
+cat: useful
+desc: A growing collection of performance-focused web pages weighing less than 1 MB.
+feed-url: 1mb.club/atom.xml
+css-opt: no
+libre: yes
+button: 1mb
+added: 2026-08-15
+---
+url: 512kb.club
+ssl: yes
+cat: useful
+desc: A showcase of lightweight websites.
+feed-url: 512kb.club/feed.xml
+css-opt: yes
+libre: yes
+added: 2026-08-15
+---
+url: 68k.news
+ssl: no
+cat: useful
+desc: Basic HTML Google News for vintage computers.
+css-opt: yes
+added: 2026-08-15
+---
 url: baccyflap.com
 ssl: yes
 cat: personal
