@@ -46,12 +46,12 @@ def write_nav(page, out):
 	if any(page in tup for tup in pages):
 		top_page = page
 
-	out.write("""\
+	out.write(f"""\
 	</head>
 	<body>
 		<a id="skip-nav" href="#main">Skip to content</a>
 		<center>
-			<h1>insecure.club</h1>
+			<h1><a href="./{path}">insecure<img alt="." src="{path}img/dot.gif" width="20" height="20">club</a></h1>
 			<p>A directory of websites that support HTTP <i>sans</i> S.</p>
 		</center>
 		<center><nav>

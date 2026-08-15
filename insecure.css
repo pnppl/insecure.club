@@ -8,8 +8,15 @@ h1 {
 	background: teal;
 	width: fit-content;
 	padding: 0 0.5em;
-	color: white;
 	border: 2px dotted #f9f9f9;
+}
+h1 a {
+	color: white;
+	text-decoration: none;
+}
+h1 img {
+	position: relative;
+	top: 4px;
 }
 h1,
 h2 {
@@ -87,7 +94,6 @@ ul ul {
 		color: #eee;
 	}
 	h1 {
-		color: black;
 		border-color: black;
 	}
 	.invert {
@@ -97,7 +103,7 @@ ul ul {
 	}
 }
 @media (prefers-reduced-motion: reduce) {
-	#footer-button[src$="crt.gif"] {
+	#footer-button {
 		content: url("/img/buttons/crt-static.gif");
 	}
 }
