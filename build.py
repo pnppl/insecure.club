@@ -566,8 +566,8 @@ with open("feed/feed.atom", "w") as out:
 		<title>{site['url']}</title>
 		<link rel="alternate" type="text/html" href="http://{site['url']}/"/>
 		<id>http://{site['url']}/</id>
-		<published>{site['added']}T00:00:00Z</published>
-		<updated>{site['added']}T00:00:00Z</updated>
+		<published>{site['added']}T16:00:00Z</published>
+		<updated>{site['added']}T16:00:00Z</updated>
 		<summary type="html">{site['cat']}""")
 		if 'css-opt' in site and site['css-opt']:
 			out.write("; CSS optional")

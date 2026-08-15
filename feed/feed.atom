@@ -4,7 +4,7 @@
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/feed.atom"/>
-	<updated>2026-08-15T12:21:16.396832+00:00</updated>
+	<updated>2026-08-15T12:26:49.847885+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>
@@ -12,240 +12,240 @@
 		<title>1mb.club</title>
 		<link rel="alternate" type="text/html" href="http://1mb.club/"/>
 		<id>http://1mb.club/</id>
-		<published>2026-08-15T00:00:00Z</published>
-		<updated>2026-08-15T00:00:00Z</updated>
+		<published>2026-08-15T16:00:00Z</published>
+		<updated>2026-08-15T16:00:00Z</updated>
 		<summary type="html">useful; free culture: &lt;i&gt;A growing collection of performance-focused web pages weighing less than 1 MB.&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>512kb.club</title>
 		<link rel="alternate" type="text/html" href="http://512kb.club/"/>
 		<id>http://512kb.club/</id>
-		<published>2026-08-15T00:00:00Z</published>
-		<updated>2026-08-15T00:00:00Z</updated>
+		<published>2026-08-15T16:00:00Z</published>
+		<updated>2026-08-15T16:00:00Z</updated>
 		<summary type="html">useful; CSS optional; free culture: &lt;i&gt;A showcase of lightweight websites.&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>68k.news</title>
 		<link rel="alternate" type="text/html" href="http://68k.news/"/>
 		<id>http://68k.news/</id>
-		<published>2026-08-15T00:00:00Z</published>
-		<updated>2026-08-15T00:00:00Z</updated>
+		<published>2026-08-15T16:00:00Z</published>
+		<updated>2026-08-15T16:00:00Z</updated>
 		<summary type="html">useful; CSS optional: &lt;i&gt;Basic HTML Google News for vintage computers.&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>baccyflap.com</title>
 		<link rel="alternate" type="text/html" href="http://baccyflap.com/"/>
 		<id>http://baccyflap.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>crimethinc.com</title>
 		<link rel="alternate" type="text/html" href="http://crimethinc.com/"/>
 		<id>http://crimethinc.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">creative; free culture</summary>
 	</entry>
 	<entry>
 		<title>echoesofbluemars.org</title>
 		<link rel="alternate" type="text/html" href="http://echoesofbluemars.org/"/>
 		<id>http://echoesofbluemars.org/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">audiovisual</summary>
 	</entry>
 	<entry>
 		<title>fileformats.archiveteam.org</title>
 		<link rel="alternate" type="text/html" href="http://fileformats.archiveteam.org/"/>
 		<id>http://fileformats.archiveteam.org/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">technical; free culture</summary>
 	</entry>
 	<entry>
 		<title>www.floodgap.com</title>
 		<link rel="alternate" type="text/html" href="http://www.floodgap.com/"/>
 		<id>http://www.floodgap.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>friendo.monster</title>
 		<link rel="alternate" type="text/html" href="http://friendo.monster/"/>
 		<id>http://friendo.monster/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>handthing.party</title>
 		<link rel="alternate" type="text/html" href="http://handthing.party/"/>
 		<id>http://handthing.party/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">audiovisual; CSS optional: &lt;i&gt;You still doing that hand thing?&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>highlysuspect.agency</title>
 		<link rel="alternate" type="text/html" href="http://highlysuspect.agency/"/>
 		<id>http://highlysuspect.agency/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>houseofselfindulgence.blogspot.com</title>
 		<link rel="alternate" type="text/html" href="http://houseofselfindulgence.blogspot.com/"/>
 		<id>http://houseofselfindulgence.blogspot.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">audiovisual</summary>
 	</entry>
 	<entry>
 		<title>humaniterations.net</title>
 		<link rel="alternate" type="text/html" href="http://humaniterations.net/"/>
 		<id>http://humaniterations.net/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">creative; CSS optional; free culture</summary>
 	</entry>
 	<entry>
 		<title>insecure.club</title>
 		<link rel="alternate" type="text/html" href="http://insecure.club/"/>
 		<id>http://insecure.club/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">useful; CSS optional; free culture</summary>
 	</entry>
 	<entry>
 		<title>maurycyz.com</title>
 		<link rel="alternate" type="text/html" href="http://maurycyz.com/"/>
 		<id>http://maurycyz.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>mycophobia.org</title>
 		<link rel="alternate" type="text/html" href="http://mycophobia.org/"/>
 		<id>http://mycophobia.org/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>petermolnar.net</title>
 		<link rel="alternate" type="text/html" href="http://petermolnar.net/"/>
 		<id>http://petermolnar.net/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal</summary>
 	</entry>
 	<entry>
 		<title>pnppl.cc</title>
 		<link rel="alternate" type="text/html" href="http://pnppl.cc/"/>
 		<id>http://pnppl.cc/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal; CSS optional; free culture: &lt;i&gt;Notes, essays, fiction, art, code, and whatever else I feel like posting.&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>www.prole.info</title>
 		<link rel="alternate" type="text/html" href="http://www.prole.info/"/>
 		<id>http://www.prole.info/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">creative; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>www.quoteunquoterecords.com</title>
 		<link rel="alternate" type="text/html" href="http://www.quoteunquoterecords.com/"/>
 		<id>http://www.quoteunquoterecords.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">audiovisual; CSS optional: &lt;i&gt;The first ever donation based record label&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>smokepowered.com</title>
 		<link rel="alternate" type="text/html" href="http://smokepowered.com/"/>
 		<id>http://smokepowered.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">audiovisual; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>smolweb.org</title>
 		<link rel="alternate" type="text/html" href="http://smolweb.org/"/>
 		<id>http://smolweb.org/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">technical; CSS optional; free culture: &lt;i&gt;Promoting a simple unbloated web!&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>temblast.com</title>
 		<link rel="alternate" type="text/html" href="http://temblast.com/"/>
 		<id>http://temblast.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>toastytech.com</title>
 		<link rel="alternate" type="text/html" href="http://toastytech.com/"/>
 		<id>http://toastytech.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">technical; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>trekkiefeminist.com</title>
 		<link rel="alternate" type="text/html" href="http://trekkiefeminist.com/"/>
 		<id>http://trekkiefeminist.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">creative: &lt;i&gt;Boldly going where no feminist has gone before&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>vivivi.leprd.space</title>
 		<link rel="alternate" type="text/html" href="http://vivivi.leprd.space/"/>
 		<id>http://vivivi.leprd.space/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal</summary>
 	</entry>
 	<entry>
 		<title>web1.0hosting.net</title>
 		<link rel="alternate" type="text/html" href="http://web1.0hosting.net/"/>
 		<id>http://web1.0hosting.net/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">useful; CSS optional: &lt;i&gt;advanced static web hosting&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>wiby.me</title>
 		<link rel="alternate" type="text/html" href="http://wiby.me/"/>
 		<id>http://wiby.me/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">useful; CSS optional; free culture: &lt;i&gt;Search Engine for the Classic Web&lt;/i&gt;</summary>
 	</entry>
 	<entry>
 		<title>wol.fm</title>
 		<link rel="alternate" type="text/html" href="http://wol.fm/"/>
 		<id>http://wol.fm/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal; CSS optional</summary>
 	</entry>
 	<entry>
 		<title>xn--gckvb8fzb.com</title>
 		<link rel="alternate" type="text/html" href="http://xn--gckvb8fzb.com/"/>
 		<id>http://xn--gckvb8fzb.com/</id>
-		<published>2026-08-03T00:00:00Z</published>
-		<updated>2026-08-03T00:00:00Z</updated>
+		<published>2026-08-03T16:00:00Z</published>
+		<updated>2026-08-03T16:00:00Z</updated>
 		<summary type="html">personal</summary>
 	</entry>
 </feed>
