@@ -74,6 +74,7 @@ ssl: yes
 cat: audiovisual
 desc: You still doing that hand thing?
 css-opt: yes
+button: handthing-anim
 added: 2026-08-03
 ---
 url: highlysuspect.agency

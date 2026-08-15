@@ -6,7 +6,7 @@ def write_head(page, out):
 		title = f"""{page} | {title}"""
 	else:
 		page = ''
-	print(f"""\
+	out.write(f"""\
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -27,8 +27,8 @@ def write_head(page, out):
 		<meta property="og:type" content="website">
 		<meta name="description" content="Directory of sites that support HTTP sans S">
 		<link rel="stylesheet" href="{path}insecure.css">
-		<title>{title}</title>""",
-		file=out)
+		<title>{title}</title>
+""")
 
 def write_nav(page, out):
 	path = ''
@@ -63,7 +63,8 @@ def write_nav(page, out):
 			out.write(f"""<a href="{path}{entry[0]}">{entry[1]}</a>""")
 		if entry[0] != 'random':
 			out.write(' &#183; ')
-	print("""&nbsp;]</h2>""", file=out)
+	out.write("""&nbsp;]</h2>
+""")
 
 	lists_pages = [
 		('', 'alpha'),
@@ -85,29 +86,31 @@ def write_nav(page, out):
 				out.write(' | ')
 			elif entry[0] != 'has-feed':
 				out.write(' &#183; ')
-		print("""&nbsp;]</p>""", file=out)
+		out.write("""&nbsp;]</p>
+""")
 
-	print("""\
-		</nav></center>""", file=out)
+	out.write("""\
+		</nav></center>
+""")
 
 
 def write_list(sites, page, out):
 	path = ''
 	if page != 'index':
 		path = '../'
-	print("""\
+	out.write("""\
 		<div id="main" class="list">
-			<ul>""",
-		file=out)
+			<ul>
+""")
 	old_cat = ''
 	for site in sites:
 		cat = site['cat']
 		if old_cat != cat and page == 'cat':
-			print(f"""\
+			out.write(f"""\
 			</ul>
 			<h3 id="{cat}">{cat.capitalize()}</h3>
-			<ul>""",
-			file=out)
+			<ul>
+""")
 		old_cat = cat
 
 		link = f"""<a href="http://{site['url']}">{site['url']}</a>"""
@@ -124,10 +127,10 @@ def write_list(sites, page, out):
 		if 'feed-url' in site and site['feed-url']:
 			protocols += f""" <a href="http://{site['feed-url']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]" width="16" height="16"></a>"""
 
-		print(f"""\
+		out.write(f"""\
 				<li>
-					<img alt="{cat}:" class="icon invert" src="{path}img/cat/{cat}.gif" title="Category: {cat}" width="16" height="16"> {link}{protocols}""",
-			file=out)
+					<img alt="{cat}:" class="icon invert" src="{path}img/cat/{cat}.gif" title="Category: {cat}" width="16" height="16"> {link}{protocols}
+""")
 
 		additional = ''
 		if 'libre' in site and site['libre'] and page != 'libre':
@@ -135,22 +138,22 @@ def write_list(sites, page, out):
 		if 'desc' in site and site['desc']:
 			additional += f"""<i class="desc">{site['desc']}</i>"""
 		if len(additional) > 0:
-			print(f"""\
-					<ul><li class="additional">{additional}</li></ul>""",
-				file=out)
+			out.write(f"""\
+					<ul><li class="additional">{additional}</li></ul>
+""")
 
-		print("""\
-				</li>""",
-			file=out)
+		out.write("""\
+				</li>
+""")
 	# /for
-	print("""\
-			</ul>""",
-		file=out)
+	out.write("""\
+			</ul>
+""")
 	if page != 'css-opt':
-		print("""\
+		out.write("""\
 			<p><b>Bold</b> entries work well without CSS.</p>
-		</div>""",
-		file=out)
+		</div>
+""")
 
 # /def
 
@@ -158,7 +161,7 @@ def write_close(page, out):
 	path = ''
 	if page != 'index':
 		path = '../'
-	print(f"""\
+	out.write(f"""\
 		<br>
 		<center>
 			<footer>
@@ -167,8 +170,8 @@ def write_close(page, out):
 			</footer>
 		</center>
 	</body>
-</html>""",
-		file=out)
+</html>
+""")
 
 
 # main
@@ -182,7 +185,7 @@ sites_new = sorted(sites, key=lambda s: s['added'], reverse=True)
 sites_has_feed = filter(lambda s: 'feed-url' in s and s['feed-url'], sites)
 sites_css_opt = filter(lambda s: 'css-opt' in s and s['css-opt'], sites)
 sites_libre = filter(lambda s: 'libre' in s and s['libre'], sites)
-sites_button = filter(lambda s: 'button' in s and s['button'], sites)
+sites_button = list(filter(lambda s: 'button' in s and s['button'], sites))
 
 with open("index.html", "w") as out:
 	write_head('index', out)
@@ -216,18 +219,75 @@ with open("libre/index.html", "w") as out:
 	write_close('', out)
 with open("buttons/index.html", "w") as out:
 	write_head('Button Wall', out)
+	out.write("""\
+		<style><!--
+		#main:not(:has(#anim:checked)) {
+""")
+	for site in sites_button:
+		if site['button'].endswith("-anim"):
+			out.write(f"""\
+			img[src$="{site['button']}.gif"] {{ content: url("{site['button'][0:-5]}-static.gif") }}
+""")
+	out.write("""\
+		}
+		@media (prefers-reduced-motion: reduce) {
+			/* reset the box */
+			#anim {
+				appearance: none;
+				width: 1em;
+				height: 1em;
+				border: 1px solid currentColor;
+				border-radius: 0.15em;
+				margin: 0;
+			}
+			/* "uncheck" the box */
+			#anim:checked:before {
+				display: none;
+			}
+			/* "check" the box */
+			#anim:before {
+				content: '';
+				background: currentColor;
+				clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+				display: block;
+				width: 0.9em;
+				height: 0.9em;
+			}
+			#main:has(#anim:checked) {
+""")
+	for site in sites_button:
+		if site['button'].endswith("-anim"):
+			out.write(f"""\
+				img[src$="{site['button']}.gif"] {{ content: url("{site['button'][0:-5]}-static.gif") }}
+""")
+	out.write("""\
+			}
+			#main:not(:has(#anim:checked)) {
+""")
+	for site in sites_button:
+		if site['button'].endswith("-anim"):
+			out.write(f"""\
+				img[src$="{site['button']}.gif"] {{ content: url("{site['button']}.gif") }}
+""")
+	out.write("""\
+			}
+		}
+		--></style>
+""")
 	write_nav('buttons', out)
-	print("""\
+	out.write("""\
 		<br>
 		<center id="main">
 			<h3>Button Wall</h3>
-			<p>""",
-		file=out)
+			<br>
+			<label><input type="checkbox" id="anim" checked> Animate<span class="hide"> (toggle requires CSS)</span></label>
+			<p>
+""")
 	for site in sites_button:
-		print(f"""\
-				<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="88" height="31"></a>""",
-			file=out)
-	print("""\
+		out.write(f"""\
+				<a href="http://{site['url']}"><img src="{site['button']}.gif" alt="{site['url']}" title="{site['url']}" width="88" height="31"></a>
+""")
+	out.write("""\
 			</p>
 			<br>
 			<h3>Club/Member Buttons</h3>
@@ -238,8 +298,8 @@ with open("buttons/index.html", "w") as out:
 				<img alt="open lock with club name in edgy techno font" src="../img/buttons/unlocked.gif">
 			</p>
 		</center>
-		<br>""",
-		file=out)
+		<br>
+""")
 	write_close('', out)
 with open("fuq/index.html", "w") as out:
 	write_head('Fully Unasked Questions', out)
@@ -546,9 +606,10 @@ with open("submit/index.html", "w") as out:
 	write_close('', out)
 with open("sites.txt", "w") as out:
 	for site in sites:
-		print(f"http://{site['url']}", file=out)
+		out.write(f"""http://{site['url']}
+""")
 with open("feed/feed.atom", "w") as out:
-	print(f"""\
+	out.write(f"""\
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title>insecure.club</title>
@@ -558,8 +619,8 @@ with open("feed/feed.atom", "w") as out:
 	<updated>{datetime.datetime.now(datetime.timezone.utc).isoformat()}</updated>
 	<author>
 		<name>pnppl</name>
-	</author>""",
-	file=out)
+	</author>
+""")
 	for site in sites_new:
 		out.write(f"""\
 	<entry>
@@ -575,9 +636,9 @@ with open("feed/feed.atom", "w") as out:
 			out.write("; free culture")
 		if 'desc' in site:
 			out.write(f""": {html.escape(f"<i>{site['desc']}</i>", True)}""")
-		print("""</summary>
-	</entry>""",
-		file=out)
+		out.write("""</summary>
+	</entry>
+""")
 	out.write("""\
 </feed>""")
 

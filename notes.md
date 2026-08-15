@@ -5,3 +5,9 @@
 - color the category icons so they're easier to tell apart. probably easy with CSS but maybe better to abandon the invert() thing for compatibility reasons. could just be darkmode only for simplicity
 - fish script to check sites with curl (already did this for nagi, just adjust and tidy)
 - TOC for categories page? CSS category filtering on all pages?
+
+- added animated/static button feature with prefers-reduced-motion support using some ridiculous CSS
+	- for animated buttons
+		- name them site-anim.gif
+		- enter in site.yaml as site-anim
+		- generate static version named site-static.gif

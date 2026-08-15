@@ -19,6 +19,41 @@
 		<meta name="description" content="Directory of sites that support HTTP sans S">
 		<link rel="stylesheet" href="../insecure.css">
 		<title>Button Wall | insecure.club</title>
+		<style><!--
+		#main:not(:has(#anim:checked)) {
+			img[src$="handthing-anim.gif"] { content: url("handthing-static.gif") }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			/* reset the box */
+			#anim {
+				appearance: none;
+				width: 1em;
+				height: 1em;
+				border: 1px solid currentColor;
+				border-radius: 0.15em;
+				margin: 0;
+			}
+			/* "uncheck" the box */
+			#anim:checked:before {
+				display: none;
+			}
+			/* "check" the box */
+			#anim:before {
+				content: '';
+				background: currentColor;
+				clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+				display: block;
+				width: 0.9em;
+				height: 0.9em;
+			}
+			#main:has(#anim:checked) {
+				img[src$="handthing-anim.gif"] { content: url("handthing-static.gif") }
+			}
+			#main:not(:has(#anim:checked)) {
+				img[src$="handthing-anim.gif"] { content: url("handthing-anim.gif") }
+			}
+		}
+		--></style>
 	</head>
 	<body>
 		<a id="skip-nav" href="#main">Skip to content</a>
@@ -32,8 +67,11 @@
 		<br>
 		<center id="main">
 			<h3>Button Wall</h3>
+			<br>
+			<label><input type="checkbox" id="anim" checked> Animate<span class="hide"> (toggle requires CSS)</span></label>
 			<p>
 				<a href="http://1mb.club"><img src="1mb.gif" alt="1mb.club" title="1mb.club" width="88" height="31"></a>
+				<a href="http://handthing.party"><img src="handthing-anim.gif" alt="handthing.party" title="handthing.party" width="88" height="31"></a>
 				<a href="http://vivivi.leprd.space"><img src="vivivi.gif" alt="vivivi.leprd.space" title="vivivi.leprd.space" width="88" height="31"></a>
 				<a href="http://web1.0hosting.net"><img src="web10.gif" alt="web1.0hosting.net" title="web1.0hosting.net" width="88" height="31"></a>
 				<a href="http://wiby.me"><img src="wiby.gif" alt="wiby.me" title="wiby.me" width="88" height="31"></a>

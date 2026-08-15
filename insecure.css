@@ -85,6 +85,9 @@ ul ul {
 #main.list {
 	padding-top: 0;
 }
+.hide {
+	display: none;
+}
 .list a {
 	word-break: break-all;
 }
