@@ -71,8 +71,8 @@ def write_nav(page, out):
 		('cat', 'categories'),
 		('new', 'new'),
 		('css-opt', 'CSS-optional'),
-		('libre', 'free&nbspculture'),
-		('has-feed', 'has&nbspfeed')
+		('libre', 'free&nbsp;culture'),
+		('has-feed', 'has&nbsp;feed')
 	]
 	if any(page in tup for tup in lists_pages):
 		out.write("""\
