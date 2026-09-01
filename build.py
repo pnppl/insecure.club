@@ -478,6 +478,7 @@ with open("submit/index.html", "w") as out:
 			iframe {
 				width: 100%;
 				height: 2em;
+				border: 0;
 			}
 			fieldset > ul {
 				list-style: none;
