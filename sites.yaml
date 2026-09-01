@@ -166,6 +166,15 @@ css-opt: yes
 libre: yes
 added: 2026-08-03
 ---
+url: sushantmondal.com
+ssl: yes
+cat: personal
+desc: Personal website of a computer architect.
+feed-url: sushantmondal.com/blog/feed/
+css-opt: yes
+libre: no
+added: 2026-09-01
+---
 url: temblast.com
 ssl: yes
 cat: technical

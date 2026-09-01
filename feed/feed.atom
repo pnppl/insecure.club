@@ -4,10 +4,18 @@
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/feed.atom"/>
-	<updated>2026-08-15T12:26:49.847885+00:00</updated>
+	<updated>2026-09-01T21:29:02.751671+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>
+	<entry>
+		<title>sushantmondal.com</title>
+		<link rel="alternate" type="text/html" href="http://sushantmondal.com/"/>
+		<id>http://sushantmondal.com/</id>
+		<published>2026-09-01T16:00:00Z</published>
+		<updated>2026-09-01T16:00:00Z</updated>
+		<summary type="html">personal; CSS optional: &lt;i&gt;Personal website of a computer architect.&lt;/i&gt;</summary>
+	</entry>
 	<entry>
 		<title>1mb.club</title>
 		<link rel="alternate" type="text/html" href="http://1mb.club/"/>
