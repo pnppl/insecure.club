@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			width: 100%;
 			padding: 0;
 			margin: 0;
+			background: #F9F9F9;
 		}
 		center {
 			margin: 0.25em auto;
