@@ -716,7 +716,7 @@ with open("submit/checker/index.html", "w") as out:
 	<body>
 		<center>
 			<form method="post" action="curl/">
-				<input id="url" name="url" type="url" placeholder="http://insecure.club/">
+				<input id="url" name="url" type="url" placeholder="http://insecure.club/" required>
 				<input id="sub" type="submit" value="Check">
 			</form>
 		</center>
