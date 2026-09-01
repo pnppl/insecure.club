@@ -172,6 +172,8 @@ def write_close(page, out):
 	path = ''
 	if page != 'index':
 		path = '../'
+	if page == '2':
+		path = '../../'
 	out.write(f"""\
 		<br>
 		<center>
@@ -470,6 +472,13 @@ with open("submit/index.html", "w") as out:
 				font-size: 0.9em;
 				padding-top: 1em;
 			}
+			#checker-wrap {
+				margin: 0 1.5em;
+			}
+			iframe {
+				width: 100%;
+				height: 2em;
+			}
 			fieldset > ul {
 				list-style: none;
 				padding: 0;
@@ -585,7 +594,11 @@ with open("submit/index.html", "w") as out:
 						<li>discriminate against old user agents.</li>
 						<li>espouse fascism, racism, sexism, homophobia, transphobia, or any other form of bigotry or right-wing ideology.</li>
 					</ul>
-					<p id="friendly"><i>If you aren't sure if your site is eligible, that's okay! As long as you can access it at <tt><b>http</b>://yoursite.com</tt>, just submit it.</i></p>
+					<h3><i>Site checker:</i></h3>
+					<div id="checker-wrap">
+						<iframe src="checker/" title="Site HTTP checker" width="300" height="50">Your browser doesn't support iframes. <a href="checker/">Click here to visit the site checker.</a></iframe>
+					</div>
+					<p id="friendly"><i>If you aren't sure if your site is eligible, that's okay! As long as it passes the <a href="checker/">checker</a>, just submit it.</i></p>
 				</div>
 			</fieldset>
 			<br>
@@ -671,6 +684,44 @@ with open("submit/index.html", "w") as out:
 		</form>
 	""")
 	write_close('', out)
+with open("submit/checker/index.html", "w") as out:
+	write_head('Check a site for HTTP support', out)
+	out.write("""\
+		<style><!--
+			html,
+			body,
+			center,
+			form {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			form {
+				margin: 0.25em auto;
+				max-width: 95%;
+				display: flex;
+				gap: 0.5em;
+				justify-content: space-around;
+			}
+			#url,
+			#sub {
+				flex: 1;
+			}
+			#url {
+				flex-basis: 75%;
+			}
+		--></style>
+	</head>
+	<body>
+		<center>
+			<form method="post" action="curl/">
+				<input id="url" name="url" type="url" placeholder="http://insecure.club/">
+				<input id="sub" type="submit" value="Check">
+			</form>
+		</center>
+	</body>
+	</html>
+""")
 with open("sites.txt", "w") as out:
 	for site in sites:
 		out.write(f"""http://{site['url']}
