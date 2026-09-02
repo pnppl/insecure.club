@@ -27,8 +27,7 @@ EOD;
 		$html .= 'URL too long.';
 	}
 	elseif (empty($url)) {
-		header('Location: ../');
-		exit();
+		$html .= 'Got empty URL. Make sure you include <code>http://</code>.';
 	}
 	else {
 		$url = preg_replace('/^https?:\/\//i', '', $url, 1);
