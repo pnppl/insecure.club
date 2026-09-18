@@ -46,6 +46,15 @@ cat: audiovisual
 css-opt: no
 added: 2026-08-03
 ---
+url: felix.plesoianu.ro
+ssl: yes
+cat: personal
+desc: Just a ghost of social networks past, haunting the web.
+feed-url: felix.plesoianu.ro/index.xml
+css-opt: yes
+libre: yes
+added: 2026-09-18
+---
 url: fileformats.archiveteam.org
 ssl: no
 cat: technical

@@ -1,0 +1,269 @@
+%rec: site
+%doc: Entry in the insecure.club HTTP directory.
+%mandatory: url
+%mandatory: ssl
+%mandatory: cat
+%mandatory: added
+%type: url line
+%type: ssl bool
+%type: cat enum
++ misc
++ personal
++ creative
++ informative
++ technical
++ useful
++ audiovisual
++ interactive
++ social
++ sexual
++ historical
+%type: desc line
+%type: feed line
+%type: css_opt bool
+%type: libre bool
+%type: button line
+%type: added date
+
+url: 1mb.club
+ssl: 1
+cat: useful
+desc: A growing collection of performance-focused web pages weighing less than 1 MB.
+feed: 1mb.club/atom.xml
+css_opt: 0
+libre: 1
+button: 1mb
+added: 2026-08-15
+
+url: 512kb.club
+ssl: 1
+cat: useful
+desc: A showcase of lightweight websites.
+feed: 512kb.club/feed.xml
+css_opt: 1
+libre: 1
+added: 2026-08-15
+
+url: 68k.news
+ssl: 0
+cat: useful
+desc: Basic HTML Google News for vintage computers.
+css_opt: 1
+added: 2026-08-15
+
+url: baccyflap.com
+ssl: 1
+cat: personal
+feed: baccyflap.com/prs/blog/feed.php
+css_opt: 1
+added: 2026-08-03
+
+url: crimethinc.com
+ssl: 1
+cat: creative
+feed: crimethinc.com/feed
+css_opt: 0
+libre: 1
+added: 2026-08-03
+
+url: echoesofbluemars.org
+ssl: 0
+cat: audiovisual
+css_opt: 0
+added: 2026-08-03
+
+url: felix.plesoianu.ro
+ssl: 1
+cat: personal
+desc: Just a ghost of social networks past, haunting the web.
+feed: felix.plesoianu.ro/index.xml
+css_opt: 1
+libre: 1
+added: 2026-09-18
+
+url: fileformats.archiveteam.org
+ssl: 0
+cat: technical
+feed: fileformats.archiveteam.org/index.php?title=Special:RecentChanges&feed=rss
+css_opt: 0
+libre: 1
+added: 2026-08-03
+
+url: www.floodgap.com
+ssl: 1
+cat: technical
+css_opt: 1
+added: 2026-08-03
+
+url: friendo.monster
+ssl: 1
+cat: personal
+gopher: friendo.monster
+gemini: friendo.monster
+feed: friendo.monster/rss.xml
+css_opt: 1
+added: 2026-08-03
+
+url: handthing.party
+ssl: 1
+cat: audiovisual
+desc: You still doing that hand thing?
+css_opt: 1
+button: handthing-anim
+added: 2026-08-03
+
+url: highlysuspect.agency
+ssl: 1
+cat: personal
+css_opt: 1
+added: 2026-08-03
+
+url: houseofselfindulgence.blogspot.com
+ssl: 1
+cat: audiovisual
+feed: houseofselfindulgence.blogspot.com/feeds/posts/default?alt=rss
+css_opt: 0
+added: 2026-08-03
+
+url: humaniterations.net
+ssl: 1
+cat: creative
+feed: humaniterations.net/feed.xml
+css_opt: 1
+libre: 1
+added: 2026-08-03
+
+url: insecure.club
+ssl: 1
+cat: useful
+css_opt: 1
+libre: 1
+added: 2026-08-03
+
+url: maurycyz.com
+ssl: 1
+cat: technical
+css_opt: 1
+libre: 0
+added: 2026-08-03
+
+url: mycophobia.org
+ssl: 1
+cat: personal
+feed: mycophobia.org/atom.xml
+css_opt: 1
+added: 2026-08-03
+
+url: petermolnar.net
+ssl: 1
+cat: personal
+gopher: petermolnar.net
+feed: petermolnar.net/feed/index.xml
+libre: 0
+added: 2026-08-03
+
+url: pnppl.cc
+ssl: 1
+cat: personal
+desc: Notes, essays, fiction, art, code, and whatever else I feel like posting.
+feed: pnppl.cc/+/feed.rss
+css_opt: 1
+libre: 1
+added: 2026-08-03
+
+url: www.prole.info
+ssl: 1
+cat: creative
+css_opt: 1
+added: 2026-08-03
+
+url: www.quoteunquoterecords.com
+ssl: 1
+cat: audiovisual
+desc: The first ever donation based record label
+css_opt: 1
+libre: 0
+added: 2026-08-03
+
+url: smokepowered.com
+ssl: 1
+cat: audiovisual
+css_opt: 1
+libre: 0
+added: 2026-08-03
+
+url: smolweb.org
+ssl: 1
+cat: technical
+desc: Promoting a simple unbloated web!
+feed: smolweb.org/atom.xml
+css_opt: 1
+libre: 1
+added: 2026-08-03
+
+url: sushantmondal.com
+ssl: 1
+cat: personal
+desc: Personal website of a computer architect.
+feed: sushantmondal.com/blog/feed/
+css_opt: 1
+libre: 0
+added: 2026-09-01
+
+url: temblast.com
+ssl: 1
+cat: technical
+css_opt: 1
+added: 2026-08-03
+
+url: toastytech.com
+ssl: 0
+cat: technical
+css_opt: 1
+added: 2026-08-03
+
+url: trekkiefeminist.com
+ssl: 1
+cat: creative
+desc: Boldly going where no feminist has gone before
+feed: trekkiefeminist.com/feed/
+css_opt: 0
+added: 2026-08-03
+
+url: vivivi.leprd.space
+ssl: 1
+cat: personal
+feed: vivivi.leprd.space/feed.rss
+button: vivivi
+added: 2026-08-03
+
+url: web1.0hosting.net
+ssl: 1
+cat: useful
+desc: advanced static web hosting
+css_opt: 1
+button: web10
+added: 2026-08-03
+
+url: wiby.me
+ssl: 1
+cat: useful
+desc: Search Engine for the Classic Web
+css_opt: 1
+libre: 1
+button: wiby
+added: 2026-08-03
+
+url: wol.fm
+ssl: 1
+cat: personal
+feed: wol.fm/feed.xml
+css_opt: 1
+added: 2026-08-03
+
+url: xn--gckvb8fzb.com
+ssl: 1
+cat: personal
+feed: xn--gckvb8fzb.com/index.xml
+libre: 0
+added: 2026-08-03
