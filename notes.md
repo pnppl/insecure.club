@@ -11,3 +11,7 @@
 		- name them site-anim.gif
 		- enter in site.yaml as site-anim
 		- generate static version named site-static.gif
+
+- can we merge the checker with the URL input field on the submit page?
+
+- suddenly after fighting with every browser to access http i'm discovering a bunch of them still load it just fine? wtf? totally undercuts my argument about browser defenses. remove or rework...

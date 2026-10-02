@@ -58,6 +58,16 @@ feed: baccyflap.com/prs/blog/feed.php
 css_opt: 1
 added: 2026-08-03
 
+url: brennan.oldcities.org
+ssl: 1
+cat: personal
+desc: A plaintext insecure mirror of IndieWeb publication https://brennan.day
+feed: brennan.oldcities.org/feed.xml
+css_opt: 1
+libre: 1
+button: brennan-day-anim
+added: 2026-10-02
+
 url: crimethinc.com
 ssl: 1
 cat: creative
