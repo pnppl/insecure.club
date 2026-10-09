@@ -32,6 +32,7 @@ EOD;
 	else {
 		$url = preg_replace('/^https?:\/\//i', '', $url, 1);
 		$curled = curl_init('http://' . $url);
+		curl_setopt($curled, CURLOPT_CUSTOMREQUEST, 'GET');
 		curl_setopt($curled, CURLOPT_NOBODY, true); // -I
 		curl_setopt($curled, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curled, CURLOPT_TIMEOUT, 30);
