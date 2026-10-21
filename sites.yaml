@@ -138,6 +138,15 @@ feed-url: mycophobia.org/atom.xml
 css-opt: yes
 added: 2026-08-03
 ---
+url: netizen.club
+ssl: yes
+cat: useful
+desc: collective focused on new retro web revival
+css-opt: yes
+libre: no
+button: netizen-club
+added: 2026-10-21
+---
 url: petermolnar.net
 ssl: yes
 cat: personal

@@ -164,6 +164,15 @@ feed: mycophobia.org/atom.xml
 css_opt: 1
 added: 2026-08-03
 
+url: netizen.club
+ssl: 1
+cat: useful
+desc: collective focused on new retro web revival
+css_opt: 1
+libre: 0
+button: netizen-club
+added: 2026-10-21
+
 url: petermolnar.net
 ssl: 1
 cat: personal
