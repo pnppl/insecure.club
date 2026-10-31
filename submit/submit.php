@@ -1,5 +1,9 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	if (strcasecmp($_POST['captcha'] ?? '', 'http') !== 0) {
+		die('wrong answer to CAPTCHA');
+	}
+
 	// URLs should probably all be validated as URLs
 	// client-side i only check the button URL cuz it's the only one I want the protocol for
 	// should update everything to validate on both ends (also update placeholders) then strip the protocol in here

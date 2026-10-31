@@ -678,6 +678,7 @@ with open("submit/index.html", "w") as out:
 						<br>
 						<textarea name="message" id="message" placeholder="i couldn't select the right option cuz your web design is hot garbage. also my site is on telnet. luv u, bye"></textarea>
 					</li>
+					<li><label>CAPTCHA: What protocol is this club devoted to? &nbsp; <input type="text" name="captcha" placeholder="hint: it's 4 letters"></label></li>
 				</ul>
 				<br>
 				<input type="submit" value="Submit Site">
