@@ -56,6 +56,15 @@ cat: audiovisual
 css-opt: no
 added: 2026-08-03
 ---
+url: eklausmeier.goip.de
+ssl: yes
+cat: technical
+desc: Elmar Klausmeier's Blog on Computers, Programming, and Mathematics
+feed-url: eklausmeier.goip.de/feed.xml
+css-opt: yes
+libre: no
+added: 2026-11-16
+---
 url: felix.plesoianu.ro
 ssl: yes
 cat: personal

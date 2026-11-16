@@ -4,10 +4,18 @@
 	<id>http://insecure.club/</id>
 	<link rel="alternate" href="http://insecure.club/"/>
 	<link rel="self" href="http://insecure.club/feed/feed.atom"/>
-	<updated>2026-10-21T16:42:57.895859+00:00</updated>
+	<updated>2026-11-16T07:54:11.720763+00:00</updated>
 	<author>
 		<name>pnppl</name>
 	</author>
+	<entry>
+		<title>eklausmeier.goip.de</title>
+		<link rel="alternate" type="text/html" href="http://eklausmeier.goip.de/"/>
+		<id>http://eklausmeier.goip.de/</id>
+		<published>2026-11-16T16:00:00Z</published>
+		<updated>2026-11-16T16:00:00Z</updated>
+		<summary type="html">technical; CSS optional: &lt;i&gt;Elmar Klausmeier&#x27;s Blog on Computers, Programming, and Mathematics&lt;/i&gt;</summary>
+	</entry>
 	<entry>
 		<title>netizen.club</title>
 		<link rel="alternate" type="text/html" href="http://netizen.club/"/>
