@@ -8,23 +8,20 @@ IndieAuth\Client::$redirectURL = 'http://insecure.club/house/redir.php';
 
 list($response, $error) = IndieAuth\Client::complete($_GET);
 
+header('Content-Type: text/html; charset=utf-8');
+$html = <<<EOD
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="color-scheme" content="light dark">
+EOD;
+
 if($error) {
-	header('Content-Type: text/html; charset=utf-8');
-	$html = <<<EOD
-	<!DOCTYPE html>
-	<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="color-scheme" content="light dark">
+	$html .= <<<EOD
 		<title>Login failed</title>
 	</head>
 	<body>
-	EOD;
-	$html .= "<p>Error: ".$error['error']."</p>";
-	$html .= "<p>".$error['error_description']."</p>";
-	$html .= <<<EOD
-	</body>
-	</html>
 	EOD;
 } else {
 	// Login succeeded!
@@ -49,7 +46,6 @@ if($error) {
 
 	// save the user's URL in the session
 	$_SESSION['user'] = $response['me'];
-	/*
 	$html .= <<<EOD
 		<meta http-equiv="Refresh" content="0; url='/house'">
 		<title>Redirecting...</title>
@@ -57,16 +53,12 @@ if($error) {
 	<body>
 		<p>Logged in successfully! Redirecting to <a href="/house">the clubhouse</a>...</p>
 	EOD;
-	*/
-	header('Location: ' . $clientID);
 }
 
-/*
 $html .= <<<EOD
 	</body>
 	</html>
 	EOD;
-*/
 echo $html;
 
 exit();
