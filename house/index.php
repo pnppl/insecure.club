@@ -2,8 +2,9 @@
 
 require __DIR__ . '/indieauth-client-php/vendor/autoload.php';
 
-// Start a session for the library to be able to save state between requests.
 session_start();
+
+$loc = 'http://insecure.club/house/';
 $html = <<<EOD
 <!DOCTYPE html>
 <html>
@@ -15,18 +16,18 @@ $html = <<<EOD
 <body>
 EOD;
 
-if (!isset($_SESSION['user'])) {
-	$html .= <<<EOD
-	<form action="." method="post">
-		<input type="text" name="url">
-		<input type="submit" name="mode" value="Log In">
-	</form>
-	EOD;
-} else {
+if (isset($_SESSION['user'])) {
 	$html .= "<p>Logged in as " . $_SESSION['user'] . '</p>';
 	$html .= <<<EOD
 	<form action="." method="post">
 		<input type="submit" name="mode" value="Log Out">
+	</form>
+	EOD;
+} else {
+	$html .= <<<EOD
+	<form action="." method="post">
+		<input type="text" name="url">
+		<input type="submit" name="mode" value="Log In">
 	</form>
 	EOD;
 }
@@ -37,7 +38,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if(!isset($_POST['url'])) {
 				$html .= "<p>Error: Missing URL</p>";
 			} else {
-				$html .= login();
+				IndieAuth\Client::$clientID = $loc;
+				IndieAuth\Client::$redirectURL = $loc;
+
+				// Pass the user's URL and your requested scope to the client (scope omitted for simple auth)
+				list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url']);
+
+				// Check whether the library was able to discover the necessary endpoints
+				if($error) {
+					$html .= "<p>Error: " . $error['error'] . "</p>";
+					$html .= "<p>" . $error['error_description'] . "</p>";
+				} else {
+					// Redirect the user to their authorization endpoint
+					header('Location: ' . $authorizationURL);
+				}
 			}
 			break;
 		case 'Log Out':
@@ -51,46 +65,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			        $params["secure"], $params["httponly"]
 			    );
 			}
-			header('Location: ' . 'http://insecure.club/house/');
+			header('Location: ' . $loc);
 			break;
 		case 'Post':
 			break;
 		case 'Delete':
 			break;
-		default:
-			// $html .= '<p>Error: missing mode</p>';
-			list($response, $error) = IndieAuth\Client::complete($_GET);
-			if($error) {
-				$html .= "<p>Error: ".$error['error']."</p>";
-				$html .= "<p>".$error['error_description']."</p>";
-			} else {
-				// save the user's URL in the session
-				$_SESSION['user'] = $response['me'];
-				header('Location: ' . 'http://insecure.club/house/');
-			}
 	}
 }
 
-function login() {
-	// The client ID should be the home page of your app.
-	IndieAuth\Client::$clientID = 'http://insecure.club/house/';
-
-	// The redirect URL is where the user will be returned to after they approve the request.
-	IndieAuth\Client::$redirectURL = 'http://insecure.club/house/';
-
-	// Pass the user's URL and your requested scope to the client (scope omitted for simple auth)
-	list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url']);
-
-	// Check whether the library was able to discover the necessary endpoints
+// assume login redirect and attempt to handle it
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
+	IndieAuth\Client::$clientID = $loc;
+	IndieAuth\Client::$redirectURL = $loc;
+	list($response, $error) = IndieAuth\Client::complete($_GET);
 	if($error) {
-		$html = "<p>Error: " . $error['error'] . "</p>";
-		$html .= "<p>" . $error['error_description'] . "</p>";
-		return $html;
+		$html .= "<p>Error: ".$error['error']."</p>";
+		$html .= "<p>".$error['error_description']."</p>";
 	} else {
-		// Redirect the user to their authorization endpoint
-		header('Location: ' . $authorizationURL);
+		// save the user's URL in the session
+		$_SESSION['user'] = $response['me'];
+		header('Location: ' . $loc);
 	}
 }
+
 $html .= <<<EOD
 </body>
 </html>
