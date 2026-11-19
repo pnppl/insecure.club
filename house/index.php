@@ -5,6 +5,13 @@ require __DIR__ . '/indieauth-client-php/vendor/autoload.php';
 $allowlist_path = '../sites.txt';
 $loc = 'https://insecure.club/house/';
 
+session_set_cookie_params([
+	'lifetime' => 0,
+	'path' => '/house',
+	'secure' => false,
+	'httponly' => true,
+	'samesite' => 'Strict',
+]);
 session_start();
 
 $html = <<<EOD
@@ -28,7 +35,7 @@ if (isset($_SESSION['user'])) {
 } else {
 	$html .= <<<EOD
 	<form action="." method="post">
-		<input type="text" name="url">
+		<input type="text" name="url" placeholder="pnppl.cc">
 		<input type="submit" name="mode" value="Log In">
 	</form>
 	EOD;
@@ -37,7 +44,7 @@ if (isset($_SESSION['user'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	switch ($_POST['mode']) {
 		case 'Log In':
-			if (!isset($_POST['url'])) {
+			if (!isset($_POST['url']) || $_POST['url'] === '') {
 				$html .= "<p>Error: Missing URL</p>";
 			} else {
 				$allowlist = file($allowlist_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
