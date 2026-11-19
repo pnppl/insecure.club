@@ -4,7 +4,7 @@ require __DIR__ . '/indieauth-client-php/vendor/autoload.php';
 
 session_start();
 
-$loc = 'http://insecure.club/house/';
+$loc = 'https://insecure.club/house/';
 $html = <<<EOD
 <!DOCTYPE html>
 <html>
@@ -38,14 +38,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if(!isset($_POST['url'])) {
 				$html .= "<p>Error: Missing URL</p>";
 			} else {
+				// save for later
+				$_SESSION['initialUrl'] = $_POST['url'];
+
 				IndieAuth\Client::$clientID = $loc;
 				IndieAuth\Client::$redirectURL = $loc;
 
 				// Pass the user's URL and your requested scope to the client (scope omitted for simple auth)
 				list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url']);
 
-				// Check whether the library was able to discover the necessary endpoints
-				if($error) {
+				// indielogin fallback that i can't get to fucking work
+/*
+				if ($error) {
+//					var_dump($error);
+					$error = false;
+					list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url'], authorizationEndpoint: 'https://indielogin.com/authorize');
+				}
+*/
+				if ($error) {
+//					var_dump($error);
 					$html .= "<p>Error: " . $error['error'] . "</p>";
 					$html .= "<p>" . $error['error_description'] . "</p>";
 				} else {
@@ -55,9 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			}
 			break;
 		case 'Log Out':
+			// clear session
 			$_SESSION = array();
-			// If it's desired to kill the session, also delete the session cookie.
-			// Note: This will destroy the session, and not just the session data!
+			// clear cookies
 			if (ini_get("session.use_cookies")) {
 			    $params = session_get_cookie_params();
 			    setcookie(session_name(), '', time() - 42000,
@@ -79,11 +90,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
 	IndieAuth\Client::$clientID = $loc;
 	IndieAuth\Client::$redirectURL = $loc;
 	list($response, $error) = IndieAuth\Client::complete($_GET);
-	if($error) {
+
+	// debug
+//	var_dump($error);
+
+	if ($error) {
 		$html .= "<p>Error: ".$error['error']."</p>";
 		$html .= "<p>".$error['error_description']."</p>";
 	} else {
-		// save the user's URL in the session
+		// login complete - save the user's URL in the session
 		$_SESSION['user'] = $response['me'];
 		header('Location: ' . $loc);
 	}

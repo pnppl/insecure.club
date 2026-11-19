@@ -15,3 +15,12 @@
 - can we merge the checker with the URL input field on the submit page?
 
 - suddenly after fighting with every browser to access http i'm discovering a bunch of them still load it just fine? wtf? totally undercuts my argument about browser defenses. remove or rework...
+^^^^^^^^^^^^^^^^^^^^^
+
+- i think i wanna delete the sites i added when the clubhouse goes up, feels more clubby
+
+- clubhouse: need to add indielogin fallback, preferably in a way that leaves the upstream source code alone
+	- which we either need to vendor or change way the automatic git deploy works
+	- ok i thought i had this working but actually no. need to debug the fallback
+		- getting 405
+		- independently, codeberg has stopped working - shows as unsupported on indielogin.com - maybe due to their dns issues earlier
