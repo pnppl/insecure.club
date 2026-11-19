@@ -1,0 +1,90 @@
+%rec: site
+%doc: Entry in the insecure.club HTTP directory.
+%mandatory: url
+%mandatory: ssl
+%mandatory: cat
+%mandatory: added
+%type: url line
+%type: ssl bool
+%type: cat enum
++ misc
++ personal
++ creative
++ informative
++ technical
++ useful
++ audiovisual
++ interactive
++ social
++ sexual
++ historical
+%type: desc line
+%type: feed line
+%type: css_opt bool
+%type: libre bool
+%type: button line
+%type: added date
+
+url: brennan.oldcities.org
+ssl: 1
+cat: personal
+desc: A plaintext insecure mirror of IndieWeb publication https://brennan.day
+feed: brennan.oldcities.org/feed.xml
+css_opt: 1
+libre: 1
+button: brennan-day-anim
+added: 2026-10-02
+
+url: eklausmeier.goip.de
+ssl: 1
+cat: technical
+desc: Elmar Klausmeier's Blog on Computers, Programming, and Mathematics
+feed: eklausmeier.goip.de/feed.xml
+css_opt: 1
+libre: 0
+added: 2026-11-16
+
+url: felix.plesoianu.ro
+ssl: 1
+cat: personal
+desc: Just a ghost of social networks past, haunting the web.
+feed: felix.plesoianu.ro/index.xml
+css_opt: 1
+libre: 1
+added: 2026-09-18
+
+url: handthing.party
+ssl: 1
+cat: audiovisual
+desc: You still doing that hand thing?
+css_opt: 1
+button: handthing-anim
+added: 2026-08-03
+
+url: netizen.club
+ssl: 1
+cat: useful
+desc: collective focused on new retro web revival
+css_opt: 1
+libre: 0
+button: netizen-club
+added: 2026-10-21
+
+url: pnppl.cc
+ssl: 1
+cat: personal
+desc: Notes, essays, fiction, art, code, and whatever else I feel like posting.
+feed: pnppl.cc/+/feed.rss
+css_opt: 1
+libre: 1
+button: pnppl.cc-dandelion
+added: 2026-08-03
+
+url: sushantmondal.com
+ssl: 1
+cat: personal
+desc: Personal website of a computer architect.
+feed: sushantmondal.com/blog/feed/
+css_opt: 1
+libre: 0
+added: 2026-09-01

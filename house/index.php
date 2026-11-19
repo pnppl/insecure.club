@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				if (isset($_POST['public'])) {
 					$dir = 'public/';
 				}
-				$msg = htmlspecialchars($msg, ENT_QUOTES);
+				$msg = htmlspecialchars($msg);
 				$link = trim(filter_var($_POST['link'] ?? '', FILTER_VALIDATE_URL));
 				if ($link !== '') {
 					$msg = '<a href="' . $link . '">' . $msg . '</a>';
@@ -184,7 +184,7 @@ foreach ($posts as $file => $dir) {
 	$post_time = date('Y-m-d (D.) @ H:i:s', $filename[0]);
 	$post_author = $filename[1];
 	$post_text = file_get_contents($dir . $file);
-	$html .= "\n\t<blockquote>\n\t\t" . $post_text . "<br>\n\t\t<i>" . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, ' . $post_time . '</i>';
+	$html .= "\n\t<blockquote>\n\t\t" . $post_text . "<br>\n\t\t<i>" . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, <time>' . $post_time . '</time></i>';
 	if (check_author($post_author)) {
 		$html .= <<<EOD
 

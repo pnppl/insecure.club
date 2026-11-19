@@ -18,9 +18,12 @@
 ^^^^^^^^^^^^^^^^^^^^^
 
 - i think i wanna delete the sites i added when the clubhouse goes up, feels more clubby
+	- easily pruned the recfile (such a good format!!!), but not sure how to deal with the yaml
+		- let's see about switching over to rec as part of the pruning
+	- i would like to keep some of the... honorary inductees around, in a "friends of the site"/"highly recommended" section
+		- the byte clubs, wiby, floodgap
 
 - indielogin fallback for rel=me
 	- had to set the endpoint to /auth instead of /authorize or i got 405
 	- url has to match exactly or you get an error
 	- codeberg has stopped working - shows as unsupported on indielogin.com - maybe due to their dns issues earlier
-- remember to htaccess or w/e to hide posts

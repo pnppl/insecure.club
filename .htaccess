@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule (house/posts) - [R=404,L]
