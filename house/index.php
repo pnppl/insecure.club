@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$victim = $_POST['victim'] ?? '';
 			if ($victim !== '') {
 				$filename = explode(" ", $victim);
-				if (check_author($filename[1])) {
+				if (check_author($filename[1]) && preg_match('/^posts|public\//', $filename[0])) {
 					unlink($victim);
 					header('Location: ' . $loc);
 				} else {
