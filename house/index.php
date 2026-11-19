@@ -43,6 +43,9 @@ $html = <<<EOD
 	.post {
 		margin-top: 1.5em;
 	}
+	hr:last-of-type {
+		display: none;
+	}
 	@media (prefers-color-scheme: dark) {
 		body {
 			background-color: black;
