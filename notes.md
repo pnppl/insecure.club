@@ -23,3 +23,4 @@
 	- had to set the endpoint to /auth instead of /authorize or i got 405
 	- url has to match exactly or you get an error
 	- codeberg has stopped working - shows as unsupported on indielogin.com - maybe due to their dns issues earlier
+- remember to htaccess or w/e to hide posts

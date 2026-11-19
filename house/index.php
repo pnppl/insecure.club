@@ -3,7 +3,10 @@
 require __DIR__ . '/indieauth-client-php/vendor/autoload.php';
 
 $allowlist_path = '../sites.txt';
-$loc = 'https://insecure.club/house/';
+$loc = 'http://insecure.club/house/';
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+	$loc = 'https://insecure.club/house/';
+}
 
 session_set_cookie_params([
 	'lifetime' => 0,
@@ -30,6 +33,12 @@ if (isset($_SESSION['user'])) {
 	$html .= <<<EOD
 	<form action="." method="post">
 		<input type="submit" name="mode" value="Log Out">
+	</form>
+	<form action="." method="post">
+		<textarea name="message" id="message">Hello i am a very unfortunate nigerian prince who needs your help. i will pay you 1 Million Dollars and a life time supply of boner pills if you wire me only 1000$</textarea>
+		<input type="url" name="link" id="link" placeholder="http://handthing.party/">
+		<label><input type="checkbox" name="public" id="public"> Public</label>
+		<input type="submit" name="mode" value="Post">
 	</form>
 	EOD;
 } else {
@@ -94,6 +103,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			header('Location: ' . $loc);
 			break;
 		case 'Post':
+			$msg = trim($_POST['message'] ?? '');
+			if ($msg === '') {
+				$html .= "<p>Got empty message.</p>";
+			} elseif (isset($_SESSION['user'])) {
+				$dir = 'posts/';
+				if (isset($_POST['public'])) {
+					$dir = 'public/';
+				}
+				$url_bare = preg_replace('/^https?:\/\//i', '', $_SESSION['user'], 1);
+				$url_bare = preg_replace('/\/$/', '', $url_bare, 1);
+				$msg = htmlspecialchars($msg, ENT_QUOTES);
+				$link = trim(filter_var($_POST['link'] ?? '', FILTER_VALIDATE_URL));
+				if ($link !== '') {
+					$msg = '<a href="' . $link . '">' . $msg . '</a>';
+				}
+				file_put_contents($dir . time() . ' ' . $url_bare, $msg);
+				// $html .= '<p>Message posted! Refreshing in 5 seconds...</p>';
+				// $html .= '<meta http-equiv="Refresh" content="5; url=\'.\'">';
+				header('Location: ' . $loc);
+			} else {
+				$html .= "<p>You must be logged in to post.</p>";
+			}
 			break;
 		case 'Delete':
 			break;
@@ -118,6 +149,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
 		$_SESSION['via'] = $response['response_details']['url'];
 		header('Location: ' . $loc);
 	}
+}
+
+// display the posts
+$public = array_diff(scandir('public/', SCANDIR_SORT_DESCENDING), array('..', '.'));
+$posts = array_fill_keys($public, 'public/');
+if (isset($_SESSION['user'])) {
+	$private = array_diff(scandir('posts/', SCANDIR_SORT_DESCENDING), array('..', '.'));
+	$private = array_fill_keys($private, 'posts/');
+	$posts = array_merge($posts, $private);
+	krsort($posts);
+}
+foreach ($posts as $file => $dir) {
+	$filename = explode(" ", $file);
+	$post_time = date('Y-m-d (D.) @ H:i:s', $filename[0]);
+	$post_author = $filename[1];
+	$post_text = file_get_contents($dir . $file);
+	$html .= '<blockquote>' . $post_text . '<br><i>' . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, ' . $post_time . '</i></blockquote>';
 }
 
 $html .= <<<EOD
