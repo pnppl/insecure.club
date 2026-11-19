@@ -29,10 +29,18 @@ $html = <<<EOD
 EOD;
 
 if (isset($_SESSION['user'])) {
-	$html .= "<p>Logged in as " . $_SESSION['user'] . ' via ' . $_SESSION['via'] . '</p>';
 	$html .= <<<EOD
+
 	<form action="." method="post">
-		<input type="submit" name="mode" value="Log Out">
+		<label>
+			Logged in as <a href="
+EOD;
+	$html .= $_SESSION['user'] . '">' . bare_url($_SESSION['user']);
+	$html .= '</a> via <a href="' . $_SESSION['via'] . '">' . bare_url($_SESSION['via'] . '</a>');
+	$html .= <<<EOD
+
+			<input type="submit" name="mode" value="Log Out">
+		</label>
 	</form>
 	<form action="." method="post">
 		<textarea name="message" id="message">Hello i am a very unfortunate nigerian prince who needs your help. i will pay you 1 Million Dollars and a life time supply of boner pills if you wire me only 1000$</textarea>
@@ -40,14 +48,17 @@ if (isset($_SESSION['user'])) {
 		<label><input type="checkbox" name="public" id="public"> Public</label>
 		<input type="submit" name="mode" value="Post">
 	</form>
-	EOD;
+
+EOD;
 } else {
 	$html .= <<<EOD
+
 	<form action="." method="post">
 		<input type="text" name="url" placeholder="pnppl.cc">
 		<input type="submit" name="mode" value="Log In">
 	</form>
-	EOD;
+
+EOD;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -173,18 +184,20 @@ foreach ($posts as $file => $dir) {
 	$post_time = date('Y-m-d (D.) @ H:i:s', $filename[0]);
 	$post_author = $filename[1];
 	$post_text = file_get_contents($dir . $file);
-	$html .= '<blockquote>' . $post_text . '<br><i>' . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, ' . $post_time . '</i>';
+	$html .= "\n\t<blockquote>\n\t\t" . $post_text . "<br>\n\t\t<i>" . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, ' . $post_time . '</i>';
 	if (check_author($post_author)) {
 		$html .= <<<EOD
-		<form action="." method="post">
-			<input type="submit" name="mode" value="Delete">
-		EOD;
-		$html .= '<input type="hidden" name="victim" value="' . $dir . $file . '"></form>';
+
+			<form action="." method="post">
+				<input type="submit" name="mode" value="Delete">
+	EOD;
+		$html .= '<input type="hidden" name="victim" value="' . $dir . $file . '">' . "\n\t\t</form>";
 	}
-	$html .= '</blockquote>';
+	$html .= "\n\t</blockquote>";
 }
 
 $html .= <<<EOD
+
 </body>
 </html>
 EOD;
