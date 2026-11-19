@@ -17,7 +17,7 @@ $html = <<<EOD
 EOD;
 
 if (isset($_SESSION['user'])) {
-	$html .= "<p>Logged in as " . $_SESSION['user'] . '</p>';
+	$html .= "<p>Logged in as " . $_SESSION['user'] . ' via ' . $_SESSION['via'] . '</p>';
 	$html .= <<<EOD
 	<form action="." method="post">
 		<input type="submit" name="mode" value="Log Out">
@@ -38,25 +38,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if(!isset($_POST['url'])) {
 				$html .= "<p>Error: Missing URL</p>";
 			} else {
-				// save for later
-				$_SESSION['initialUrl'] = $_POST['url'];
-
 				IndieAuth\Client::$clientID = $loc;
 				IndieAuth\Client::$redirectURL = $loc;
 
 				// Pass the user's URL and your requested scope to the client (scope omitted for simple auth)
 				list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url']);
 
-				// indielogin fallback that i can't get to fucking work
-/*
+				// indielogin fallback (for rel=me etc)
+				// seems to be working, ish, but you have to type the URL exactly or you get an error about the auth endpoints not matching
+				// kind of seems like these begin/complete wrappers just don't really work well with indielogin despite it being specifically mentioned
 				if ($error) {
-//					var_dump($error);
 					$error = false;
-					list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url'], authorizationEndpoint: 'https://indielogin.com/authorize');
+					list($authorizationURL, $error) = IndieAuth\Client::begin(
+						$_POST['url'],
+						authorizationEndpoint: 'https://indielogin.com/auth', // the docs all say /authorize, but chatbot insisted on /auth which i tried, and surprisingly i stopped getting 405s...
+					);
 				}
-*/
+
 				if ($error) {
-//					var_dump($error);
 					$html .= "<p>Error: " . $error['error'] . "</p>";
 					$html .= "<p>" . $error['error_description'] . "</p>";
 				} else {
@@ -91,15 +90,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
 	IndieAuth\Client::$redirectURL = $loc;
 	list($response, $error) = IndieAuth\Client::complete($_GET);
 
-	// debug
-//	var_dump($error);
-
 	if ($error) {
 		$html .= "<p>Error: ".$error['error']."</p>";
 		$html .= "<p>".$error['error_description']."</p>";
+		if ($error['error'] === 'invalid_authorization_endpoint') {
+			$html .= "<p>Make sure you enter your URL exactly, including trailing slash if applicable.</p>";
+		}
 	} else {
-		// login complete - save the user's URL in the session
+		// login complete - save the user's URL and auth endpoint in the session
 		$_SESSION['user'] = $response['me'];
+		$_SESSION['via'] = $response['response_details']['url'];
 		header('Location: ' . $loc);
 	}
 }

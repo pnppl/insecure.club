@@ -19,8 +19,7 @@
 
 - i think i wanna delete the sites i added when the clubhouse goes up, feels more clubby
 
-- clubhouse: need to add indielogin fallback, preferably in a way that leaves the upstream source code alone
-	- which we either need to vendor or change way the automatic git deploy works
-	- ok i thought i had this working but actually no. need to debug the fallback
-		- getting 405
-		- independently, codeberg has stopped working - shows as unsupported on indielogin.com - maybe due to their dns issues earlier
+- indielogin fallback for rel=me
+	- had to set the endpoint to /auth instead of /authorize or i got 405
+	- url has to match exactly or you get an error
+	- codeberg has stopped working - shows as unsupported on indielogin.com - maybe due to their dns issues earlier
