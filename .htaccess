@@ -1,2 +1,4 @@
 RewriteEngine On
 RewriteRule (house/posts) - [R=404,L]
+
+AddOutputFilter INCLUDES .html

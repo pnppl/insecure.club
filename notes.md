@@ -27,3 +27,5 @@
 	- had to set the endpoint to /auth instead of /authorize or i got 405
 	- url has to match exactly or you get an error
 	- codeberg has stopped working - shows as unsupported on indielogin.com - maybe due to their dns issues earlier
+
+- all logins started failing with the opaque bad session error it returns when you try to complete and some vars are missing. checked out older and older versions and then eventually it just... started working again. it wasn't me. so yeah don't panic, remember the server is a pile of shit
