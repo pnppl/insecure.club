@@ -2,9 +2,11 @@
 
 require __DIR__ . '/indieauth-client-php/vendor/autoload.php';
 
+$allowlist_path = '../sites.txt';
+$loc = 'https://insecure.club/house/';
+
 session_start();
 
-$loc = 'https://insecure.club/house/';
 $html = <<<EOD
 <!DOCTYPE html>
 <html>
@@ -35,32 +37,39 @@ if (isset($_SESSION['user'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	switch ($_POST['mode']) {
 		case 'Log In':
-			if(!isset($_POST['url'])) {
+			if (!isset($_POST['url'])) {
 				$html .= "<p>Error: Missing URL</p>";
 			} else {
-				IndieAuth\Client::$clientID = $loc;
-				IndieAuth\Client::$redirectURL = $loc;
+				$allowlist = file($allowlist_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+				$url_bare = preg_replace('/^https?:\/\//i', '', $_POST['url'], 1);
+				$url_bare = preg_replace('/\/$/', '', $url_bare, 1);
+				if (in_array('http://' . $url_bare, $allowlist, true)) {
+					IndieAuth\Client::$clientID = $loc;
+					IndieAuth\Client::$redirectURL = $loc;
 
-				// Pass the user's URL and your requested scope to the client (scope omitted for simple auth)
-				list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url']);
+					// Pass the user's URL and your requested scope to the client (scope omitted for simple auth)
+					list($authorizationURL, $error) = IndieAuth\Client::begin($_POST['url']);
 
-				// indielogin fallback (for rel=me etc)
-				// seems to be working, ish, but you have to type the URL exactly or you get an error about the auth endpoints not matching
-				// kind of seems like these begin/complete wrappers just don't really work well with indielogin despite it being specifically mentioned
-				if ($error) {
-					$error = false;
-					list($authorizationURL, $error) = IndieAuth\Client::begin(
-						$_POST['url'],
-						authorizationEndpoint: 'https://indielogin.com/auth', // the docs all say /authorize, but chatbot insisted on /auth which i tried, and surprisingly i stopped getting 405s...
-					);
-				}
+					// indielogin fallback (for rel=me etc)
+					// seems to be working, ish, but you have to type the URL exactly or you get an error about the auth endpoints not matching
+					// kind of seems like these begin/complete wrappers just don't really work well with indielogin despite it being specifically mentioned
+					if ($error) {
+						$error = false;
+						list($authorizationURL, $error) = IndieAuth\Client::begin(
+							$_POST['url'],
+							authorizationEndpoint: 'https://indielogin.com/auth', // the docs all say /authorize, but chatbot insisted on /auth which i tried, and surprisingly i stopped getting 405s...
+						);
+					}
 
-				if ($error) {
-					$html .= "<p>Error: " . $error['error'] . "</p>";
-					$html .= "<p>" . $error['error_description'] . "</p>";
+					if ($error) {
+						$html .= "<p>Error: " . $error['error'] . "</p>";
+						$html .= "<p>" . $error['error_description'] . "</p>";
+					} else {
+						// Redirect the user to their authorization endpoint
+						header('Location: ' . $authorizationURL);
+					}
 				} else {
-					// Redirect the user to their authorization endpoint
-					header('Location: ' . $authorizationURL);
+					$html .= '<p>Only club members are allowed in the clubhouse. If your site is on the <a href="' . $allowlist_path . '">list</a> but you still can\'t log in, <a href="mailto:&#x68;&#x65;&#x6C;&#x70;&#x40;&#x69;&#x6E;&#x73;&#x65;&#x63;&#x75;&#x72;&#x65;&#x2E;&#x63;&#x6C;&#x75;&#x62;?subject=Clubhouse%20login%20issue">email me</a>.</p>';
 				}
 			}
 			break;
@@ -69,11 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$_SESSION = array();
 			// clear cookies
 			if (ini_get("session.use_cookies")) {
-			    $params = session_get_cookie_params();
-			    setcookie(session_name(), '', time() - 42000,
-			        $params["path"], $params["domain"],
-			        $params["secure"], $params["httponly"]
-			    );
+				$params = session_get_cookie_params();
+				setcookie(session_name(), '', time() - 42000,
+					$params["path"], $params["domain"],
+					$params["secure"], $params["httponly"]
+				);
 			}
 			header('Location: ' . $loc);
 			break;
