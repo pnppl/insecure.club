@@ -23,7 +23,14 @@ $html = <<<EOD
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="color-scheme" content="light dark">
-	<title>clubhouse | insecure.club</title>
+	<title>Clubhouse | insecure.club</title>
+	<style><!--
+	@media (prefers-color-scheme: dark) {
+		body {
+			background-color: black;
+		}
+	}
+	--></style>
 </head>
 <body>
 EOD;
@@ -31,7 +38,7 @@ EOD;
 if (isset($_SESSION['user'])) {
 	$html .= <<<EOD
 
-	<form action="." method="post">
+	<form action="." method="post"><fieldset>
 		<label>
 			Logged in as <a href="
 EOD;
@@ -41,13 +48,27 @@ EOD;
 
 			<input type="submit" name="mode" value="Log Out">
 		</label>
-	</form>
-	<form action="." method="post">
-		<textarea name="message" id="message">Hello i am a very unfortunate nigerian prince who needs your help. i will pay you 1 Million Dollars and a life time supply of boner pills if you wire me only 1000$</textarea>
-		<input type="url" name="link" id="link" placeholder="http://handthing.party/">
+	</fieldset></form>
+	<center><h1>Clubhouse</h1></center>
+	<form action="." method="post"><fieldset>
+		<label>
+			Message:
+			<br>
+			<textarea name="message" id="message"
+			placeholder="Hello i am a very unfortunate nigerian prince who needs your help.
+i will pay you 1 Million Dollars and a life time supply of boner pills if you wire me only 1000$"
+			required></textarea>
+		</label>
+		<br>
+		<label>
+			Optional site to link your post to (your site's URL will always be shown):
+			<br>
+			<input type="url" name="link" id="link" placeholder="http://handthing.party/" title="Optional">
+		</label>
+		<br>
 		<label><input type="checkbox" name="public" id="public"> Public</label>
 		<input type="submit" name="mode" value="Post">
-	</form>
+	</fieldset></form>
 
 EOD;
 } else {
@@ -57,6 +78,8 @@ EOD;
 		<input type="text" name="url" placeholder="pnppl.cc">
 		<input type="submit" name="mode" value="Log In">
 	</form>
+	<center><h1>Clubhouse</h1></center>
+	<center><h2>These are only the public posts. <a href="../submit/">Join</a> to see the rest!</h2></center>
 
 EOD;
 }
@@ -208,7 +231,7 @@ function bare_url($url) {
 	return preg_replace('/\/$/', '', $url_bare, 1);
 }
 function check_author($name) {
-	if (isset($_SESSION['user']) && bare_url($_SESSION['user']) === $name) {
+	if (isset($_SESSION['user']) && (bare_url($_SESSION['user']) === $name || bare_url($_SESSION['user']) === 'pnppl.cc')) {
 		return true;
 	}
 	return false;
