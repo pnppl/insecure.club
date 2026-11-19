@@ -13,7 +13,7 @@ session_set_cookie_params([
 	'path' => '/house',
 	'secure' => false,
 	'httponly' => true,
-	'samesite' => 'Strict',
+	'samesite' => 'Lax',
 ]);
 session_start();
 
@@ -25,6 +25,24 @@ $html = <<<EOD
 	<meta name="color-scheme" content="light dark">
 	<title>Clubhouse | insecure.club</title>
 	<style><!--
+	form {
+		width: fit-content;
+	}
+	#session,
+	.right {
+		margin-left: auto;
+	}
+	#new,
+	#posts {
+		margin: 0 auto;
+		width: 65ch;
+	}
+	#posts fieldset {
+		padding-top: 0;
+	}
+	.post {
+		margin-top: 1.5em;
+	}
 	@media (prefers-color-scheme: dark) {
 		body {
 			background-color: black;
@@ -38,7 +56,7 @@ EOD;
 if (isset($_SESSION['user'])) {
 	$html .= <<<EOD
 
-	<form action="." method="post"><fieldset>
+	<form action="." method="post" id="session"><fieldset>
 		<label>
 			Logged in as <a href="
 EOD;
@@ -50,11 +68,13 @@ EOD;
 		</label>
 	</fieldset></form>
 	<center><h1>Clubhouse</h1></center>
-	<form action="." method="post"><fieldset>
+	<form action="." method="post" id="new"><fieldset>
 		<label>
 			Message:
 			<br>
 			<textarea name="message" id="message"
+			rows="3"
+			cols="71"
 			placeholder="Hello i am a very unfortunate nigerian prince who needs your help.
 i will pay you 1 Million Dollars and a life time supply of boner pills if you wire me only 1000$"
 			required></textarea>
@@ -63,21 +83,22 @@ i will pay you 1 Million Dollars and a life time supply of boner pills if you wi
 		<label>
 			Optional site to link your post to (your site's URL will always be shown):
 			<br>
-			<input type="url" name="link" id="link" placeholder="http://handthing.party/" title="Optional">
+			<input type="url" name="link" id="link" size="64"
+			placeholder="http://handthing.party/" title="Optional">
 		</label>
 		<br>
 		<label><input type="checkbox" name="public" id="public"> Public</label>
-		<input type="submit" name="mode" value="Post">
+		<input type="submit" name="mode" class="right" style="display:block" value="Post">
 	</fieldset></form>
 
 EOD;
 } else {
 	$html .= <<<EOD
 
-	<form action="." method="post">
+	<form action="." method="post" id="session"><fieldset>
 		<input type="text" name="url" placeholder="pnppl.cc">
-		<input type="submit" name="mode" value="Log In">
-	</form>
+		<input type="submit" name="mode" class="right" value="Log In">
+	</fieldset></form>
 	<center><h1>Clubhouse</h1></center>
 	<center><h2>These are only the public posts. <a href="../submit/">Join</a> to see the rest!</h2></center>
 
@@ -144,6 +165,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					$dir = 'public/';
 				}
 				$msg = htmlspecialchars($msg);
+				$msg = str_replace("\t", '&nbsp;&nbsp;&nbsp;&nbsp;', $msg);
+				$msg = str_replace("\r\n", '<br>', $msg);
+				$msg = str_replace(["\n", "\r"], '<br>', $msg);
 				$link = trim(filter_var($_POST['link'] ?? '', FILTER_VALIDATE_URL));
 				if ($link !== '') {
 					$msg = '<a href="' . $link . '">' . $msg . '</a>';
@@ -194,6 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
 }
 
 // display the posts
+$html .= '<br><div id="posts"><fieldset>' . "\n";
 $public = array_diff(scandir('public/', SCANDIR_SORT_DESCENDING), array('..', '.'));
 $posts = array_fill_keys($public, 'public/');
 if (isset($_SESSION['user'])) {
@@ -202,25 +227,28 @@ if (isset($_SESSION['user'])) {
 	$posts = array_merge($posts, $private);
 	krsort($posts);
 }
+date_default_timezone_set('America/New_York');
 foreach ($posts as $file => $dir) {
 	$filename = explode(" ", $file);
 	$post_time = date('Y-m-d (D.) @ H:i:s', $filename[0]);
 	$post_author = $filename[1];
 	$post_text = file_get_contents($dir . $file);
-	$html .= "\n\t<blockquote>\n\t\t" . $post_text . "<br>\n\t\t<i>" . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, <time>' . $post_time . '</time></i>';
+	$html .= "\n\t<p class='post'>\n\t\t" . $post_text . '</p>';
+	$html .= "\n\t\t<i>" . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, <time>' . $post_time . '</time></i>';
 	if (check_author($post_author)) {
 		$html .= <<<EOD
 
-			<form action="." method="post">
+			<form action="." method="post" class="right" style="float:right">
 				<input type="submit" name="mode" value="Delete">
 	EOD;
 		$html .= '<input type="hidden" name="victim" value="' . $dir . $file . '">' . "\n\t\t</form>";
 	}
-	$html .= "\n\t</blockquote>";
+	$html .= "\n<br>\n";
 }
 
 $html .= <<<EOD
 
+	</div></fieldset>
 </body>
 </html>
 EOD;
