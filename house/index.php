@@ -243,12 +243,12 @@ foreach ($posts as $file => $dir) {
 	EOD;
 		$html .= '<input type="hidden" name="victim" value="' . $dir . $file . '">' . "\n\t\t</form>";
 	}
-	$html .= "\n<br>\n";
+	$html .= "\n<hr>\n";
 }
 
 $html .= <<<EOD
 
-	</div></fieldset>
+	</fieldset></div>
 </body>
 </html>
 EOD;
