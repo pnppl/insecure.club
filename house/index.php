@@ -57,9 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$html .= "<p>Error: Missing URL</p>";
 			} else {
 				$allowlist = file($allowlist_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-				$url_bare = preg_replace('/^https?:\/\//i', '', $_POST['url'], 1);
-				$url_bare = preg_replace('/\/$/', '', $url_bare, 1);
-				if (in_array('http://' . $url_bare, $allowlist, true)) {
+				if (in_array('http://' . bare_url($_POST['url']), $allowlist, true)) {
 					IndieAuth\Client::$clientID = $loc;
 					IndieAuth\Client::$redirectURL = $loc;
 
@@ -111,14 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				if (isset($_POST['public'])) {
 					$dir = 'public/';
 				}
-				$url_bare = preg_replace('/^https?:\/\//i', '', $_SESSION['user'], 1);
-				$url_bare = preg_replace('/\/$/', '', $url_bare, 1);
 				$msg = htmlspecialchars($msg, ENT_QUOTES);
 				$link = trim(filter_var($_POST['link'] ?? '', FILTER_VALIDATE_URL));
 				if ($link !== '') {
 					$msg = '<a href="' . $link . '">' . $msg . '</a>';
 				}
-				file_put_contents($dir . time() . ' ' . $url_bare, $msg);
+				file_put_contents($dir . time() . ' ' . bare_url($_SESSION['user']), $msg);
 				// $html .= '<p>Message posted! Refreshing in 5 seconds...</p>';
 				// $html .= '<meta http-equiv="Refresh" content="5; url=\'.\'">';
 				header('Location: ' . $loc);
@@ -127,6 +123,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			}
 			break;
 		case 'Delete':
+			$victim = $_POST['victim'] ?? '';
+			if ($victim !== '') {
+				$filename = explode(" ", $victim);
+				if (check_author($filename[1])) {
+					unlink($victim);
+					header('Location: ' . $loc);
+				} else {
+					$html .= "<p>You can only delete your own posts.</p>";
+				}
+			} else {
+				$html .= "<p>Missing deletion target.</p>";
+			}
 			break;
 	}
 }
@@ -165,7 +173,15 @@ foreach ($posts as $file => $dir) {
 	$post_time = date('Y-m-d (D.) @ H:i:s', $filename[0]);
 	$post_author = $filename[1];
 	$post_text = file_get_contents($dir . $file);
-	$html .= '<blockquote>' . $post_text . '<br><i>' . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, ' . $post_time . '</i></blockquote>';
+	$html .= '<blockquote>' . $post_text . '<br><i>' . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, ' . $post_time . '</i>';
+	if (check_author($post_author)) {
+		$html .= <<<EOD
+		<form action="." method="post">
+			<input type="submit" name="mode" value="Delete">
+		EOD;
+		$html .= '<input type="hidden" name="victim" value="' . $dir . $file . '"></form>';
+	}
+	$html .= '</blockquote>';
 }
 
 $html .= <<<EOD
@@ -173,6 +189,17 @@ $html .= <<<EOD
 </html>
 EOD;
 echo $html;
+
+function bare_url($url) {
+	$url_bare = preg_replace('/^https?:\/\//i', '', $url, 1);
+	return preg_replace('/\/$/', '', $url_bare, 1);
+}
+function check_author($name) {
+	if (isset($_SESSION['user']) && bare_url($_SESSION['user']) === $name) {
+		return true;
+	}
+	return false;
+}
 
 exit();
 ?>
