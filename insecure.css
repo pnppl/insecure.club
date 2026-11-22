@@ -192,6 +192,19 @@ body:not(:has(#audiovisual-filter:checked)) {
 		filter: invert();
 	}
 }
+fieldset {
+	border: 1px dashed hotpink;
+}
+#house {
+	width: fit-content;
+	max-width: 80%;
+	margin: auto;
+	padding-bottom: 1em;
+}
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+}
 @media (prefers-reduced-motion: reduce) {
 	#footer-button {
 		content: url("/img/buttons/crt-static.gif");

@@ -25,6 +25,12 @@ $html = <<<EOD
 	<meta name="color-scheme" content="light dark">
 	<title>Clubhouse | insecure.club</title>
 	<style><!--
+	body {
+		background: #f9f9f9;
+	}
+	h1 {
+		margin-top: 0;
+	}
 	form {
 		width: fit-content;
 	}
@@ -39,9 +45,11 @@ $html = <<<EOD
 	}
 	#posts fieldset {
 		padding-top: 0;
+		padding-bottom: 1.5em;
 	}
 	.post {
 		margin-top: 1.5em;
+		margin-left: 0;
 	}
 	hr:last-of-type {
 		display: none;
@@ -60,15 +68,13 @@ if (isset($_SESSION['user'])) {
 	$html .= <<<EOD
 
 	<form action="." method="post" id="session"><fieldset>
-		<label>
-			Logged in as <a href="
+		Logged in as <a href="
 EOD;
 	$html .= $_SESSION['user'] . '">' . bare_url($_SESSION['user']);
 	$html .= '</a> via <a href="' . $_SESSION['via'] . '">' . bare_url($_SESSION['via'] . '</a>');
 	$html .= <<<EOD
 
-			<input type="submit" name="mode" value="Log Out">
-		</label>
+		<input type="submit" name="mode" value="Log Out">
 	</fieldset></form>
 	<center><h1>Clubhouse</h1></center>
 	<form action="." method="post" id="new"><fieldset>
@@ -101,9 +107,12 @@ EOD;
 	<form action="." method="post" id="session"><fieldset>
 		<input type="text" name="url" placeholder="pnppl.cc">
 		<input type="submit" name="mode" class="right" value="Log In">
+		<a href="setup" style="text-decoration-skip-ink:none">(?)</a>
 	</fieldset></form>
-	<center><h1>Clubhouse</h1></center>
-	<center><h2>These are only the public posts. <a href="../submit/">Join</a> to see the rest!</h2></center>
+	<center>
+		<h1>Clubhouse</h1>
+		<h2>These are only the public posts. <a href="../submit/">Join</a> to see the rest!</h2>
+	</center>
 
 EOD;
 }
@@ -236,8 +245,8 @@ foreach ($posts as $file => $dir) {
 	$post_time = date('Y-m-d (D.) @ H:i:s', $filename[0]);
 	$post_author = $filename[1];
 	$post_text = file_get_contents($dir . $file);
-	$html .= "\n\t<p class='post'>\n\t\t" . $post_text . '</p>';
-	$html .= "\n\t\t<i>" . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, <time>' . $post_time . '</time></i>';
+	$html .= "\n\t<blockquote class='post'>" . $post_text . '</blockquote>';
+	$html .= "\n\t<cite>" . 'posted by <a href="http://' . $post_author . '">' . $post_author . '</a>, <time>' . $post_time . '</time></cite>';
 	if (check_author($post_author)) {
 		$html .= <<<EOD
 

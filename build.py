@@ -176,6 +176,12 @@ def write_close(page, out):
 		path = '../../'
 	out.write(f"""\
 		<br>
+		<fieldset id="house">
+			<center><h3>Latest from the <a href="house">Clubhouse</a>:</h3></center>
+			<!--#include virtual="/house/new.php"-->
+		</fieldset>
+		<br>
+		<br>
 		<center>
 			<footer>
 				<a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a> &#183; <a href="{path}feed/feed.atom">feed</a>
@@ -331,7 +337,7 @@ with open("buttons/index.html", "w") as out:
 	out.write("""\
 			</p>
 			<br>
-			<h3>Club/Member Buttons</h3>
+			<h3 id="member">Club/Member Buttons</h3>
 			<p>
 				<img alt="animated CRT with nervous face: this site is a little insecure" src="../img/buttons/crt.gif">
 				<img alt="static CRT with nervous face: this site is a little insecure" src="../img/buttons/crt-static.gif">
@@ -387,6 +393,13 @@ with open("fuq/index.html", "w") as out:
 
 			<h3>What sites are eligible?</h3>
 			<p>See <a href="../submit/#rules">the rules section of the submit page.</a> The TL;DR is it needs to be a real website accessible over HTTP.</p>
+
+			<h3>Are there any perks for joining?</h3>
+			<ol>
+				<li>Your site will be on the list (duh).</li>
+				<li>You can add a cute <a href="../buttons#member">88x31 button</a> to your site to show off your membership.</li>
+				<li>You get access to the <a href="../house">Clubhouse</a> and all its mysterious juicy secrets, plus you can promote whatever you want on the homepage by making a public post.</li>
+			</ol>
 
 			<h3>Why should websites support insecure HTTP?</h3>
 			<p>HTTP<b><i>S</i></b> is a massive barrier between old browsers and the web --- particularly the small and independent web, which is not so gung-ho about JavaScript. Many websites have solid HTML and would work just fine in truly ancient browsers, but the HTTP<b><i>S</i></b> requirement immediately cuts them off.</p>
@@ -448,9 +461,6 @@ with open("submit/index.html", "w") as out:
 	write_head('Submit a Site', out)
 	out.write("""\
 		<style><!--
-			fieldset {
-				border: 1px dashed hotpink;
-			}
 			legend {
 				margin: 1em;
 				margin-left: 0;
