@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		die('URL too long');
 	}
 
-	$ssl = isset($_POST['ssl']) ? 'yes' : 'no';
+	$ssl = isset($_POST['ssl']) ? '1' : '0';
 
 	$cat = $_POST['cat'] ?? '';
 	$cat = str_replace(["\n", "\r"], '', $cat);
@@ -46,15 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		die('Gemini URL too long');
 	}
 
-	$feed_url = htmlspecialchars($_POST['feed-url'] ?? '');
-	$feed_url = str_replace(["\n", "\r"], '', $feed_url);
-	if (mb_strlen($feed_url, 'UTF-8') > 400) {
+	$feed = htmlspecialchars($_POST['feed'] ?? '');
+	$feed = str_replace(["\n", "\r"], '', $feed);
+	if (mb_strlen($feed, 'UTF-8') > 400) {
 		die('Feed URL too long');
 	}
 
-	$css_opt = isset($_POST['css-opt']) ? 'yes' : 'no';
+	$css = isset($_POST['css']) ? '1' : '0';
 
-	$libre = isset($_POST['libre']) ? 'yes' : 'no';
+	$libre = isset($_POST['libre']) ? '1' : '0';
 
 	$button = htmlspecialchars($_POST['button'] ?? '');
 	$button = str_replace(["\n", "\r"], '', $button);
@@ -73,8 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$to = 'submission@insecure.club';
 	$subject = "New submission: $url";
 
-	$body = "---\n";
-	$body .= "url: $url\n";
+	$body = "url: $url\n";
 	$body .= "ssl: $ssl\n";
 	$body .= "cat: $cat\n";
 	if (!empty($desc)) {
@@ -86,10 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (!empty($gemini_url)) {
 		$body .= "gemini-url: $gemini_url\n";
 	}
-	if (!empty($feed_url)) {
-		$body .= "feed-url: $feed_url\n";
+	if (!empty($feed)) {
+		$body .= "feed: $feed\n";
 	}
-	$body .= "css-opt: $css_opt\n";
+	$body .= "css: $css\n";
 	$body .= "libre: $libre\n";
 	if (!empty($button)) {
 		$body .= "button: $button\n";
