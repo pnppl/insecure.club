@@ -434,8 +434,6 @@ with open("fuq/index.html", "w") as out:
 					<li>.rsvp</li>
 					<li>.search</li>
 					<li>.zip</li>
-					<li>.xn--cckwcxetd (.アマゾン)</li>
-					<li>.xn--jlq480n2rg (.亚马逊)</li>
 				</ul>
 				<p><i>Note that some of these may be reserved for evil corporations or otherwise unavailable for registration. <a href="https://serverfault.com/a/1067232">The preload list is controlled by Google and changes over time.</a></i></p>
 			</details>
