@@ -19,8 +19,10 @@
 + sexual
 + historical
 %type: desc line
+%type: gopher line
+%type: gemini line
 %type: feed line
-%type: css_opt bool
+%type: css bool
 %type: libre bool
 %type: button line
 %type: added date
@@ -30,7 +32,7 @@ ssl: 1
 cat: useful
 desc: A growing collection of performance-focused web pages weighing less than 1 MB.
 feed: 1mb.club/atom.xml
-css_opt: 0
+css: 0
 libre: 1
 button: 1mb
 added: 2026-08-15
@@ -40,7 +42,7 @@ ssl: 1
 cat: useful
 desc: A showcase of lightweight websites.
 feed: 512kb.club/feed.xml
-css_opt: 1
+css: 1
 libre: 1
 added: 2026-08-15
 
@@ -48,14 +50,14 @@ url: 68k.news
 ssl: 0
 cat: useful
 desc: Basic HTML Google News for vintage computers.
-css_opt: 1
+css: 1
 added: 2026-08-15
 
 url: baccyflap.com
 ssl: 1
 cat: personal
 feed: baccyflap.com/prs/blog/feed.php
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: brennan.oldcities.org
@@ -63,7 +65,7 @@ ssl: 1
 cat: personal
 desc: A plaintext insecure mirror of IndieWeb publication https://brennan.day
 feed: brennan.oldcities.org/feed.xml
-css_opt: 1
+css: 1
 libre: 1
 button: brennan-day-anim
 added: 2026-10-02
@@ -72,14 +74,14 @@ url: crimethinc.com
 ssl: 1
 cat: creative
 feed: crimethinc.com/feed
-css_opt: 0
+css: 0
 libre: 1
 added: 2026-08-03
 
 url: echoesofbluemars.org
 ssl: 0
 cat: audiovisual
-css_opt: 0
+css: 0
 added: 2026-08-03
 
 url: eklausmeier.goip.de
@@ -87,7 +89,7 @@ ssl: 1
 cat: technical
 desc: Elmar Klausmeier's Blog on Computers, Programming, and Mathematics
 feed: eklausmeier.goip.de/feed.xml
-css_opt: 1
+css: 1
 libre: 0
 added: 2026-11-16
 
@@ -96,7 +98,7 @@ ssl: 1
 cat: personal
 desc: Just a ghost of social networks past, haunting the web.
 feed: felix.plesoianu.ro/index.xml
-css_opt: 1
+css: 1
 libre: 1
 added: 2026-09-18
 
@@ -104,14 +106,14 @@ url: fileformats.archiveteam.org
 ssl: 0
 cat: technical
 feed: fileformats.archiveteam.org/index.php?title=Special:RecentChanges&feed=rss
-css_opt: 0
+css: 0
 libre: 1
 added: 2026-08-03
 
 url: www.floodgap.com
 ssl: 1
 cat: technical
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: friendo.monster
@@ -120,49 +122,49 @@ cat: personal
 gopher: friendo.monster
 gemini: friendo.monster
 feed: friendo.monster/rss.xml
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: handthing.party
 ssl: 1
 cat: audiovisual
 desc: You still doing that hand thing?
-css_opt: 1
+css: 1
 button: handthing-anim
 added: 2026-08-03
 
 url: highlysuspect.agency
 ssl: 1
 cat: personal
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: houseofselfindulgence.blogspot.com
 ssl: 1
 cat: audiovisual
 feed: houseofselfindulgence.blogspot.com/feeds/posts/default?alt=rss
-css_opt: 0
+css: 0
 added: 2026-08-03
 
 url: humaniterations.net
 ssl: 1
 cat: creative
 feed: humaniterations.net/feed.xml
-css_opt: 1
+css: 1
 libre: 1
 added: 2026-08-03
 
 url: insecure.club
 ssl: 1
 cat: useful
-css_opt: 1
+css: 1
 libre: 1
 added: 2026-08-03
 
 url: maurycyz.com
 ssl: 1
 cat: technical
-css_opt: 1
+css: 1
 libre: 0
 added: 2026-08-03
 
@@ -170,14 +172,14 @@ url: mycophobia.org
 ssl: 1
 cat: personal
 feed: mycophobia.org/atom.xml
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: netizen.club
 ssl: 1
 cat: useful
 desc: collective focused on new retro web revival
-css_opt: 1
+css: 1
 libre: 0
 button: netizen-club
 added: 2026-10-21
@@ -195,7 +197,7 @@ ssl: 1
 cat: personal
 desc: Notes, essays, fiction, art, code, and whatever else I feel like posting.
 feed: pnppl.cc/+/feed.rss
-css_opt: 1
+css: 1
 libre: 1
 button: pnppl.cc-dandelion
 added: 2026-08-03
@@ -203,21 +205,21 @@ added: 2026-08-03
 url: www.prole.info
 ssl: 1
 cat: creative
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: www.quoteunquoterecords.com
 ssl: 1
 cat: audiovisual
 desc: The first ever donation based record label
-css_opt: 1
+css: 1
 libre: 0
 added: 2026-08-03
 
 url: smokepowered.com
 ssl: 1
 cat: audiovisual
-css_opt: 1
+css: 1
 libre: 0
 added: 2026-08-03
 
@@ -226,7 +228,7 @@ ssl: 1
 cat: technical
 desc: Promoting a simple unbloated web!
 feed: smolweb.org/atom.xml
-css_opt: 1
+css: 1
 libre: 1
 added: 2026-08-03
 
@@ -235,20 +237,20 @@ ssl: 1
 cat: personal
 desc: Personal website of a computer architect.
 feed: sushantmondal.com/blog/feed/
-css_opt: 1
+css: 1
 libre: 0
 added: 2026-09-01
 
 url: temblast.com
 ssl: 1
 cat: technical
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: toastytech.com
 ssl: 0
 cat: technical
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: trekkiefeminist.com
@@ -256,7 +258,7 @@ ssl: 1
 cat: creative
 desc: Boldly going where no feminist has gone before
 feed: trekkiefeminist.com/feed/
-css_opt: 0
+css: 0
 added: 2026-08-03
 
 url: vivivi.leprd.space
@@ -270,7 +272,7 @@ url: web1.0hosting.net
 ssl: 1
 cat: useful
 desc: advanced static web hosting
-css_opt: 1
+css: 1
 button: web10
 added: 2026-08-03
 
@@ -278,7 +280,7 @@ url: wiby.me
 ssl: 1
 cat: useful
 desc: Search Engine for the Classic Web
-css_opt: 1
+css: 1
 libre: 1
 button: wiby
 added: 2026-08-03
@@ -287,7 +289,7 @@ url: wol.fm
 ssl: 1
 cat: personal
 feed: wol.fm/feed.xml
-css_opt: 1
+css: 1
 added: 2026-08-03
 
 url: xn--gckvb8fzb.com

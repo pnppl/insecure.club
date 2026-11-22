@@ -125,18 +125,18 @@ def write_list(sites, page, out):
 		old_cat = cat
 
 		link = f"""<a href="http://{site['url']}">{site['url']}</a>"""
-		if 'css-opt' in site and site['css-opt'] and page != 'css-opt':
+		if 'css' in site and site['css'] and page != 'css-opt':
 			link = f"""<b class="css-opt">{link}</b>"""
 
 		protocols = ''
 		if 'ssl' in site and site['ssl']:
 			protocols += f""" <a href="https://{site['url']}"><img class="icon invert" src="{path}img/prot/https.gif" alt="[HTTPS]" width="16" height="16"></a>"""
-		if 'gopher-url' in site and site['gopher-url']:
-			protocols += f""" <a href="gopher://{site['gopher-url']}"><img class="icon" src="{path}img/prot/gopher.gif" alt="[Gopher]" width="16" height="16"></a>"""
-		if 'gemini-url' in site and site['gemini-url']:
-			protocols += f""" <a href="gemini://{site['gemini-url']}"><img class="icon invert" src="{path}img/prot/gemini.gif" alt="[Gemini]" width="16" height="16"></a>"""
-		if 'feed-url' in site and site['feed-url']:
-			protocols += f""" <a href="http://{site['feed-url']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]" width="16" height="16"></a>"""
+		if 'gopher' in site and site['gopher']:
+			protocols += f""" <a href="gopher://{site['gopher']}"><img class="icon" src="{path}img/prot/gopher.gif" alt="[Gopher]" width="16" height="16"></a>"""
+		if 'gemini' in site and site['gemini']:
+			protocols += f""" <a href="gemini://{site['gemini']}"><img class="icon invert" src="{path}img/prot/gemini.gif" alt="[Gemini]" width="16" height="16"></a>"""
+		if 'feed' in site and site['feed']:
+			protocols += f""" <a href="http://{site['feed']}"><img class="icon invert" src="{path}img/prot/feed.gif" alt="[feed]" width="16" height="16"></a>"""
 
 		out.write(f"""\
 				<li class="{cat}">
@@ -188,16 +188,34 @@ def write_close(page, out):
 
 
 # main
-import yaml, datetime, html
+import subprocess, datetime, html
 
-with open("sites.yaml", "r") as sites_yaml:
-	sites = list(yaml.load_all(sites_yaml, Loader=yaml.SafeLoader))
+#with open("sites.yaml", "r") as sites_yaml:
+#	sites = list(yaml.load_all(sites_yaml, Loader=yaml.SafeLoader))
+rec = subprocess.getstatusoutput("recsel sites.rec")
+if rec[0] != 0:
+	print("fuck!")
+	exit()
+rec = rec[1].split('\n\n')
+sites = []
+for shit in rec:
+	dict = {}
+	newshit = shit.split('\n')
+	for part in newshit:
+		parts = part.split(': ', 1)
+		if parts[1] == '0':
+			parts[1] = False;
+		if parts[1] == '1':
+			parts[1] = True;
+		dict.update({parts[0]: parts[1]})
+	sites.append(dict)
+
 sites.sort(key=lambda s: s['url'].removeprefix('www.'))
 sites_by_cat = list(sorted(sites, key=lambda s: s['cat']))
 all_categories = list(dict.fromkeys(site['cat'] for site in sites_by_cat))
 sites_new = sorted(sites, key=lambda s: s['added'], reverse=True)
-sites_has_feed = filter(lambda s: 'feed-url' in s and s['feed-url'], sites)
-sites_css_opt = filter(lambda s: 'css-opt' in s and s['css-opt'], sites)
+sites_has_feed = filter(lambda s: 'feed' in s and s['feed'], sites)
+sites_css_opt = filter(lambda s: 'css' in s and s['css'], sites)
 sites_libre = filter(lambda s: 'libre' in s and s['libre'], sites)
 sites_button = list(filter(lambda s: 'button' in s and s['button'], sites))
 
@@ -750,7 +768,7 @@ with open("feed/feed.atom", "w") as out:
 		<published>{site['added']}T16:00:00Z</published>
 		<updated>{site['added']}T16:00:00Z</updated>
 		<summary type="html">{site['cat']}""")
-		if 'css-opt' in site and site['css-opt']:
+		if 'css' in site and site['css']:
 			out.write("; CSS optional")
 		if 'libre' in site and site['libre']:
 			out.write("; free culture")
