@@ -6,6 +6,8 @@ def write_head(page, out):
 		title = f"""{page} | {title}"""
 	else:
 		page = ''
+	if page == 'Check a site for HTTP support':
+		path = '../../'
 	out.write(f"""\
 <!DOCTYPE html>
 <html lang="en">
