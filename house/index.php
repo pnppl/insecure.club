@@ -34,6 +34,9 @@ $html = <<<EOD
 	form {
 		width: fit-content;
 	}
+	fieldset {
+		border: 1px dashed hotpink;
+	}
 	#session,
 	.right {
 		margin-left: auto;
