@@ -18,7 +18,8 @@ def write_head(page, out):
 		<link rel="icon" href="{path}favicon.ico" sizes="16x16 32x32 48x48">
 		<link rel="license" href="{path}LICENSE.md">
 		<link rel="alternate" href="{path}feed/feed.atom" title="insecure.club URL feed" type="application/atom+xml">
-		<link rel="alternate" href="{path}sites.yaml" title="YAML source" type="application/yaml">
+		<link rel="alternate" href="{path}sites.rec" title="recfile source" type="text/plain">
+		<link rel="alternate" href="{path}sites.txt" title="plaintext site list" type="text/plain">
 		<meta property="og:site_name" content="insecure.club">
 		<meta property="og:title" content="{title}">
 		<meta property="og:description" content="Directory of sites that support HTTP sans S">
