@@ -2,6 +2,7 @@
 // include this in html with SSI so we can stick most recent public post into static pages
 $public = scandir('public/', SCANDIR_SORT_DESCENDING);
 $filename = explode(" ", $public[0]);
+date_default_timezone_set('America/New_York');
 $post_time = date('Y-m-d (D.) @ H:i:s', $filename[0]);
 $post_author = $filename[1];
 $post_text = file_get_contents('public/' . $public[0]);
