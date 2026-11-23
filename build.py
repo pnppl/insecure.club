@@ -177,7 +177,7 @@ def write_close(page, out):
 	out.write(f"""\
 		<br>
 		<fieldset id="house">
-			<center><h3>Latest from the <a href="house">Clubhouse</a>:</h3></center>
+			<center><h3>Latest from the <a href="{path}house">Clubhouse</a>:</h3></center>
 			<!--#include virtual="/house/new.php"-->
 		</fieldset>
 		<br>

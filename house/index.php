@@ -38,6 +38,13 @@ $html = <<<EOD
 	.right {
 		margin-left: auto;
 	}
+	.err {
+		color: red;
+		font-weight: bold;
+		width: fit-content;
+		max-width: 40ch;
+		margin: auto;
+	}
 	#new,
 	#posts {
 		margin: 0 auto;
@@ -121,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	switch ($_POST['mode']) {
 		case 'Log In':
 			if (!isset($_POST['url']) || $_POST['url'] === '') {
-				$html .= "<p>Error: Missing URL</p>";
+				$html .= '<p class="err">Error: Missing URL</p>';
 			} else {
 				$allowlist = file($allowlist_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 				if (in_array('http://' . bare_url($_POST['url']), $allowlist, true)) {
@@ -143,14 +150,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					}
 
 					if ($error) {
-						$html .= "<p>Error: " . $error['error'] . "</p>";
-						$html .= "<p>" . $error['error_description'] . "</p>";
+						$html .= '<p class="err">Error: ' . $error['error'] . "</p>";
+						$html .= '<p class="err">' . $error['error_description'] . "</p>";
 					} else {
 						// Redirect the user to their authorization endpoint
 						header('Location: ' . $authorizationURL);
 					}
 				} else {
-					$html .= '<p>Only club members are allowed in the clubhouse. If your site is on the <a href="' . $allowlist_path . '">list</a> but you still can\'t log in, <a href="mailto:&#x68;&#x65;&#x6C;&#x70;&#x40;&#x69;&#x6E;&#x73;&#x65;&#x63;&#x75;&#x72;&#x65;&#x2E;&#x63;&#x6C;&#x75;&#x62;?subject=Clubhouse%20login%20issue">email me</a>.</p>';
+					$html .= '<p class="err">Only club members are allowed in the clubhouse. If your site is on the <a href="' . $allowlist_path . '">list</a> but you still can\'t log in, <a href="mailto:&#x68;&#x65;&#x6C;&#x70;&#x40;&#x69;&#x6E;&#x73;&#x65;&#x63;&#x75;&#x72;&#x65;&#x2E;&#x63;&#x6C;&#x75;&#x62;?subject=Clubhouse%20login%20issue">email me</a>.</p>';
 				}
 			}
 			break;
@@ -170,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		case 'Post':
 			$msg = trim($_POST['message'] ?? '');
 			if ($msg === '') {
-				$html .= "<p>Got empty message.</p>";
+				$html .= '<p class="err">Got empty message.</p>';
 			} elseif (isset($_SESSION['user'])) {
 				$dir = 'posts/';
 				if (isset($_POST['public'])) {
@@ -189,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				// $html .= '<meta http-equiv="Refresh" content="5; url=\'.\'">';
 				header('Location: ' . $loc);
 			} else {
-				$html .= "<p>You must be logged in to post.</p>";
+				$html .= '<p class="err">You must be logged in to post.</p>';
 			}
 			break;
 		case 'Delete':
@@ -200,10 +207,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 					unlink($victim);
 					header('Location: ' . $loc);
 				} else {
-					$html .= "<p>You can only delete your own posts.</p>";
+					$html .= '<p class="err">You can only delete your own posts.</p>';
 				}
 			} else {
-				$html .= "<p>Missing deletion target.</p>";
+				$html .= '<p class="err">Missing deletion target.</p>';
 			}
 			break;
 	}
@@ -216,10 +223,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_GET)) {
 	list($response, $error) = IndieAuth\Client::complete($_GET);
 
 	if ($error) {
-		$html .= "<p>Error: ".$error['error']."</p>";
-		$html .= "<p>".$error['error_description']."</p>";
+		$html .= '<p class="err">' . $error['error'] . "</p>";
+		$html .= '<p class="err">' . $error['error_description'] . "</p>";
 		if ($error['error'] === 'invalid_authorization_endpoint') {
-			$html .= "<p>Make sure you enter your URL exactly, including trailing slash if applicable.</p>";
+			$html .= '<p class="err">Make sure you enter your URL exactly, including trailing slash if applicable.</p>';
 		}
 	} else {
 		// login complete - save the user's URL and auth endpoint in the session

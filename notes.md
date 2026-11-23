@@ -34,3 +34,5 @@
 		- think this is working
 
 - login/out errors should display above the h1
+	- we should generate the error first, then insert it into the html later
+	- for now i just slapped a css class on it
