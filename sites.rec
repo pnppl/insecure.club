@@ -1,11 +1,16 @@
 %rec: site
 %doc: Entry in the insecure.club HTTP directory.
-%mandatory: url
-%mandatory: ssl
-%mandatory: cat
-%mandatory: added
-%type: url line
-%type: ssl bool
+%allowed: url ssl cat desc gopher gemini feed css libre button date
+%unique: url ssl cat desc gopher gemini feed css libre button date
+%mandatory: url ssl cat added
+%key: url
+%sort: url
+%typedef: link size 400
+%type: url,gopher,gemini,feed link
+%typedef: string size 80
+%type: desc,button string
+%type: ssl,css,libre bool
+%type: added date
 %type: cat enum
 + misc
 + personal
@@ -18,14 +23,18 @@
 + social
 + sexual
 + historical
-%type: desc line
-%type: gopher line
-%type: gemini line
-%type: feed line
-%type: css bool
-%type: libre bool
-%type: button line
-%type: added date
+%singular: desc
+%singular: gopher
+%singular: gemini
+%singular: feed
+%singular: button
+%constraint: !(url ~ '^http')
+%constraint: !(gopher ~ '^gopher://')
+%constraint: !(gemini ~ '^gemini://')
+%constraint: !(gemini ~ '^gemini://')
+%constraint: !(feed ~ '^http')
+%constraint: !(button ~ '^http')
+%constraint: !(button ~ '\.gif$')
 
 url: brennan.oldcities.org
 ssl: 1

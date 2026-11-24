@@ -34,15 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$desc = mb_substr($desc, 0, 77, 'UTF-8') . "...";
 	}
 
-	$gopher_url = htmlspecialchars($_POST['gopher-url'] ?? '');
-	$gopher_url = str_replace(["\n", "\r"], '', $gopher_url);
-	if (mb_strlen($gopher_url, 'UTF-8') > 400) {
+	$gopher = htmlspecialchars($_POST['gopher'] ?? '');
+	$gopher = str_replace(["\n", "\r"], '', $gopher);
+	if (mb_strlen($gopher, 'UTF-8') > 400) {
 		die('Gopher URL too long');
 	}
 
-	$gemini_url = htmlspecialchars($_POST['gemini-url'] ?? '');
-	$gemini_url = str_replace(["\n", "\r"], '', $gemini_url);
-	if (mb_strlen($gemini_url, 'UTF-8') > 400) {
+	$gemini = htmlspecialchars($_POST['gemini'] ?? '');
+	$gemini = str_replace(["\n", "\r"], '', $gemini);
+	if (mb_strlen($gemini, 'UTF-8') > 400) {
 		die('Gemini URL too long');
 	}
 
@@ -76,27 +76,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$body = "url: $url\n";
 	$body .= "ssl: $ssl\n";
 	$body .= "cat: $cat\n";
+	$cmd = <<<EOD
+
+	recins --verbose -t site \\
+		-f url -v $url \\
+		-f ssl -v $ssl \\
+		-f cat -v $cat \\
+	EOD;
 	if (!empty($desc)) {
 		$body .= "desc: $desc\n";
+		$cmd .= "\t-f desc -v $desc \\\n";
 	}
-	if (!empty($gopher_url)) {
-		$body .= "gopher-url: $gopher_url\n";
+	if (!empty($gopher)) {
+		$body .= "gopher: $gopher\n";
+		$cmd .= "\t-f gopher -v $gopher \\\n";
 	}
-	if (!empty($gemini_url)) {
-		$body .= "gemini-url: $gemini_url\n";
+	if (!empty($gemini)) {
+		$body .= "gemini: $gemini\n";
+		$cmd .= "\t-f gemini -v $gemini \\\n";
 	}
 	if (!empty($feed)) {
 		$body .= "feed: $feed\n";
+		$cmd .= "\t-f feed -v $feed \\\n";
 	}
 	$body .= "css: $css\n";
 	$body .= "libre: $libre\n";
+	$cmd .= <<<EOD
+		-f css -v $css \\
+		-f libre -v $libre \\
+	EOD;
 	if (!empty($button)) {
 		$body .= "button: $button\n";
+		$button_name = str_replace('.gif', '', end(explode('/', $button)));
+		$cmd .= "\t-f button -v $button_name \\\n";
 	}
-	$body .= "added: " . date("Y-m-d") . "\n";
+	$date = date("Y-m-d");
+	$cmd .= "\t-f added -v $date \\\n";
 	if (!empty($message)) {
-		$body .= "\nuser included the message:\n> $message";
+		$body .= "\nuser included the message:\n> $message\n";
 	}
+	$body .= $cmd . "\t~/insecure.club/sites.rec &&\n\trecfix --sort ~/insecure.club/sites.rec";
 
 	$headers = "From: <$to>\n";
 	if ($email) {
