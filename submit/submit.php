@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		-f url -v $url \\
 		-f ssl -v $ssl \\
 		-f cat -v $cat \\
+
 	EOD;
 	if (!empty($desc)) {
 		$body .= "desc: $desc\n";
@@ -104,6 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$cmd .= <<<EOD
 		-f css -v $css \\
 		-f libre -v $libre \\
+
 	EOD;
 	if (!empty($button)) {
 		$body .= "button: $button\n";
