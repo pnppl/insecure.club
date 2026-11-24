@@ -112,8 +112,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$button_name = str_replace('.gif', '', end(explode('/', $button)));
 		$cmd .= "\t-f button -v $button_name \\\n";
 	}
-	$date = date("Y-m-d");
-	$cmd .= "\t-f added -v $date \\\n";
+
+	$body .= "added: " . date("Y-m-d") . "\n";
+	$cmd .= "\t-f added -v \$(date '+%Y-%m-%d') \\\n";
+
 	if (!empty($message)) {
 		$body .= "\nuser included the message:\n> $message\n";
 	}
