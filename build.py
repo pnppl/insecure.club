@@ -187,7 +187,7 @@ def write_close(page, out):
 		<br>
 		<center>
 			<footer>
-				<a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a> &#183; <a href="{path}feed/feed.atom">feed</a>
+				<a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a> &#183; <a href="{path}feed/feed.atom">feed</a> &#183; <a href="{path}feed/feeds.opml">OPML</a>
 				<p><a href="{path}buttons"><img id="footer-button" alt="animated CRT with nervous face: this site is a little insecure" src="{path}img/buttons/crt.gif"></a></p>
 			</footer>
 		</center>
@@ -197,7 +197,8 @@ def write_close(page, out):
 
 
 # main
-import subprocess, datetime, html
+import subprocess, html, datetime
+from zoneinfo import ZoneInfo
 
 #with open("sites.yaml", "r") as sites_yaml:
 #	sites = list(yaml.load_all(sites_yaml, Loader=yaml.SafeLoader))
@@ -223,7 +224,7 @@ sites.sort(key=lambda s: s['url'].removeprefix('www.'))
 sites_by_cat = list(sorted(sites, key=lambda s: s['cat']))
 all_categories = list(dict.fromkeys(site['cat'] for site in sites_by_cat))
 sites_new = sorted(sites, key=lambda s: s['added'], reverse=True)
-sites_has_feed = filter(lambda s: 'feed' in s and s['feed'], sites)
+sites_has_feed = list(filter(lambda s: 'feed' in s and s['feed'], sites))
 sites_css_opt = filter(lambda s: 'css' in s and s['css'], sites)
 sites_libre = filter(lambda s: 'libre' in s and s['libre'], sites)
 sites_button = list(filter(lambda s: 'button' in s and s['button'], sites))
@@ -790,5 +791,33 @@ with open("feed/feed.atom", "w") as out:
 """)
 	out.write("""\
 </feed>""")
+
+with open("feed/feeds.opml", "w") as out:
+	out.write(f"""\
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+	<head>
+		<title>insecure.club blogroll</title>
+		<dateCreated>Fri, 27 Nov 2026 05:55:55 GMT</dateCreated>
+		<dateModified>{datetime.datetime.now(tz=ZoneInfo("America/New_York")).strftime("%a, %e %b %Y %H:%M:%S %z")}</dateModified>
+		<ownerName>insecure.club</ownerName>
+		<ownerEmail>opml@insecure.club</ownerEmail>
+		<ownerId>http://insecure.club</ownerId>
+		<docs>https://opml.org/spec2.opml</docs>
+	</head>
+	<body>
+""")
+	for site in sites_has_feed:
+		out.write(f"""\
+		<outline type="rss" title="{site['url']}" text=\"""")
+		if 'desc' in site and site['desc']:
+			out.write(site['desc'])
+		else:
+			out.write(site['url'])
+		out.write(f"""" xmlUrl="http://{site['feed']}" htmlUrl="http://{site['url']}" category="{site['cat']}" />
+""")
+	out.write("""\
+	</body>
+</opml>""")
 
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+	<head>
+		<title>insecure.club blogroll</title>
+		<dateCreated>Fri, 27 Nov 2026 05:55:55 GMT</dateCreated>
+		<dateModified>Fri, 27 Nov 2026 08:49:25 -0500</dateModified>
+		<ownerName>insecure.club</ownerName>
+		<ownerEmail>opml@insecure.club</ownerEmail>
+		<ownerId>http://insecure.club</ownerId>
+		<docs>https://opml.org/spec2.opml</docs>
+	</head>
+	<body>
+		<outline type="rss" title="brennan.oldcities.org" text="A plaintext insecure mirror of IndieWeb publication https://brennan.day" xmlUrl="http://brennan.oldcities.org/feed.xml" htmlUrl="http://brennan.oldcities.org" category="personal" />
+		<outline type="rss" title="eklausmeier.goip.de" text="Elmar Klausmeier's Blog on Computers, Programming, and Mathematics" xmlUrl="http://eklausmeier.goip.de/feed.xml" htmlUrl="http://eklausmeier.goip.de" category="technical" />
+		<outline type="rss" title="felix.plesoianu.ro" text="Just a ghost of social networks past, haunting the web." xmlUrl="http://felix.plesoianu.ro/index.xml" htmlUrl="http://felix.plesoianu.ro" category="personal" />
+		<outline type="rss" title="pnppl.cc" text="Notes, essays, fiction, art, code, and whatever else I feel like posting." xmlUrl="http://pnppl.cc/+/feed.rss" htmlUrl="http://pnppl.cc" category="personal" />
+		<outline type="rss" title="sushantmondal.com" text="Personal website of a computer architect." xmlUrl="http://sushantmondal.com/blog/feed/" htmlUrl="http://sushantmondal.com" category="personal" />
+	</body>
+</opml>
