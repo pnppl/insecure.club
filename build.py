@@ -19,7 +19,9 @@ def write_head(page, out):
 		<meta name="theme-color" content="teal">
 		<link rel="icon" href="{path}favicon.ico" sizes="16x16 32x32 48x48">
 		<link rel="license" href="{path}LICENSE.md">
-		<link rel="alternate" href="{path}feed/feed.atom" title="insecure.club URL feed" type="application/atom+xml">
+		<link rel="alternate" href="{path}feed/feed.rss" title="insecure.club URL feed (rss)" type="application/rss+xml">
+		<link rel="alternate" href="{path}feed/feed.atom" title="insecure.club URL feed (atom)" type="application/atom+xml">
+		<link rel="alternate" href="{path}feed/feeds.opml" title="blogroll (opml)" type="application/xml">
 		<link rel="alternate" href="{path}sites.rec" title="recfile source" type="text/plain">
 		<link rel="alternate" href="{path}sites.txt" title="plaintext site list" type="text/plain">
 		<meta property="og:site_name" content="insecure.club">
@@ -187,7 +189,7 @@ def write_close(page, out):
 		<br>
 		<center>
 			<footer>
-				<a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a> &#183; <a href="{path}feed/feed.atom">feed</a> &#183; <a href="{path}feed/feeds.opml">OPML</a>
+				<a href="{path}LICENSE.md">AGPLv3</a> &#183; <a href="https://git.gay/pnppl/insecure.club">source</a> &#183; <a href="mailto:&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;">&#104;&#105;&#64;&#105;&#110;&#115;&#101;&#99;&#117;&#114;&#101;&#46;&#99;&#108;&#117;&#98;</a> &#183; <a href="{path}feed/feed.rss">feed</a> &#183; <a href="{path}feed/feeds.opml">OPML</a>
 				<p><a href="{path}buttons"><img id="footer-button" alt="animated CRT with nervous face: this site is a little insecure" src="{path}img/buttons/crt.gif"></a></p>
 			</footer>
 		</center>
@@ -791,6 +793,40 @@ with open("feed/feed.atom", "w") as out:
 """)
 	out.write("""\
 </feed>""")
+with open("feed/feed.rss", "w") as out:
+	out.write(f"""\
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>insecure.club</title>
+		<link>http://insecure.club/feed/feed.rss</link>
+		<atom:link href="http://insecure.club/feed/feed.rss" rel="self" type="application/rss+xml"></atom:link>
+		<atom:link href="http://insecure.club/feed/feed.atom" rel="alternate" type="application/atom+xml"></atom:link>
+		<description>Links to sites that joined insecure.club</description>
+		<language>en-US</language>
+		<webMaster>rss@insecure.club (pnppl)</webMaster>
+		<managingEditor>rss@insecure.club (pnppl)</managingEditor>
+""")
+	for site in sites_new:
+		out.write(f"""\
+		<item>
+			<title>{site['url']}</title>
+			<link>http://{site['url']}</link>
+			<guid>http://{site['url']}</guid>
+			<pubDate>{datetime.datetime.fromisoformat(site['added'] + "T16:00:00Z").strftime("%a, %d %b %Y %H:%M:%S %z")}</pubDate>
+			<description>{site['cat']}""")
+		if 'css' in site and site['css']:
+			out.write("; CSS optional")
+		if 'libre' in site and site['libre']:
+			out.write("; free culture")
+		if 'desc' in site:
+			out.write(f""": {html.escape(f"<i>{site['desc']}</i>", True)}""")
+		out.write("""</description>
+		</item>
+""")
+	out.write("""\
+	</channel>
+</rss>""")
 
 with open("feed/feeds.opml", "w") as out:
 	out.write(f"""\
@@ -799,7 +835,7 @@ with open("feed/feeds.opml", "w") as out:
 	<head>
 		<title>insecure.club blogroll</title>
 		<dateCreated>Fri, 27 Nov 2026 05:55:55 GMT</dateCreated>
-		<dateModified>{datetime.datetime.now(tz=ZoneInfo("America/New_York")).strftime("%a, %e %b %Y %H:%M:%S %z")}</dateModified>
+		<dateModified>{datetime.datetime.now(tz=ZoneInfo("America/New_York")).strftime("%a, %d %b %Y %H:%M:%S %z")}</dateModified>
 		<ownerName>insecure.club</ownerName>
 		<ownerEmail>opml@insecure.club</ownerEmail>
 		<ownerId>http://insecure.club</ownerId>

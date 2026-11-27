@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>insecure.club</title>
+		<link>http://insecure.club/feed/feed.rss</link>
+		<atom:link href="http://insecure.club/feed/feed.rss" rel="self" type="application/rss+xml"></atom:link>
+		<atom:link href="http://insecure.club/feed/feed.atom" rel="alternate" type="application/atom+xml"></atom:link>
+		<description>Links to sites that joined insecure.club</description>
+		<language>en-US</language>
+		<webMaster>rss@insecure.club (pnppl)</webMaster>
+		<managingEditor>rss@insecure.club (pnppl)</managingEditor>
+		<item>
+			<title>eklausmeier.goip.de</title>
+			<link>http://eklausmeier.goip.de</link>
+			<guid>http://eklausmeier.goip.de</guid>
+			<pubDate>Mon, 16 Nov 2026 16:00:00 +0000</pubDate>
+			<description>technical; CSS optional: &lt;i&gt;Elmar Klausmeier&#x27;s Blog on Computers, Programming, and Mathematics&lt;/i&gt;</description>
+		</item>
+		<item>
+			<title>netizen.club</title>
+			<link>http://netizen.club</link>
+			<guid>http://netizen.club</guid>
+			<pubDate>Wed, 21 Oct 2026 16:00:00 +0000</pubDate>
+			<description>useful; CSS optional: &lt;i&gt;collective focused on new retro web revival&lt;/i&gt;</description>
+		</item>
+		<item>
+			<title>brennan.oldcities.org</title>
+			<link>http://brennan.oldcities.org</link>
+			<guid>http://brennan.oldcities.org</guid>
+			<pubDate>Fri, 02 Oct 2026 16:00:00 +0000</pubDate>
+			<description>personal; CSS optional; free culture: &lt;i&gt;A plaintext insecure mirror of IndieWeb publication https://brennan.day&lt;/i&gt;</description>
+		</item>
+		<item>
+			<title>felix.plesoianu.ro</title>
+			<link>http://felix.plesoianu.ro</link>
+			<guid>http://felix.plesoianu.ro</guid>
+			<pubDate>Fri, 18 Sep 2026 16:00:00 +0000</pubDate>
+			<description>personal; CSS optional; free culture: &lt;i&gt;Just a ghost of social networks past, haunting the web.&lt;/i&gt;</description>
+		</item>
+		<item>
+			<title>sushantmondal.com</title>
+			<link>http://sushantmondal.com</link>
+			<guid>http://sushantmondal.com</guid>
+			<pubDate>Tue, 01 Sep 2026 16:00:00 +0000</pubDate>
+			<description>personal; CSS optional: &lt;i&gt;Personal website of a computer architect.&lt;/i&gt;</description>
+		</item>
+		<item>
+			<title>handthing.party</title>
+			<link>http://handthing.party</link>
+			<guid>http://handthing.party</guid>
+			<pubDate>Mon, 03 Aug 2026 16:00:00 +0000</pubDate>
+			<description>audiovisual; CSS optional: &lt;i&gt;You still doing that hand thing?&lt;/i&gt;</description>
+		</item>
+		<item>
+			<title>pnppl.cc</title>
+			<link>http://pnppl.cc</link>
+			<guid>http://pnppl.cc</guid>
+			<pubDate>Mon, 03 Aug 2026 16:00:00 +0000</pubDate>
+			<description>personal; CSS optional; free culture: &lt;i&gt;Notes, essays, fiction, art, code, and whatever else I feel like posting.&lt;/i&gt;</description>
+		</item>
+	</channel>
+</rss>
